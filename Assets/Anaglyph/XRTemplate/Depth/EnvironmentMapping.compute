@@ -100,8 +100,8 @@ void Integrate (uint i : SV_DispatchThreadID)
 		}
 	}
 	
-	// if (sDistNorm > -1 && !inPlayer && normDot > MIN_DOT)
-		// volume[id] = sDistNorm;
+	if (sDistNorm > -1 && !inPlayer && normDot > MIN_DOT)
+		volume[id] = sDistNorm;
 }
 
 #pragma kernel Raycast
@@ -141,20 +141,4 @@ void Raycast(uint3 id : SV_DispatchThreadID)
 	
 	if (abs(signedDistance) < 0.02f)
 		InterlockedMin(rcResult[0], distFromCenterInt);
-}
-
-#pragma kernel Copy
-
-RWStructuredBuffer<float> voxelBuffer;
-
-[numthreads(4,4,4)]
-void Copy(uint3 id : SV_DispatchThreadID)
-{
-	if (id.x >= volumeSize.x || id.y >= volumeSize.y || id.z >= volumeSize.z) return;
-
-	float3 uvw = float3(id) / float3(volumeSize);
-	half value = rcVolume.SampleLevel(linearClampSampler, uvw, 0) * metersPerVoxel;
-
-	uint flatIndex = id.x + (id.y * volumeSize.x) + (id.z * volumeSize.x * volumeSize.y);
-	voxelBuffer[flatIndex] = value;
 }

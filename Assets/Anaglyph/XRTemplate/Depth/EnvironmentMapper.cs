@@ -1,8 +1,5 @@
 using Anaglyph.XRTemplate.DepthKit;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
-using MarchingCubes;
-using Meta.XR.ImmersiveDebugger;
 using UnityEngine;
 
 namespace Anaglyph.XRTemplate
@@ -10,16 +7,12 @@ namespace Anaglyph.XRTemplate
 	public class EnvironmentMapper : MonoBehaviour
 	{
 		public static EnvironmentMapper Instance { get; private set; }
-		public ComputeBuffer VoxelBuffer { get; private set; }
-		
+
 		[SerializeField] private ComputeShader shader = null;
 		[SerializeField] private float metersPerVoxel = 0.1f;
 		[SerializeField] private float dispatchesPerSecond = 30f;
 
 		[SerializeField] private RenderTexture volume;
-		public RenderTexture Volume => volume;
-		
-		[SerializeField] private VolumeDataVisualizer grid;
 
 		private int vWidth => volume.width;
 		private int vHeight => volume.height;
@@ -34,7 +27,6 @@ namespace Anaglyph.XRTemplate
 		private ComputeKernel clearKernel;
 		private ComputeKernel integrateKernel;
 		private ComputeKernel raycastKernel;
-		private ComputeKernel copyKernel;
 
 		private int viewID => DepthKitDriver.agDepthView_ID;
 		private int projID => DepthKitDriver.agDepthProj_ID;
@@ -64,18 +56,18 @@ namespace Anaglyph.XRTemplate
 		private void Start()
 		{
 			clearKernel = new(shader, "Clear");
-			clearKernel.Set("volume", volume);
+			clearKernel.Set(nameof(volume), volume);
 
 			integrateKernel = new(shader, "Integrate");
-			integrateKernel.Set("volume", volume);
+			integrateKernel.Set(nameof(volume), volume);
+
+			integrateKernel = new(shader, "Integrate");
 
 			raycastKernel = new(shader, "Raycast");
 			raycastKernel.Set("rcVolume", volume);
 
 			shader.SetInts("volumeSize", vWidth, vHeight, vDepth);
 			shader.SetFloat(nameof(metersPerVoxel), metersPerVoxel);
-			
-			VoxelBuffer = new ComputeBuffer(vWidth * vHeight * vDepth, sizeof(float));
 
 			Clear();
 
@@ -135,6 +127,7 @@ namespace Anaglyph.XRTemplate
 
 			integrateKernel.Set(depthTexID, depthTex);
 			integrateKernel.Set(normTexID, normTex);
+
 			integrateKernel.DispatchGroups(frustumVolume.count, 1, 1);
 		}
 
@@ -169,9 +162,7 @@ namespace Anaglyph.XRTemplate
 						Vector3 v = new Vector3(x, y, -z);
 
 						if (v.magnitude > minEyeDist && v.magnitude < maxEyeDist)
-						{
 							positions.Add(v);
-						}
 					}
 				}
 			}
