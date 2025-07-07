@@ -11,10 +11,13 @@ namespace Anaglyph.Lasertag
 	{
 		[SerializeField] private float rotateSpeed;
 
-		[SerializeField] private GameObject objectToSpawn;
+		private GameObject objectToSpawn;
 		private GameObject previewObject;
-		private float rotating;
-		private float angle;
+		private float rotatingX;
+		private float rotatingY;
+		private float angleX;
+		private float angleY;
+		private Vector3 rayCastNormVector;
 
 		[SerializeField] private LineRenderer lineRenderer;
 		
@@ -34,8 +37,6 @@ namespace Anaglyph.Lasertag
 
 			lineRenderer.useWorldSpace = false;
 			lineRenderer.SetPositions(new[] { Vector3.zero, Vector3.zero });
-			
-			previewObject = InstantiateObjectAsPreview(objectToSpawn);
 		}
 
 		public void SetObjectToSpawn(GameObject objectToSpawn)
@@ -50,7 +51,8 @@ namespace Anaglyph.Lasertag
 
 		private void Update()
 		{
-			angle += rotating * Time.deltaTime * rotateSpeed;
+			angleY += Time.deltaTime * rotateSpeed * rotatingY;
+			angleX += Time.deltaTime * rotateSpeed * rotatingX;
 
 			lineRenderer.enabled = false;
 			previewObject.SetActive(false);
@@ -78,15 +80,15 @@ namespace Anaglyph.Lasertag
 
 			previewObject.SetActive(true);
 
-			previewObject.transform.position = result.point;
-			previewObject.transform.eulerAngles = new(0, angle, 0);
+			previewObject.transform.position = result.point - transform.forward * 0.085f;
+			previewObject.transform.eulerAngles = new(angleX, angleY, 0);
 		}
 
 		private void OnEnable()
 		{
 			Vector3 forw = transform.forward;
 			forw.y = 0;
-			angle = Vector3.SignedAngle(Vector3.forward, forw, Vector3.up);
+			angleY = Vector3.SignedAngle(Vector3.forward, forw, Vector3.up);
 		}
 		private void OnDisable()
 		{
@@ -107,7 +109,8 @@ namespace Anaglyph.Lasertag
 		
 		private void OnAxis(InputAction.CallbackContext context)
 		{
-			rotating = -context.ReadValue<Vector2>().x;
+			rotatingX = context.ReadValue<Vector2>().y;
+			rotatingY = -context.ReadValue<Vector2>().x;
 		}
 
 		private static GameObject InstantiateObjectAsPreview(GameObject obj)
