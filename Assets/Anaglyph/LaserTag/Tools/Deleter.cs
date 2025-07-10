@@ -1,3 +1,4 @@
+using System;
 using Anaglyph.XRTemplate;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -54,6 +55,7 @@ namespace Anaglyph.Lasertag
 			if (context.performed && context.ReadValueAsButton())
 			{
 				Destroy(selectedObject);
+				gameObject.SetActive(false);
 			}
 		}
 	}
