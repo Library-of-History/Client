@@ -1,4 +1,5 @@
 using Anaglyph.Menu;
+using Anaglyph.XRTemplate;
 using UnityEngine;
 
 namespace Anaglyph.Lasertag.UI

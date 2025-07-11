@@ -1,4 +1,5 @@
 using Anaglyph.Menu;
+using Anaglyph.XRTemplate;
 using UnityEngine;
 
 namespace Anaglyph.Lasertag.UI
@@ -17,8 +18,6 @@ namespace Anaglyph.Lasertag.UI
 		private void OnClick(bool isRight)
 		{
 			ToolPalette p = isRight ? ToolPalette.Right : ToolPalette.Left;
-
-
 			p.toolSelector.SetActiveChild(p.transform.Find(objectName).GetSiblingIndex());
 		}
 	}

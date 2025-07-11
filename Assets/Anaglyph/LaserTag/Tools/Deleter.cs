@@ -50,7 +50,7 @@ namespace Anaglyph.Lasertag
 			lineRenderer.SetPosition(1, Vector3.forward * hitInfo.distance);
 		}
 
-		private void OnFire(InputAction.CallbackContext context)
+		private void OnRightFire(InputAction.CallbackContext context)
 		{
 			if (context.performed && context.ReadValueAsButton())
 			{

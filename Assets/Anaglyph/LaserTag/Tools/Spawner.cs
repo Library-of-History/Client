@@ -118,7 +118,7 @@ namespace Anaglyph.Lasertag
 				previewObject.SetActive(false);
 		}
 
-		private void OnFire(InputAction.CallbackContext context)
+		private void OnRightFire(InputAction.CallbackContext context)
 		{
 			if (context.performed && context.ReadValueAsButton())
 			{
@@ -130,7 +130,7 @@ namespace Anaglyph.Lasertag
 			}
 		}
 
-		private void OnButtonA(InputAction.CallbackContext context)
+		private void OnRightButtonA(InputAction.CallbackContext context)
 		{
 			if (context.performed)
 			{
@@ -142,7 +142,7 @@ namespace Anaglyph.Lasertag
 			}
 		}
 
-		private void OnButtonB(InputAction.CallbackContext context)
+		private void OnRightButtonB(InputAction.CallbackContext context)
 		{
 			if (context.performed)
 			{
@@ -154,7 +154,7 @@ namespace Anaglyph.Lasertag
 			}	
 		}
 		
-		private void OnAxis(InputAction.CallbackContext context)
+		private void OnRightAxis(InputAction.CallbackContext context)
 		{
 			if (!isGripClicked)
 			{
@@ -168,7 +168,7 @@ namespace Anaglyph.Lasertag
 			}
 		}
 
-		private void OnGrip(InputAction.CallbackContext context)
+		private void OnRightGrip(InputAction.CallbackContext context)
 		{
 			if (context.performed)
 			{

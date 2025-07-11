@@ -1,32 +1,111 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIControllerPresenter : MonoBehaviour
 {
     private UIControllerModel model;
     [SerializeField] private UIControllerView view;
     
-    [SerializeField] private LearningProgressUIPresenter learningProgressPresenter;
-    [SerializeField] private LearningLogUIPresenter learningLogPresenter;
+    [SerializeField] private MonoBehaviour[] presenters;
+    private Dictionary<UICollection, MonoBehaviour> presenterMap;
+    
+    private bool isApplicationUIOpened = false;
+    private bool didMoveAxis = false;
 
     private void Awake()
     {
-        model = new UIControllerModel(UICollection.LearningProgress);
-        view.OnPlayerInput += GetPlayerInput;
+        model = new UIControllerModel(UICollection.LearningProgress, UIEnvironment.MR);
+        presenterMap = new Dictionary<UICollection, MonoBehaviour>();
+
+        foreach (var presenter in presenters)
+        {
+            if (Enum.TryParse<UICollection>(presenter.gameObject.name.Substring(
+                    0, presenter.gameObject.name.Length - 2), out var collection))
+            {
+                presenterMap[collection] = presenter;
+            }
+        }
     }
 
     private void OnEnable()
     {
-        view.gameObject.SetActive(true);
-    }
-    
-    private void OnDisable()
-    {
-        view.gameObject.SetActive(false);
+        view.HighLightText(model.CurrentUI);
     }
 
-    private void GetPlayerInput(UICollection collection)
+    private void OnLeftAxis(InputAction.CallbackContext context)
     {
-        model.UpdateCurrentUI(collection);
+        if (!view.gameObject.activeSelf)
+        {
+            return;
+        }
+        
+        if (context.performed)
+        {
+            if (!didMoveAxis)
+            {
+                if (context.ReadValue<Vector2>().y > 0f)
+                {
+                    didMoveAxis = true;
+                    view.UnHighLightText(model.CurrentUI);
+                    model.SwitchUpCurrentUI();
+                    view.HighLightText(model.CurrentUI);
+                }
+                else if (context.ReadValue<Vector2>().y < 0f)
+                {
+                    didMoveAxis = true;
+                    view.UnHighLightText(model.CurrentUI);
+                    model.SwitchDownCurrentUI();
+                    view.HighLightText(model.CurrentUI);
+                }
+            }
+        }
+        else if (context.canceled)
+        {
+            didMoveAxis = false;
+        }
+    }
+
+    private void OnLeftAxisClick(InputAction.CallbackContext context)
+    {
+        if (context.performed && context.ReadValueAsButton())
+        {
+            if (view.gameObject.activeSelf)
+            {
+                view.gameObject.SetActive(false);
+            }
+            else
+            {
+                view.gameObject.SetActive(true);
+                view.HighLightText(model.CurrentUI);
+                view.SetActiveText(model.EnumArray);
+            }
+        }
+    }
+
+    private void OnRightAxisClick(InputAction.CallbackContext context)
+    {
+        if (context.performed && context.ReadValueAsButton())
+        {
+            if (isApplicationUIOpened)
+            {
+                foreach (var pair in presenterMap)
+                {
+                    pair.Value.gameObject.SetActive(false);
+                }
+                
+                isApplicationUIOpened = false;
+            }
+            else
+            {
+                foreach (var pair in presenterMap)
+                {
+                    pair.Value.gameObject.SetActive(pair.Key == model.CurrentUI);
+                }
+                
+                isApplicationUIOpened = true;
+            }
+        }
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 namespace Anaglyph.XRTemplate
 {
-
 	// TODO: find a better way to do this
 	public class DisableOverUI : MonoBehaviour
 	{
