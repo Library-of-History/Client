@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animal_type>
+	<flags value="NoHelp"/>
+	<max_health value="5"/>
+	<move_speed value="10"/>
+	<sprint_speed value="25"/>
+	<environment_type value="Air"/>
+
+	<!-- Some adults and old -->
+	<loners>
+		<animal_definition age="Adult" amount="1"/>
+		<animal_definition age="Old" amount="1"/>
+	</loners>
+</animal_type>

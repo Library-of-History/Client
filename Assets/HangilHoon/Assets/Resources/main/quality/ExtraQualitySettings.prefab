@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1737927825886978
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4204042148259839}
+  - component: {fileID: 114924697795285395}
+  m_Layer: 0
+  m_Name: ExtraQualitySettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4204042148259839
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737927825886978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114924697795285395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737927825886978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d920554e5f97eda96266e958c26136, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  Settings:
+  - Name: Low
+    DetailDistance: 75
+    DetailDensity: 0.25
+    LayerDistanceFactor: 0.75
+    Bloom: 0
+    Hdr: 0
+    TerrainShadows: 0
+  - Name: Medium
+    DetailDistance: 125
+    DetailDensity: 0.5
+    LayerDistanceFactor: 1
+    Bloom: 0
+    Hdr: 0
+    TerrainShadows: 0
+  - Name: High
+    DetailDistance: 175
+    DetailDensity: 0.75
+    LayerDistanceFactor: 1.5
+    Bloom: 1
+    Hdr: 0
+    TerrainShadows: 1
+  - Name: Ultra
+    DetailDistance: 225
+    DetailDensity: 1
+    LayerDistanceFactor: 2
+    Bloom: 1
+    Hdr: 1
+    TerrainShadows: 1

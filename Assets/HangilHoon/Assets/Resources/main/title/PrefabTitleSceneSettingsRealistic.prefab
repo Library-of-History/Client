@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1607645820017747
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4418306744322595}
+  - component: {fileID: 114020349585172767}
+  m_Layer: 0
+  m_Name: PrefabTitleSceneSettingsRealistic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4418306744322595
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607645820017747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114020349585172767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607645820017747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2704ee9c6a2c79cfa673ad9ea32175, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  InitialModels: []
+  Models:
+  - Name: Primitive Human Adult Female Default
+    Prefab: {fileID: 1946692633143203, guid: 119abd4fc17559248be7fa88c05c1efe, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1
+  - Name: Primitive Human Adult Male Default
+    Prefab: {fileID: 1128211991473485, guid: 28154fb092cc70d4d8ba9ed1653f0211, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1
+  - Name: Mammoth Adult Male
+    Prefab: {fileID: 1668287461062705, guid: 9f94d2a2ed0667d4586437d3f2ef75e1, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1
+  - Name: Ibex Adult Male
+    Prefab: {fileID: 1304340947237730, guid: 6b89b6dbc8948b542ab1f85f6ce6db0d, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1.5
+  - Name: Wolf
+    Prefab: {fileID: 1414234160809609, guid: e7badcd58a97f9e418ce80301dab0a3b, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1.5
+  - Name: Wild Horse
+    Prefab: {fileID: 1917851069562311, guid: 49634d10a33575c4aad29234ef62cd3a, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1.5
+  - Name: Mammoth Young
+    Prefab: {fileID: 1909561396001187, guid: 3deab382de4feab498b8ee563d7e5f1b, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1
+  - Name: Ancient Bison Adult Male
+    Prefab: {fileID: 1742942454619840, guid: dcd0d65adb9fe984e91c415881600203, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1
+  - Name: Bison
+    Prefab: {fileID: 1478130356601483, guid: e2a45d640fd25704d9752360c14593c9, type: 2}
+    Clip: {fileID: 0}
+    Speed: 1
+  FogColor: {r: 0.67058825, g: 0.30444705, b: 0.18374117, a: 1}
+  FogMode: 2
+  FogDensity: 0.0035

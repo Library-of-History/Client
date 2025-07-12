@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1588664577481361
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4927847695608616}
+  - component: {fileID: 114120883996106417}
+  m_Layer: 0
+  m_Name: PrefabTitleSceneSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4927847695608616
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588664577481361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114120883996106417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588664577481361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2704ee9c6a2c79cfa673ad9ea32175, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  InitialModels:
+  - Name: Mammoth Adult Male Title
+    Prefab: {fileID: 1068911449134264, guid: 2de080c053af9b84eb967d8318546b9c, type: 2}
+    Position: {x: -5, y: 0, z: -3}
+  - Name: Mammoth Adult Male Title
+    Prefab: {fileID: 1068911449134264, guid: 2de080c053af9b84eb967d8318546b9c, type: 2}
+    Position: {x: 1, y: 0, z: 7}
+  - Name: Ancient Bison Adult Male Title
+    Prefab: {fileID: 1942021807481283, guid: 8d88bfce752ae0c4ea91ad201dd65525, type: 2}
+    Position: {x: -13, y: 0, z: -2}
+  - Name: Ancient Bison Adult Female Title
+    Prefab: {fileID: 1640638934364482, guid: 21bf4c46c95d4094e910287154f26eea, type: 2}
+    Position: {x: -19, y: 0, z: -1}
+  - Name: Primitive Human Young Female Title
+    Prefab: {fileID: 1041324798460798, guid: 2b35b19eeb10b7b418351f64683d0358, type: 2}
+    Position: {x: 7, y: 0, z: 1}
+  - Name: Primitive Human Adult Female Title 2
+    Prefab: {fileID: 1007049854665228, guid: 78085c49bc03bd24e935b509da7d0113, type: 2}
+    Position: {x: 8, y: 0, z: 2}
+  - Name: Primitive Human Adult Male Title 1
+    Prefab: {fileID: 1523581566707175, guid: 7b768d404b73d1342894c854a5267206, type: 2}
+    Position: {x: 12, y: 0, z: -2}
+  - Name: Primitive Human Young Female Title
+    Prefab: {fileID: 1041324798460798, guid: 2b35b19eeb10b7b418351f64683d0358, type: 2}
+    Position: {x: 10.5, y: 0, z: 0}
+  - Name: Primitive Human Adult Male Title 2
+    Prefab: {fileID: 1030122677551890, guid: 66697a0c93908a347a6b4d231df7f473, type: 2}
+    Position: {x: 11.5, y: 0, z: 0}
+  - Name: Woolly Rhinoceros Adult Male
+    Prefab: {fileID: 1923009077223300, guid: bfb652edb727f0144aec620cf57c89bd, type: 2}
+    Position: {x: -30, y: 0, z: 0}
+  Models:
+  - Name: Primitive Human Young Female Title
+    Prefab: {fileID: 1041324798460798, guid: 2b35b19eeb10b7b418351f64683d0358, type: 2}
+    Clip: {fileID: 7400000, guid: ef4fce884704e974e88de0a08004e187, type: 2}
+    Speed: 1
+  - Name: Primitive Human Adult Female Title 1
+    Prefab: {fileID: 1328348546701507, guid: f369255177cb8f749afd7d04cc084508, type: 2}
+    Clip: {fileID: 7400000, guid: 18ef4a125b1053f4d89da953151cf500, type: 2}
+    Speed: 1
+  - Name: Primitive Human Adult Female Title 2
+    Prefab: {fileID: 1007049854665228, guid: 78085c49bc03bd24e935b509da7d0113, type: 2}
+    Clip: {fileID: 7400000, guid: 18ef4a125b1053f4d89da953151cf500, type: 2}
+    Speed: 1
+  - Name: Primitive Human Adult Male Title 1
+    Prefab: {fileID: 1523581566707175, guid: 7b768d404b73d1342894c854a5267206, type: 2}
+    Clip: {fileID: 7400000, guid: 18ef4a125b1053f4d89da953151cf500, type: 2}
+    Speed: 1
+  - Name: Primitive Human Adult Male Title 2
+    Prefab: {fileID: 1030122677551890, guid: 66697a0c93908a347a6b4d231df7f473, type: 2}
+    Clip: {fileID: 7400000, guid: 18ef4a125b1053f4d89da953151cf500, type: 2}
+    Speed: 1
+  - Name: Mammoth Adult Male Title
+    Prefab: {fileID: 1068911449134264, guid: 2de080c053af9b84eb967d8318546b9c, type: 2}
+    Clip: {fileID: 7400000, guid: 7766e16c895b09f4a80ef9408bff2aa9, type: 2}
+    Speed: 1.1
+  - Name: Ancient Bison Adult Male Title
+    Prefab: {fileID: 1942021807481283, guid: 8d88bfce752ae0c4ea91ad201dd65525, type: 2}
+    Clip: {fileID: 7400000, guid: e077ee68ed8fb784caae0e91d6ab45d0, type: 2}
+    Speed: 1.3
+  - Name: Ancient Bison Adult Female Title
+    Prefab: {fileID: 1640638934364482, guid: 21bf4c46c95d4094e910287154f26eea, type: 2}
+    Clip: {fileID: 7400000, guid: e077ee68ed8fb784caae0e91d6ab45d0, type: 2}
+    Speed: 1.3
+  - Name: Wolf
+    Prefab: {fileID: 1414234160809609, guid: e7badcd58a97f9e418ce80301dab0a3b, type: 2}
+    Clip: {fileID: 7400000, guid: 8517b7868f6d1ef4f86e88a9cc6aa457, type: 2}
+    Speed: 1.5
+  - Name: Wild Horse
+    Prefab: {fileID: 1917851069562311, guid: 49634d10a33575c4aad29234ef62cd3a, type: 2}
+    Clip: {fileID: 7400000, guid: f04641c563938e749abf0f5c1c90bbc5, type: 2}
+    Speed: 1.5
+  - Name: Mammoth Young
+    Prefab: {fileID: 1909561396001187, guid: 3deab382de4feab498b8ee563d7e5f1b, type: 2}
+    Clip: {fileID: 7400000, guid: 7766e16c895b09f4a80ef9408bff2aa9, type: 2}
+    Speed: 1
+  - Name: Ancient Bison Adult Male
+    Prefab: {fileID: 1742942454619840, guid: dcd0d65adb9fe984e91c415881600203, type: 2}
+    Clip: {fileID: 7400000, guid: e077ee68ed8fb784caae0e91d6ab45d0, type: 2}
+    Speed: 1
+  - Name: Bison
+    Prefab: {fileID: 1478130356601483, guid: e2a45d640fd25704d9752360c14593c9, type: 2}
+    Clip: {fileID: 7400000, guid: e077ee68ed8fb784caae0e91d6ab45d0, type: 2}
+    Speed: 1
+  - Name: Woolly Rhinoceros Adult Male
+    Prefab: {fileID: 1923009077223300, guid: bfb652edb727f0144aec620cf57c89bd, type: 2}
+    Clip: {fileID: 7400000, guid: 447cd215466be6e4480d637fe5017bb9, type: 2}
+    Speed: 1.25
+  - Name: Woolly Rhinoceros Young
+    Prefab: {fileID: 1491285440697439, guid: 3871071546ab77748a5e4355409466b2, type: 2}
+    Clip: {fileID: 7400000, guid: 447cd215466be6e4480d637fe5017bb9, type: 2}
+    Speed: 1
+  - Name: Cave Lion
+    Prefab: {fileID: 1660533327358074, guid: cd2edceb67302d948b18ccc07aae9020, type: 2}
+    Clip: {fileID: 7400000, guid: 94a9c15ebf78133459f03f74ae863201, type: 2}
+    Speed: 1
+  - Name: Megaloceros Adult Male
+    Prefab: {fileID: 1686062732315135, guid: f8fcb7c5590460443810497cd179db96, type: 2}
+    Clip: {fileID: 7400000, guid: 5740eacad68da294eab0b07680b8daf9, type: 2}
+    Speed: 1.1
+  - Name: Wolf
+    Prefab: {fileID: 1414234160809609, guid: e7badcd58a97f9e418ce80301dab0a3b, type: 2}
+    Clip: {fileID: 7400000, guid: 8517b7868f6d1ef4f86e88a9cc6aa457, type: 2}
+    Speed: 1.3
+  - Name: Cave Hyena
+    Prefab: {fileID: 1561520252427283, guid: 5e1d6c7df4c0ea349ad8e7f741bf275f, type: 2}
+    Clip: {fileID: 7400000, guid: 24088bfd96715a14eabd124f0d435e93, type: 2}
+    Speed: 1.3
+  - Name: Elasmotherium Adult Male
+    Prefab: {fileID: 1368847462781183, guid: 138187cbca0fdc14383ed52c6f9d9a83, type: 2}
+    Clip: {fileID: 7400000, guid: 5811f832467005047a5834b5919b6449, type: 2}
+    Speed: 1.3
+  FogColor: {r: 0.7294118, g: 0.31764707, b: 0.18431373, a: 1}
+  FogMode: 2
+  FogDensity: 0.0035

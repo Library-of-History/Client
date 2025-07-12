@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<flags value="Fireplace,FakeDoors,Circular,EnableContinousRecipes,HemisphereCollision,SmallLayer"/>
+	<cell_size value="1,1"/>
+	<cooking_particles value="Particles/PrefabParticlesHearthFire"/>
+	<slots>
+		<slot count="4"/>
+	</slots>
+	<crafting_animation value="Baking"/>	
+	<build_time value="30"/>
+	<costs values ="stone:2 sticks:6"/>
+	<recipes values="recipe_bread"/>
+	<destruction_particles value="DebrisGenericSmall"/>
+	<knowledge_counts values="1 3"/>	
+</structure_type>

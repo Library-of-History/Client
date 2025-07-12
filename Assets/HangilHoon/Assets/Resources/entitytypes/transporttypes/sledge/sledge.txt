@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transport_type>
+	<slots>
+		<slot count="6"/>
+	</slots>
+  <costs values="sticks:3 leather:2"/>
+	<requirements values="sledgemaking"/>
+	<animation value="Pulling"/>
+	<build_time value="2m"/>
+	<condition_decay_time value="5y"/>	
+	<max_builders value="2"/>
+	<knowledge_counts values="1 5 25"/>
+	<empty_speed_factor value="0.9"/>
+	<full_speed_factor value="0.7"/>
+	<bounding_volume_size value="1.25,0.5,2.5"/>	
+</transport_type>

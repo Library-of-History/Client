@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="300"/>
+	<flags value="Circular,Restplace,Shelter,Storage,HemisphereCollision"/>
+	<cell_size value="3,3"/>
+	<slots>
+		<slot count="3" slot_type="Human"/>
+		<slot count="4" capacity="10"/>
+	</slots>
+	<build_time value="3m"/>
+	<condition_decay_time value="3y"/>
+	<durability_factor value="1.5"/>
+	<costs values="sticks:4 dry_skin:2"/>
+	<repair_costs values="sticks:1 dry_skin:1"/>
+	<upgrade value="hut"/>
+	<prestige value="1"/>
+	<bounding_volume_scale value="0.9,0.9,0.9"/>
+	<rotation_angle value="45"/>
+	<knowledge_counts values="1 5 10"/>
+</structure_type>

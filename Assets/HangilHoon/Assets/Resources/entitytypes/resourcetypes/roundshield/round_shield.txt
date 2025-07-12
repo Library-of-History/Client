@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource_type>
+	<flags value="Tool"/>
+	<sub_category value="Shield"/>
+	<attributes>
+		<blocking value="1"/>		
+	</attributes>
+	<melee_range value="1.75"/>		
+	<min_trade_era value="BronzeAge"/>
+	<max_trade_era value="IronAge"/>
+
+	<resident_colors>
+		<color_setup primary="143,158,162" secondary="36,101,130"/>
+		<color_setup primary="170,179,134" secondary="101,109,59"/>
+		<color_setup primary="167,156,118" secondary="144,126,102"/>
+		<color_setup primary="#c8dde3" secondary="36,101,130"/>
+		<color_setup primary="#e3cb74" secondary="101,109,59"/>
+		<color_setup primary="167,156,118" secondary="#8f593d"/>
+		<color_setup primary="#c8dde3" secondary="#a4b3fc"/>
+		<color_setup primary="#e3cb74" secondary="#e39a24"/>
+		<color_setup primary="#aab386" secondary="#aab386"/>
+		<color_setup primary="#f0d75b" secondary="#a79c76"/>
+		<color_setup primary="#c8dde3" secondary="#656d3b"/>
+		<color_setup primary="#f0d75b" secondary="#8f593d"/>
+	</resident_colors>
+	
+	<raider_colors>
+		<color_setup primary="#d43b00" secondary="173,52,0"/>
+		<color_setup primary="173,52,0" secondary="#ad6136"/>
+		<color_setup primary="#c40900" secondary="#ad3400"/>
+		<color_setup primary="#edc9c7" secondary="#c40900"/>
+		<color_setup primary="#470400" secondary="#d43b00"/>
+	</raider_colors>
+	
+</resource_type>

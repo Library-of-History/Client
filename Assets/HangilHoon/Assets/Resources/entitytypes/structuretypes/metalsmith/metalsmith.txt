@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="400"/>
+	<flags value="FakeDoors"/>
+	<cell_size value="2,2"/>
+	<slots>
+		<slot count="5"/>
+	</slots>
+	<max_crafters value="1"/>
+	<build_time value="4m"/>
+	<costs values ="sticks:4 log:4 straw:4"/>
+	<recipes values="recipe_copper_spear recipe_copper_knife recipe_copper_axe recipe_copper_sickle recipe_copper_pick recipe_bronze_spear recipe_bronze_knife recipe_bronze_axe recipe_bronze_sickle recipe_bronze_pick recipe_bronze_sword"/>
+	<requirements values="copper_smelting"/>
+	<upgrade value="blacksmith"/>
+	<crafting_animation value="SmithingMetalsmith"/>
+	<crafting_particles value="SmithingMetalsmith"/>
+	<destruction_particles value="DebrisThatched"/>
+	<bounding_volume_scale value="0.85,0.9,0.85"/>
+	<recipe_columns value="6"/>
+	<production_blank_spaces values="5"/>
+	<knowledge_counts values="1 3"/>	
+</structure_type>

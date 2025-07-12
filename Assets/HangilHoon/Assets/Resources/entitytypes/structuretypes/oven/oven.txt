@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="400"/>
+	<flags value="EnableContinousRecipes,Fireplace,FakeDoors"/>
+	<cell_size value="2,2"/>
+	<cooking_particles value="Particles/PrefabParticlesHearthFire"/>
+	<slots>
+		<slot count="8"/>
+	</slots>
+	<build_time value="3m"/>
+	<costs values ="stone:2 mud:6"/>
+	<max_crafters value="1"/>
+	<recipes values="recipe_bread_bulk"/>
+	<requirements values="baking"/>
+	<crafting_animation value="BakingOven"/>
+	<crafting_prop value="wooden_spear"/>
+	<bounding_volume_scale value="0.75,0.8,0.75"/>
+	<knowledge_counts values="1 4"/>	
+</structure_type>

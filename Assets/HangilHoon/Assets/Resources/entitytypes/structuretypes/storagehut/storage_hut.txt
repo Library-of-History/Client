@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="900"/>
+	<flags value="Storage"/>
+	<cell_size value="4,3"/>
+	<slots>
+		<slot count="18" capacity="10"/>
+	</slots>
+	<build_time value="7m"/>
+	<condition_decay_time value="5y"/>
+	<durability_factor value="2"/>
+	<costs values ="log:2 sticks:4 mud:8 straw:4"/>
+	<repair_costs values="straw:1 log:1"/>
+	<requirements values="thatching"/>
+	<upgrade value="warehouse"/>
+	<bounding_volume_scale value="0.75,0.70,0.65"/>
+	<destruction_particles value="DebrisThatched"/>
+	<prestige value="2"/>
+	<knowledge_counts values="1 4"/>
+	<storage_restrictions values="FoodAndDrink Tool Material Clothing"/>	
+</structure_type>
