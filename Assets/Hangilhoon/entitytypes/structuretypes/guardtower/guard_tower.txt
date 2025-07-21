@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="1600"/> 
+	<flags value="Watchtower,NoCollision,Togglable"/>
+	<cell_size value="1,1"/>
+	<slots>
+		<slot count="3" slot_type="Human"/>
+	</slots>
+	<build_time value="6m"/>
+	<costs values="log:6 iron:4 straw:4"/>
+	<requirements values="reinforced_fortifications"/>
+	<bounding_volume_scale value="0.95,0.9,0.95"/>
+	<destruction_particles value="DebrisWatchtower"/>
+	<exclusion_flags value="Watchtower"/>
+	<exclusion_distance value="3"/>		
+	<prestige value="2"/>	
+	<rotation_angle value="45"/>	
+	<condition_decay_time value="12y"/>
+	<repair_costs values="log:1 iron:1 straw:1"/>
+	<condition_repair_threshold value="0.75"/>
+	<knowledge_counts values="1 5 10"/>	
+</structure_type>

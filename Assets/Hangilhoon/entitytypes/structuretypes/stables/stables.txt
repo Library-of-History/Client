@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="900"/>
+	<flags value="Shelter"/>
+	<cell_size value="4,4"/>
+	<slots>
+		<slot count="10" slot_type="Animal"/>
+		<slot count="8" capacity="10" slot_type="AnimalFood"/>
+	</slots>
+	<durability_factor value="2.5"/>
+	<condition_decay_time value="6y"/>
+	<build_time value="8m"/>
+	<costs values ="log:2 sticks:4 mud:8 straw:4"/>
+	<requirements values="thatching goat_domestication"/>
+	<prestige value="2"/>
+	<bounding_volume_scale value="0.9,0.6,0.85"/>
+	<destruction_particles value="DebrisThatched"/>
+	<knowledge_counts values="1 4"/>
+	<upgrade value="stone_stables"/>	
+</structure_type>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="400"/>
+	<flags value="FakeDoors,EnableContinousRecipes"/>
+	<flags value="EnableContinousRecipes"/>
+	<cell_size value="2,2"/>
+	<slots>
+		<slot count="6"/>
+	</slots>
+	<build_time value="7m"/>
+	<costs values ="sticks:4 log:2 straw:3"/>
+	<max_crafters value="1"/>
+	<recipes values="recipe_wool_cloth recipe_linen_cloth"/>
+	<requirements values="thatching weaving"/>
+	<crafting_animation value="Weaving"/>
+	<destruction_particles value="DebrisThatched"/>
+	<bounding_volume_scale value="1,0.8,1"/>
+	<knowledge_counts values="1"/>
+</structure_type>

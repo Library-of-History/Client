@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="400"/>
+	<flags value="EnableContinousRecipes,FakeDoors"/>
+	<cell_size value="2,2"/>
+	<slots>
+		<slot count="10"/>
+	</slots>
+	<build_time value="3m"/>
+	<costs values ="mud:4"/>
+	<requirements values="copper_smelting"/>
+	<recipes values="recipe_copper recipe_bronze"/>
+	<max_crafters value="1"/>
+	<upgrade value="bloomery"/>	
+	<crafting_animation value="SmeltingPitFurnace"/>
+	<crafting_particles value="SmeltingPitFurnace"/>
+	<destruction_particles value="DebrisGenericSmall"/>
+	<slot_columns value="5"/>
+</structure_type>

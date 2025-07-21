@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="600"/>
+	<flags value="EnableContinousRecipes,FakeDoors"/>
+	<cell_size value="3,3"/>
+	<slots>
+		<slot count="6"/>
+	</slots>
+	<build_time value="4m"/>
+	<costs values ="log:4 sticks:4 straw:4"/>
+	<max_crafters value="1"/>
+	<recipes values="recipe_beer"/>
+	<requirements values="brewing"/>
+	<crafting_animation value="Brewing"/>
+	<crafting_prop value="wooden_spear"/>
+	<crafting_particles value="Brewing"/>
+	<destruction_particles value="DebrisThatched"/>
+	<bounding_volume_scale value="0.9,0.65,0.8"/>
+	<knowledge_counts values="1 3"/>		
+</structure_type>

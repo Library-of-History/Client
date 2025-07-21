@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<human_type>
+	<flags value="Heavy"/>
+	<slots>
+		<slot count="2" slot_type="Tool"/>
+		<slot count="1" slot_type="Clothing"/>
+		<slot count="3"/>
+	</slots>
+	<child_slots>
+		<slot count="1" slot_type="Clothing"/>
+		<slot count="1"/>
+	</child_slots>
+	<old_slots>
+		<slot count="2" slot_type="Tool"/>
+		<slot count="1" slot_type="Clothing"/>
+		<slot count="2"/>
+	</old_slots>
+	<outfits values="Default DefaultMetalAge Skins Leather Wool Linen LeatherArmor MailArmor"/>
+	<max_health value="200"/>
+	<max_item_weight value="20"/>
+	<move_speed value="1.5"/>
+	<sprint_speed value="7"/>
+	<stamina_time value="30"/>
+	<adult_years_old value="16"/>
+	<old_years_old value="45"/>
+	<death_years_old value="65"/>
+	<pregnancy_chance value="0.5"/>
+	<gestation_time value="0.666y"/>
+	<old_death_chance value="3"/>
+
+	<!-- Attack parameters -->
+	<dodge_chance value="0.4"/>
+	<attack_period value="1.5"/>
+	<attack_hit_time value="1.0"/>
+
+	<!--Skin hair and outfit colors -->
+
+	<skin_colors values="248,234,218 242,206,187 178,142,114"/>
+	<hair_colors values="204,148,93 89,53,29 142,82,65 34,28,19 243,197,145"/>
+	<hair_old_colors values="156,156,156 215,215,215 145,145,145"/>
+	
+	<stone_age_colors>
+		<resident>
+			<color_setups>
+				<color_setup primary="#ab8247" secondary="189,155,108"/>
+				<color_setup primary="#bd9b6d" secondary="#a38150"/>
+				<color_setup primary="#8a6643" secondary="#b58f66"/>
+				<color_setup primary="#b58f66" secondary="#8a6643"/>
+			</color_setups>
+		</resident>
+		<migrant>
+			<color_setups>
+				<color_setup primary="127,113,95" secondary="188,171,149"/>
+			</color_setups>
+		</migrant>
+		<trader>
+			<color_setups>
+				<color_setup primary="193,163,13" secondary="186,138,67"/>
+			</color_setups>
+		</trader>
+		<raider>
+			<color_setups>
+				<color_setup primary="173,97,54" secondary="173,52,0"/>
+
+			</color_setups>
+		</raider>
+	</stone_age_colors>
+
+	<metal_age_colors>
+		<resident>
+			<color_setups>
+				<color_setup primary="143,158,162" secondary="36,101,130"/>
+				<color_setup primary="170,179,134" secondary="101,109,59"/>
+				<color_setup primary="167,156,118" secondary="144,126,102"/>
+			</color_setups>
+		</resident>
+		<migrant>
+			<color_setups>
+				<color_setup primary="206,188,163" secondary="221,198,164"/>
+				<color_setup primary="221,198,164" secondary="206,188,163"/>
+			</color_setups>
+		</migrant>
+		<trader>
+			<color_setups>
+				<color_setup primary="#edc810" secondary="#ffab37"/>
+			</color_setups>
+		</trader>
+		<raider>
+			<color_setups>
+				<color_setup primary="#d43b00" secondary="173,52,0"/>
+				<color_setup primary="173,52,0" secondary="#ad6136"/>
+				<color_setup primary="#c40900" secondary="#ad3400"/>
+
+			</color_setups>
+		</raider>
+
+	</metal_age_colors>
+
+</human_type>
