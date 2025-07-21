@@ -1,0 +1,3332 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1947086728961645
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4876989407217704}
+  - component: {fileID: 114805192577928720}
+  m_Layer: 0
+  m_Name: PrefabTerrainDefinitions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4876989407217704
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947086728961645}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114805192577928720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947086728961645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9d49ccd77ae862faf6fb77a153287d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  TerrainParameters:
+    FilePath: Assets/Custom/Resources/Terrain/terrain.xml
+    Main:
+      Chunks: 4
+      ChunkSize: {x: 512, y: 256, z: 512}
+    Heightmap:
+      Algorithm: 2
+      ChunkBaseSize: 8
+      NoiseAmplitudes:
+      - 0
+      - 0
+      - 0.24
+      - 0.154
+      - 0.097
+      - 0.045
+      - 0.025
+      - 0.005
+      - 0
+      - 0
+      SquashHeights: 1
+      SquashFactor: 14
+      SquashOffset: 8.5
+      DistanceHeightOffset: 0.015
+      Smooth: 1
+    Alphamap:
+      ChunkBaseSize: 8
+      SlopeTextureMinGradient: 0.6
+      SlopeTextureTransition: 2
+      HighTextureHeight: 13
+      HighTextureTransition: 5
+    Trees:
+      Amount: 0.6
+      Spread: 9
+      ScaleVariance: 0.1
+      TreePrototypes:
+      - Name: Pear
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1505621167638571, guid: 1a9c63235fd525446a606fcd6dbcb1f1, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: -2.4
+          Max: 1
+        GradientRange:
+          Min: 0
+          Max: 1.5
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 31
+        Icon: {fileID: 2800000, guid: 52ced7bd2d958cc4e9aa02888701d3da, type: 3}
+        Variations:
+        - Name: Pear Unripe Atlas
+          Albedo: {fileID: 2800000, guid: c1b1a0561a3515e49bdee8c23b7c34cc, type: 3}
+          Normal: {fileID: 2800000, guid: 45a99d2214466a44c9b9e96c53614eed, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: d7d352fc54ff68d4d8ec2d66f4fb27a7, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5345fa3a73905274b9ecb33e6a570227, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Pear Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 5eee52716c82d6e4d86e7bc251d8c121, type: 3}
+          Normal: {fileID: 2800000, guid: ebd1db829dfd55b478709f5a7d27f842, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 2800000, guid: 890b4d9a4a4b09445932093fa301c7e9, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 0a9d504067933204f8b96c925a4621bb, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 74aef239cbf54364d954de5c491ee32b, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: b90a941c5c745fa438f1a6c4a2b6a1c3, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Pear Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 5e4d3bad4e81155479045b2e99718b11, type: 3}
+          Normal: {fileID: 2800000, guid: ebd1db829dfd55b478709f5a7d27f842, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 2800000, guid: 5e4d3bad4e81155479045b2e99718b11, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 86e607fa9d420fe43933c90f154711f2, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 74aef239cbf54364d954de5c491ee32b, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 86e607fa9d420fe43933c90f154711f2, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Pear Winter Atlas
+          Albedo: {fileID: 2800000, guid: 6f6af7e1ad34f5242a329d1eb1a3c77e, type: 3}
+          Normal: {fileID: 2800000, guid: 44a0b1df3e05434499ecc209d048d486, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 2800000, guid: 6f6af7e1ad34f5242a329d1eb1a3c77e, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 45658473894353c4e99af8e3a6411578, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: ca8ed8cb0d0e8c14a8b73429a0bcbe13, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Pear Winter Snow Atlas
+          Albedo: {fileID: 2800000, guid: f4c0fe7bf0f8e0b4bb4756df4790d5c2, type: 3}
+          Normal: {fileID: 2800000, guid: 44a0b1df3e05434499ecc209d048d486, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 5d95b6a56c3984240875a98837f08c0d, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: ca8ed8cb0d0e8c14a8b73429a0bcbe13, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: fruit_tree_domestication
+          PlantingSeason:
+          SpacingMultiplier: 2
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:2 sticks:2
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 1
+          ProducedResources: fruit:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech:
+      - Name: Cherry
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1792792639062134, guid: a1071b1b49135724c804308abc2f417f, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 0.5
+          Max: 10
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 32
+        Icon: {fileID: 2800000, guid: b1fed31ce0ff2f545b1a2832f9eaea5e, type: 3}
+        Variations:
+        - Name: Cherry Unripe Atlas
+          Albedo: {fileID: 2800000, guid: fd80c9973abd7d949a1696da3e7f12b2, type: 3}
+          Normal: {fileID: 2800000, guid: 4e654685c5ead634ca820e8745cd96da, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 6e755efd6c0b0cf47999ee335b9ec142, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 301bcdd1fd2ae8e4ebed067c40e0e3d4, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Cherry Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 54721002699642a40833d7885c0d8c6a, type: 3}
+          Normal: {fileID: 2800000, guid: dfa791a1c08c24d48b0807614a21c300, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 2800000, guid: f75251cfada8a3847905267e810b3145, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 53926048b682c674798e15e9cb8aa5cf, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 94e9d658a22cbf94f9eb3ca96960d0f3, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: cb9dfe6183f17fa46a622eb321b276e3, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Cherry Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 4ca014c3ec4067c4c86cefdf4eb03836, type: 3}
+          Normal: {fileID: 2800000, guid: 7d7b7061bdff66f4da4718404372a563, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: f424d33bd3822944e85425711310498a, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 94e9d658a22cbf94f9eb3ca96960d0f3, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Cherry Winter Atlas
+          Albedo: {fileID: 2800000, guid: 4d47de77394e3b24eba46e3cccbbdced, type: 3}
+          Normal: {fileID: 2800000, guid: 3515df47a30d41244a5a43d57ca4196f, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 79d7580bfd7b1d8428107383017dae7b, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: e634ec9aaf6563840a951dfe1553d798, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Cherry Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 0e6cdf6a766011e4aa65bd5440984b44, type: 3}
+          Normal: {fileID: 2800000, guid: 3515df47a30d41244a5a43d57ca4196f, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 05ef0859340e0574baca50f4932ba054, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: e634ec9aaf6563840a951dfe1553d798, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: fruit_tree_domestication
+          PlantingSeason:
+          SpacingMultiplier: 2
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:2 sticks:2
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 1
+          ProducedResources: fruit:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech:
+      - Name: Service
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1260134316615268, guid: 3456c40afe9b4234ab7a938311273171, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 0.5
+          Max: 10
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 34
+        Icon: {fileID: 2800000, guid: dfed93ca53649a64481925e3191e3824, type: 3}
+        Variations:
+        - Name: Service Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 418c754583b655f41918937438cc55dc, type: 3}
+          Normal: {fileID: 2800000, guid: b50297e36bbf93b468b35e302cab546e, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 651dc002ed58c9d47a11cdee74f5a6a6, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: a83b6e87c4884d348b8ce6c8c97fc1a6, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Service Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 71658a272a3a0b043a1beb2ac17b0408, type: 3}
+          Normal: {fileID: 2800000, guid: c5e551b3a464ebe4bb128372ca8534ff, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 2800000, guid: 31a2a92eff454d641ac69c51a97885da, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: d0bd0dabd6d390a4d98c06e044f260d8, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: a83b6e87c4884d348b8ce6c8c97fc1a6, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: a98ca7b4ed978e842a02b7c93b295df1, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Service Overripe Atlas
+          Albedo: {fileID: 2800000, guid: f58d1455c95428d4897094a959eaffac, type: 3}
+          Normal: {fileID: 2800000, guid: 89feb6f2a11c3a443ac297b7d0b3db99, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 2800000, guid: f58d1455c95428d4897094a959eaffac, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bf9ef0ee5d5243648ab4a78ba08f63aa, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: a83b6e87c4884d348b8ce6c8c97fc1a6, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Service Winter Atlas
+          Albedo: {fileID: 2800000, guid: b3e0d6e449618ab4eaaa6ba0d86638c3, type: 3}
+          Normal: {fileID: 2800000, guid: b40a65058f4beb04c9fe45fa561068d9, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: d6b267f167b2cf445b5a866f3c7aa6d1, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2c6718b9f5d7c854b9b9de9157900aa2, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Service Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: f8055fdc974665143bfc122f2aa37a47, type: 3}
+          Normal: {fileID: 2800000, guid: b40a65058f4beb04c9fe45fa561068d9, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bce035df631fca040a33fb577ac88781, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2c6718b9f5d7c854b9b9de9157900aa2, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: fruit_tree_domestication
+          PlantingSeason:
+          SpacingMultiplier: 2
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:2 sticks:2
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 1
+          ProducedResources: fruit:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech:
+      - Name: Chestnut
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1151648038612541, guid: 126a550b4a450374a8ed862039d71fca, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 0.5
+          Max: 10
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 33
+        Icon: {fileID: 2800000, guid: a1a10da0fee24e84ca1bff2d038c6df3, type: 3}
+        Variations:
+        - Name: Chestnut Spring Atlas
+          Albedo: {fileID: 2800000, guid: 334b4e7cbcf95a44282f697090413f77, type: 3}
+          Normal: {fileID: 2800000, guid: f7336c644a3f8094fa004baa04d00082, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: f891b685ef4bb3742b221f783fb87ea7, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: cccc3e0e80ec98d4bb2b6f7e6e694628, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Chestnut Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 586b7ef947294d9448f5dc91476a3fef, type: 3}
+          Normal: {fileID: 2800000, guid: f7b3129cb9db19246aa054e6c7043efc, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 6beafc8e8229a7a42b5e9af7e4c0ca99, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: cccc3e0e80ec98d4bb2b6f7e6e694628, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Chestnut Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 84456ca35bf420b4a97b2fcc6721c207, type: 3}
+          Normal: {fileID: 2800000, guid: 3097d5358ae4fa341a68ef72190eed10, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 2800000, guid: 01858919edd6b0c4f80d3c9840e0f493, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 4bd404fd6f3237a44b3ffdc1f9e709f8, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: cccc3e0e80ec98d4bb2b6f7e6e694628, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 49454f3d072cdbb43bc03f153df34bac, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Chestnut Overripe Atlas
+          Albedo: {fileID: 2800000, guid: de98dff42ac58a246b7796cf629f23ad, type: 3}
+          Normal: {fileID: 2800000, guid: dfeb029fa00fc43438808393f6d448ca, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: b686f40123f379d41ae140a08978e260, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 94ba82af4fc8b164ab79f142b25b037e, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Chestnut Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 223d811f25f559f4b8caafa8bef075f1, type: 3}
+          Normal: {fileID: 2800000, guid: dfeb029fa00fc43438808393f6d448ca, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 066ff09af5cc5e64e892aec4bce1f233, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 94ba82af4fc8b164ab79f142b25b037e, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: fruit_tree_domestication
+          PlantingSeason:
+          SpacingMultiplier: 2
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:4 sticks:4
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 1
+          ProducedResources: nuts:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Fall
+          CollectionTech:
+      - Name: Oak
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1152263917968325, guid: d2ee2545a364a7141988bcf82dfbebe7, type: 2}
+        YoungPrefab: {fileID: 1223737597139716, guid: d16ff1d9cf7e3514185911d276b081dc, type: 2}
+        Amount: 1
+        AltitudeRange:
+          Min: 0
+          Max: 10
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 1cea83de482d15244a9e2017db83359f, type: 3}
+        Variations:
+        - Name: Oak Spring Atlas
+          Albedo: {fileID: 2800000, guid: 341639ee02a755047980ca9c8558e4dc, type: 3}
+          Normal: {fileID: 2800000, guid: b2a6e5b55db788946b8a52f28681f88e, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2e200a8207de12b4a81895e1a2c3f4cb, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 03ea614aa5f47344abaefa711ad18197, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Oak Spring Atlas
+          Albedo: {fileID: 2800000, guid: 341639ee02a755047980ca9c8558e4dc, type: 3}
+          Normal: {fileID: 2800000, guid: b2a6e5b55db788946b8a52f28681f88e, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2e200a8207de12b4a81895e1a2c3f4cb, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 03ea614aa5f47344abaefa711ad18197, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Oak Fall Atlas
+          Albedo: {fileID: 2800000, guid: eac2af21201de4c4d868127c08c16017, type: 3}
+          Normal: {fileID: 2800000, guid: b2a6e5b55db788946b8a52f28681f88e, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: edfdc22931ee038449a37cf2e91fe3b8, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: cc19d1c9c7b32e54d9976cc40f9485dd, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Oak Early Winter Atlas
+          Albedo: {fileID: 2800000, guid: 66ad9e11af8d1be40b1bbfc5e51ce6c0, type: 3}
+          Normal: {fileID: 2800000, guid: b2a6e5b55db788946b8a52f28681f88e, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 5be24f5ed017cdc40aa22f1480e9ea2e, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 600ba373658238046923c3ab747be45d, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Oak Winter Atlas
+          Albedo: {fileID: 2800000, guid: 51e07021b28579543bca702b91e797cd, type: 3}
+          Normal: {fileID: 2800000, guid: b2a6e5b55db788946b8a52f28681f88e, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 229081b315a7b8a41aa0d46538acd286, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: adc45df73bb26274ebbe109e998e3055, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:4 sticks:4
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 1
+          ProducedResources: tannin:2
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Spring
+          CollectionTech: tanning
+      - Name: Fir
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1985101466469106, guid: b5308e9d57adcf5458281482d52d8875, type: 2}
+        YoungPrefab: {fileID: 1788151879197961, guid: f051d4616985de24db5fb6e64f3c331a, type: 2}
+        Amount: 1
+        AltitudeRange:
+          Min: 2
+          Max: 16
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 584250d2460c5874c8b0c78ed833b84e, type: 3}
+        Variations:
+        - Name: Fir Spring Atlas
+          Albedo: {fileID: 2800000, guid: eda468bad6c2fdf4382557ed855e6937, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2117773c34595be4e901c39fb42877ee, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 6c85a51faa79ba4459913873213406b3, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Fir Spring Atlas
+          Albedo: {fileID: 2800000, guid: eda468bad6c2fdf4382557ed855e6937, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2117773c34595be4e901c39fb42877ee, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 6c85a51faa79ba4459913873213406b3, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Fir Spring Atlas
+          Albedo: {fileID: 2800000, guid: eda468bad6c2fdf4382557ed855e6937, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2117773c34595be4e901c39fb42877ee, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 6c85a51faa79ba4459913873213406b3, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Fir Spring Atlas
+          Albedo: {fileID: 2800000, guid: eda468bad6c2fdf4382557ed855e6937, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2117773c34595be4e901c39fb42877ee, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 6c85a51faa79ba4459913873213406b3, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Fir Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 4b5827bdd738e3340be9f083be871ce2, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 458ef629ba609ba42a390fed5c1f4e31, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 6c85a51faa79ba4459913873213406b3, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:3 sticks:3
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 1
+          ProducedResources: tannin:2
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Spring
+          CollectionTech: tanning
+      - Name: Pine
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1030735416396890, guid: 723db27d9ba67054698afaadb31a3ecf, type: 2}
+        YoungPrefab: {fileID: 1788151879197961, guid: f051d4616985de24db5fb6e64f3c331a, type: 2}
+        Amount: 1
+        AltitudeRange:
+          Min: 2
+          Max: 16
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 584250d2460c5874c8b0c78ed833b84e, type: 3}
+        Variations:
+        - Name: Pine Spring Atlas
+          Albedo: {fileID: 2800000, guid: 3bdb28589ae94034887aeb4f651a8423, type: 3}
+          Normal: {fileID: 2800000, guid: 3e54fb49e2e14c4418b36f00688b260c, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: e7ac8c8a21e08f5459645952b6648dc1, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: de62685206ec10743890a476a605e4ad, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Pine Spring Atlas
+          Albedo: {fileID: 2800000, guid: 3bdb28589ae94034887aeb4f651a8423, type: 3}
+          Normal: {fileID: 2800000, guid: 3e54fb49e2e14c4418b36f00688b260c, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: e7ac8c8a21e08f5459645952b6648dc1, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: de62685206ec10743890a476a605e4ad, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Pine Spring Atlas
+          Albedo: {fileID: 2800000, guid: 3bdb28589ae94034887aeb4f651a8423, type: 3}
+          Normal: {fileID: 2800000, guid: 3e54fb49e2e14c4418b36f00688b260c, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: e7ac8c8a21e08f5459645952b6648dc1, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: de62685206ec10743890a476a605e4ad, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Pine Spring Atlas
+          Albedo: {fileID: 2800000, guid: 3bdb28589ae94034887aeb4f651a8423, type: 3}
+          Normal: {fileID: 2800000, guid: 3e54fb49e2e14c4418b36f00688b260c, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: e7ac8c8a21e08f5459645952b6648dc1, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: de62685206ec10743890a476a605e4ad, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Pine Winter Atlas
+          Albedo: {fileID: 2800000, guid: 464bed069d8708748bb968649adabb5f, type: 3}
+          Normal: {fileID: 2800000, guid: 3e54fb49e2e14c4418b36f00688b260c, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: fc4cd840923b1d9429e2cb61edc87881, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 8e5b8b0ccb5640d4a9c516fc67967c21, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:3 sticks:3
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Spruce
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1624853657961009, guid: 6fb53a877a69c914c8d737f625e7bdcb, type: 2}
+        YoungPrefab: {fileID: 1788151879197961, guid: f051d4616985de24db5fb6e64f3c331a, type: 2}
+        Amount: 1
+        AltitudeRange:
+          Min: 2
+          Max: 16
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 584250d2460c5874c8b0c78ed833b84e, type: 3}
+        Variations:
+        - Name: Spruce Atlas
+          Albedo: {fileID: 2800000, guid: 415aa750311455a4d98e43b57b651269, type: 3}
+          Normal: {fileID: 2800000, guid: adbd3b80b74836e47a55366c460d9ef2, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bf644c0fdf21d1b44a683a2a888b5e35, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5846891a3dd826d47ae0dd5ae2d50d66, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Spruce Atlas
+          Albedo: {fileID: 2800000, guid: 415aa750311455a4d98e43b57b651269, type: 3}
+          Normal: {fileID: 2800000, guid: adbd3b80b74836e47a55366c460d9ef2, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bf644c0fdf21d1b44a683a2a888b5e35, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5846891a3dd826d47ae0dd5ae2d50d66, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Spruce Atlas
+          Albedo: {fileID: 2800000, guid: 415aa750311455a4d98e43b57b651269, type: 3}
+          Normal: {fileID: 2800000, guid: adbd3b80b74836e47a55366c460d9ef2, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bf644c0fdf21d1b44a683a2a888b5e35, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5846891a3dd826d47ae0dd5ae2d50d66, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Spruce Atlas
+          Albedo: {fileID: 2800000, guid: 415aa750311455a4d98e43b57b651269, type: 3}
+          Normal: {fileID: 2800000, guid: adbd3b80b74836e47a55366c460d9ef2, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bf644c0fdf21d1b44a683a2a888b5e35, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5846891a3dd826d47ae0dd5ae2d50d66, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Spruce Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: bfe02125818806a418c291944d79002b, type: 3}
+          Normal: {fileID: 2800000, guid: adbd3b80b74836e47a55366c460d9ef2, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: d998533c6751cdd45ba30727265e5943, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5846891a3dd826d47ae0dd5ae2d50d66, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:3 sticks:3
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Beech
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1005070759242022, guid: e3a44f55e2569a74192da473b9c839b3, type: 2}
+        YoungPrefab: {fileID: 1223737597139716, guid: d16ff1d9cf7e3514185911d276b081dc, type: 2}
+        Amount: 1
+        AltitudeRange:
+          Min: 0
+          Max: 10
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 1cea83de482d15244a9e2017db83359f, type: 3}
+        Variations:
+        - Name: European Beech Spring Atlas
+          Albedo: {fileID: 2800000, guid: cf42a06a8e91d454cbbcb2036ea8f174, type: 3}
+          Normal: {fileID: 2800000, guid: 3c9147a7ba4e1414bb95bfea0fb960b7, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 19ba62eb134b1d54da8f18cfffbf1ca2, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 19bebdbe15cb6af4790f87e2b6fe9bfa, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: European Beech Summer Atlas
+          Albedo: {fileID: 2800000, guid: 539bfe242c9b1e145b5bdd58cf6a080c, type: 3}
+          Normal: {fileID: 2800000, guid: 3c9147a7ba4e1414bb95bfea0fb960b7, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bc39c202a5099be408fa2a54195a2b5f, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 19bebdbe15cb6af4790f87e2b6fe9bfa, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: European Beech Fall Atlas
+          Albedo: {fileID: 2800000, guid: 5a98c016f61723245b0dce0c4164211a, type: 3}
+          Normal: {fileID: 2800000, guid: 3c9147a7ba4e1414bb95bfea0fb960b7, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 014f26866020c4c499e1a15c6fa814ff, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 19bebdbe15cb6af4790f87e2b6fe9bfa, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: European Beech Early Winter Atlas
+          Albedo: {fileID: 2800000, guid: 46a742ed67108524b9cd41cab7a5de96, type: 3}
+          Normal: {fileID: 2800000, guid: 3c9147a7ba4e1414bb95bfea0fb960b7, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: cecd387a39f2c764d999d6a8b5ba4660, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 7b6340fe42525244eaea682bbaac8012, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: European Beech Winter Atlas
+          Albedo: {fileID: 2800000, guid: 8346b249f8eb3184ea4964baf967efe8, type: 3}
+          Normal: {fileID: 2800000, guid: 3c9147a7ba4e1414bb95bfea0fb960b7, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 0178362e9b91c93419f5debd8998a697, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 7b6340fe42525244eaea682bbaac8012, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:4 sticks:4
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Birch
+        PlaceInWorld: 1
+        PlaceInMargins: 1
+        Prefab: {fileID: 1282333598052622, guid: 0254f401d21010843adb52c218960e76, type: 2}
+        YoungPrefab: {fileID: 1223737597139716, guid: d16ff1d9cf7e3514185911d276b081dc, type: 2}
+        Amount: 1
+        AltitudeRange:
+          Min: -2.4
+          Max: 1
+        GradientRange:
+          Min: 0
+          Max: 1.5
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 1cea83de482d15244a9e2017db83359f, type: 3}
+        Variations:
+        - Name: Birch Spring Atlas
+          Albedo: {fileID: 2800000, guid: 5a6686477fabec443bd811680ea6784c, type: 3}
+          Normal: {fileID: 2800000, guid: e5c49859482807c45be3d6446f8a180c, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 950284070bff11b478f68a089c8fd71a, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 28a08e1a007819e44a4ab6681b9d5052, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Birch Summer Atlas
+          Albedo: {fileID: 2800000, guid: cb9f30b6eaf9a074fa9018a6526b64e9, type: 3}
+          Normal: {fileID: 2800000, guid: e5c49859482807c45be3d6446f8a180c, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 73bce84c057a52d4bab14cef24a815aa, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 28a08e1a007819e44a4ab6681b9d5052, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Birch Fall Atlas
+          Albedo: {fileID: 2800000, guid: 3b69c3932df55ba4595243bb7ce512e6, type: 3}
+          Normal: {fileID: 2800000, guid: e5c49859482807c45be3d6446f8a180c, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: f28f3afc242656947a35edf6fc44e34d, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 28a08e1a007819e44a4ab6681b9d5052, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Birch Winter Atlas
+          Albedo: {fileID: 2800000, guid: 52346662b75806e4584c2e2b2d8a0f40, type: 3}
+          Normal: {fileID: 2800000, guid: e5c49859482807c45be3d6446f8a180c, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 3840138412374a94f9d580e4a6de61b1, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 62c5413544eb47f42bb51b3a61e7cf54, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Birch Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 7efd4ff785a01fb4797ce99429510178, type: 3}
+          Normal: {fileID: 2800000, guid: e5c49859482807c45be3d6446f8a180c, type: 3}
+          Detail: {fileID: 2800000, guid: a8800331f5695534db4a2525b4c3567b, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 0aca3c7d1c63b5f409c3b095c40c5bee, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 62c5413544eb47f42bb51b3a61e7cf54, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 3
+          ProducedResources: log:2 sticks:2
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech: composite_tools
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Barley
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1272987172113444, guid: da5f4748af85ce44590c8bd76012734c, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.15
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 11
+        Icon: {fileID: 2800000, guid: 9fe72c9ab0de9a04fbdaa6f0c780825d, type: 3}
+        Variations:
+        - Name: Barley Spring Atlas
+          Albedo: {fileID: 2800000, guid: 9bae10e940cc60541a759ccdee21cbe1, type: 3}
+          Normal: {fileID: 2800000, guid: 41b8dd89b3243b04183b1b585394b035, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: c3d5b02a51ddf4c4fbafc1e1588c6df5, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 73a61e00623c88e40a5e8cf966db5ac1, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Barley Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 682ef3a2c88d6fe45bc275328b582f81, type: 3}
+          Normal: {fileID: 2800000, guid: 41b8dd89b3243b04183b1b585394b035, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2229df25ecc1fbd43acec397d1f0481d, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 73a61e00623c88e40a5e8cf966db5ac1, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Barley Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 2bd734112ab84aa40a5d41c761cc4052, type: 3}
+          Normal: {fileID: 2800000, guid: 41b8dd89b3243b04183b1b585394b035, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 24f554b8178658a4e872d8b7d7c62e58, type: 3}
+          Diseased: {fileID: 2800000, guid: cb3b998e92d38dc42897c87058479463, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: 1998e31bf15aa5c458b25db10cd9e544, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 73a61e00623c88e40a5e8cf966db5ac1, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: ae4f15a4334c77f4b83fc236746cc5c1, type: 3}
+          BillboardDiseased: {fileID: 2800000, guid: 4ca8fdef516b598439a38f5258d0b3df, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Barley Overripe Atlas
+          Albedo: {fileID: 2800000, guid: cb3b998e92d38dc42897c87058479463, type: 3}
+          Normal: {fileID: 2800000, guid: 41b8dd89b3243b04183b1b585394b035, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 4ca8fdef516b598439a38f5258d0b3df, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 73a61e00623c88e40a5e8cf966db5ac1, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Barley Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 2f8332dc920403243b4eafea917a2837, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: c161b37d913ed3f47a89053b5c1624b0, type: 3}
+          BillboardNormal: {fileID: 0}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: cereal_domestication
+          PlantingSeason: Spring
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: grain:1 straw:1
+          BonusResources: straw:1
+          BonusResourcesChance: 0.5
+          SeasonalAvailability: Fall
+          CollectionTech: grain_processing
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Rye
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1647336716753456, guid: 498ff055f59113c4093d238534acd779, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.15
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 15
+        Icon: {fileID: 2800000, guid: 2453d4fb5d500e94fbe30e6895876e0a, type: 3}
+        Variations:
+        - Name: Rye Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 6e6a2461bf5dfd746ab9c0cb5ea2f78e, type: 3}
+          Normal: {fileID: 2800000, guid: 2ffcf92ae9a818e4ca5d6795ab0cec6e, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 261f49e9cae137a41b2d2a82e72e90a3, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: c935dba97658f5945a7763941aba79e2, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Rye Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 6e6a2461bf5dfd746ab9c0cb5ea2f78e, type: 3}
+          Normal: {fileID: 2800000, guid: 2ffcf92ae9a818e4ca5d6795ab0cec6e, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 261f49e9cae137a41b2d2a82e72e90a3, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: c935dba97658f5945a7763941aba79e2, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Rye Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 822fbed20e8efbf479bd23ea11f7bd6c, type: 3}
+          Normal: {fileID: 2800000, guid: 2ffcf92ae9a818e4ca5d6795ab0cec6e, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: fff45cc9c91206b4db036fce974c2b23, type: 3}
+          Diseased: {fileID: 2800000, guid: 34eaae673602c214a8059af3fcde87d6, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: d1eedfaed12361d40ae83f0fc7c69da3, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: c935dba97658f5945a7763941aba79e2, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: f90235238d2a3df44a8f1960660ea8db, type: 3}
+          BillboardDiseased: {fileID: 2800000, guid: 62eccdad319604e4d915fde5af0372de, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Rye Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 34eaae673602c214a8059af3fcde87d6, type: 3}
+          Normal: {fileID: 2800000, guid: 2ffcf92ae9a818e4ca5d6795ab0cec6e, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 62eccdad319604e4d915fde5af0372de, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: c935dba97658f5945a7763941aba79e2, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Rye Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 743d54688f07c6f429a0552d9712800d, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 9475717209448e846b07e52426261d05, type: 3}
+          BillboardNormal: {fileID: 0}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: rye_domestication
+          PlantingSeason: Spring
+          SpacingMultiplier: 1
+          DiseaseResistance: 0.15
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: grain:1 straw:1
+          BonusResources: grain:1
+          BonusResourcesChance: 0.15
+          SeasonalAvailability: Fall
+          CollectionTech: grain_processing
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Einkorn
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1658472024692794, guid: 43579550e468e3d42b24746bf895f242, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 10
+        Icon: {fileID: 2800000, guid: 89ea5910ac0d1f34dae2090dd0a27910, type: 3}
+        Variations:
+        - Name: Einkorn Spring Atlas
+          Albedo: {fileID: 2800000, guid: b7a41f52ce45f044c858844d5ad0e041, type: 3}
+          Normal: {fileID: 2800000, guid: 6dcbd95976c459e4d8aa64a06ef5238c, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: cec81c78543e8e64ea8678faf1b566e5, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2b7a83e34e94b2943b37bced7456d265, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Einkorn Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 9ccb27ab57efa8840871a9c970fa963b, type: 3}
+          Normal: {fileID: 2800000, guid: 6dcbd95976c459e4d8aa64a06ef5238c, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 95a2cae360928fa46ab7257542131dfd, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2b7a83e34e94b2943b37bced7456d265, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Einkorn Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 0a08d2951bfc4654285616492fe41d38, type: 3}
+          Normal: {fileID: 2800000, guid: 6dcbd95976c459e4d8aa64a06ef5238c, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 21e28cffb0933f241920a24f6ffd45c7, type: 3}
+          Diseased: {fileID: 2800000, guid: 2cfd61f912903eb4686b59c485247b43, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: 6f020be8b8f4fec44adfea3f30f4af81, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2b7a83e34e94b2943b37bced7456d265, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 49e96ccd2231b2841a5da013f57be12f, type: 3}
+          BillboardDiseased: {fileID: 2800000, guid: 114fc3685fee15845af2af2953e796c6, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Einkorn Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 2cfd61f912903eb4686b59c485247b43, type: 3}
+          Normal: {fileID: 2800000, guid: 6dcbd95976c459e4d8aa64a06ef5238c, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 114fc3685fee15845af2af2953e796c6, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2b7a83e34e94b2943b37bced7456d265, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Einkorn Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 1c099ac10cea6304399b032fa8869fb9, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bfb826a75388f124f89be07cfc4b50b3, type: 3}
+          BillboardNormal: {fileID: 0}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: cereal_domestication
+          PlantingSeason: Spring
+          SpacingMultiplier: 1
+          DiseaseResistance: 0.25
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: grain:1 straw:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Fall
+          CollectionTech: grain_processing
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Emmer
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1912229391516566, guid: 998a47421ff19b74285bb7ee3e33e9a0, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 10
+        Icon: {fileID: 2800000, guid: 936b1498463b8d447a0fb7bf97581b4b, type: 3}
+        Variations:
+        - Name: Emmer Spring Atlas
+          Albedo: {fileID: 2800000, guid: d251b6179ceeeb941b0ca0d63bdccb00, type: 3}
+          Normal: {fileID: 2800000, guid: bf5f87a06fe02014fac4305f4e1ecf55, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: bf32f11f8de56c0479411d1da508c1cc, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 9ab2aa9d0ed311243abe2cc9c5b8549c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Emmer Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 3b13e904730dc7c4d9d676896351abdb, type: 3}
+          Normal: {fileID: 2800000, guid: bf5f87a06fe02014fac4305f4e1ecf55, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: b648e93810b9b1a4ab7254f53cde58dd, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 9ab2aa9d0ed311243abe2cc9c5b8549c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Emmer Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 006bd447cd1b10e4b941c53a9d464227, type: 3}
+          Normal: {fileID: 2800000, guid: bf5f87a06fe02014fac4305f4e1ecf55, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: fd5c908c7b75dbd4b823c6a23f3d4c02, type: 3}
+          Diseased: {fileID: 2800000, guid: 1c9d16c219fde244f8b4c907e89a61b7, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: 77c83b4c7a35ba949a974ff376199696, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 9ab2aa9d0ed311243abe2cc9c5b8549c, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 8703e2e0ce73939488bbed8d434bab12, type: 3}
+          BillboardDiseased: {fileID: 2800000, guid: 55d9cd3696176a140b15549cdfdd2863, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Emmer Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 1c9d16c219fde244f8b4c907e89a61b7, type: 3}
+          Normal: {fileID: 2800000, guid: bf5f87a06fe02014fac4305f4e1ecf55, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 55d9cd3696176a140b15549cdfdd2863, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 9ab2aa9d0ed311243abe2cc9c5b8549c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Emmer Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 5ec463d7f723e524a8573496787ba677, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 0dc72654a88cd694cb63d377a9dd3d00, type: 3}
+          BillboardNormal: {fileID: 0}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: cereal_domestication
+          PlantingSeason: Spring
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: grain:1 straw:1
+          BonusResources: grain:1
+          BonusResourcesChance: 0.25
+          SeasonalAvailability: Fall
+          CollectionTech: grain_processing
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Flax
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1861486771962148, guid: defc78e85abd89f4284cee568271c335, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 30
+        Icon: {fileID: 2800000, guid: ddeb518366273e14fa6807c0c796f0df, type: 3}
+        Variations:
+        - Name: Flax Unripe Atlas
+          Albedo: {fileID: 2800000, guid: ea31da731241b1742a4d1f57b1899b75, type: 3}
+          Normal: {fileID: 2800000, guid: d063ab685845f2b4aa239d2aac054820, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: b396d8e4c09a2ee4a9f45bf36247b204, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2d95f7b5fe561e7479750a712d4e19e6, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Flax Unripe Atlas
+          Albedo: {fileID: 2800000, guid: ea31da731241b1742a4d1f57b1899b75, type: 3}
+          Normal: {fileID: 2800000, guid: d063ab685845f2b4aa239d2aac054820, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: b396d8e4c09a2ee4a9f45bf36247b204, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2d95f7b5fe561e7479750a712d4e19e6, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Flax Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 250f1b222f618e74685796b4d16ab4eb, type: 3}
+          Normal: {fileID: 2800000, guid: 5e5651b20eeb42b489d6387d0dba4915, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 2800000, guid: fc6d7e54e0ba0c04285700bbdf6c96e6, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: a7f10ba2b327a4340a3bb4ec84148bfa, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 46135db4bbd4b32498e2893df5251a81, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 2800000, guid: f2061bd8240d1164590c40ee58657ed6, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Flax Winter Atlas
+          Albedo: {fileID: 2800000, guid: 1e742f1a545efac4f94c014d358c1585, type: 3}
+          Normal: {fileID: 2800000, guid: 5e5651b20eeb42b489d6387d0dba4915, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: b396d8e4c09a2ee4a9f45bf36247b204, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2d95f7b5fe561e7479750a712d4e19e6, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Flax Winter Atlas
+          Albedo: {fileID: 2800000, guid: 1e742f1a545efac4f94c014d358c1585, type: 3}
+          Normal: {fileID: 2800000, guid: 5e5651b20eeb42b489d6387d0dba4915, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: b396d8e4c09a2ee4a9f45bf36247b204, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 2d95f7b5fe561e7479750a712d4e19e6, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: flax_domestication
+          PlantingSeason: Spring
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: linen:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Fall
+          CollectionTech: weaving
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: BitterVetch
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1232644250504321, guid: 1fb7d86fc15af114ba5ca9eb4035c198, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 21
+        Icon: {fileID: 2800000, guid: 91a53fd12253c5f4f80296c8abd83c81, type: 3}
+        Variations:
+        - Name: Bitter Vetch Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 5c2df7b946bd9814dad8e7f62e080c66, type: 3}
+          Normal: {fileID: 2800000, guid: 1e9a36ec2c795da44acb64463f3ae2f8, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 5f8154c2b72a353469f2cd40db589352, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 4efeac39b484293448403d5ed62b3d91, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Bitter Vetch Ripe Atlas
+          Albedo: {fileID: 2800000, guid: ea85a145311a00144bd57da577394ded, type: 3}
+          Normal: {fileID: 2800000, guid: 27c95cbf7a0dced4eb3991225dcd9558, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 5e9dd8eb540f14044ac9fcfd38e89019, type: 3}
+          Diseased: {fileID: 2800000, guid: a661c6372721c21448f5a0086d87a419, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: 530fb299aea8f5644b4f669e8c0e9724, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 4efeac39b484293448403d5ed62b3d91, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 5eab0b0ac04c8214bb3df10941d77d50, type: 3}
+          BillboardDiseased: {fileID: 2800000, guid: 5a9b8cfdb12922544a4abb0981bcd594, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Bitter Vetch Overripe Atlas
+          Albedo: {fileID: 2800000, guid: a661c6372721c21448f5a0086d87a419, type: 3}
+          Normal: {fileID: 2800000, guid: 8a9c6302f414ada4ba73e083cd200b25, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 5a9b8cfdb12922544a4abb0981bcd594, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 362ebb86b8bb6344fbcbabaf7573dd7e, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Bitter Vetch Winter Atlas
+          Albedo: {fileID: 2800000, guid: 5c06dc34f7fcd57438614545929487e0, type: 3}
+          Normal: {fileID: 2800000, guid: 8a9c6302f414ada4ba73e083cd200b25, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2ba5c45609e5a2b4b89f819ae84675cc, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 362ebb86b8bb6344fbcbabaf7573dd7e, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Bitter Vetch Winter Atlas
+          Albedo: {fileID: 2800000, guid: 5c06dc34f7fcd57438614545929487e0, type: 3}
+          Normal: {fileID: 2800000, guid: 8a9c6302f414ada4ba73e083cd200b25, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2ba5c45609e5a2b4b89f819ae84675cc, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 4efeac39b484293448403d5ed62b3d91, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: pulse_domestication
+          PlantingSeason: Winter
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: pulses:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech: pulse_processing
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Chickpeas
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1959800936053710, guid: bcb6c3e97ab27cb4da46932c7c39a18b, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 21
+        Icon: {fileID: 2800000, guid: 955cbb79b91857444a36b32904c0eda4, type: 3}
+        Variations:
+        - Name: Chickpea Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 536b3609f1477dd4c913e7cf228258a8, type: 3}
+          Normal: {fileID: 2800000, guid: 256f8bdcc377bfe4a9a7b7a4e213885f, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: a7ec4df2caade124cb8aa67449d9e188, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5c4667fe0f51f5546b9dac8e0b56c657, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Chickpea Ripe Atlas
+          Albedo: {fileID: 2800000, guid: fbd9d0f4176bd2e4e9ee168a40e0f40e, type: 3}
+          Normal: {fileID: 2800000, guid: e6f7f104466daab47bcb54d70f5b81a9, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 1cefa6fa66577ec4999f28481681faf8, type: 3}
+          Diseased: {fileID: 2800000, guid: e35a2ad74cfb25745949af37701a2031, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: ed3e6037c890e1546b283b51639dd4db, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5c4667fe0f51f5546b9dac8e0b56c657, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 5c4667fe0f51f5546b9dac8e0b56c657, type: 3}
+          BillboardDiseased: {fileID: 2800000, guid: 6f19619427e6266409092d8fcbc0faa0, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Chickpea Overripe Atlas
+          Albedo: {fileID: 2800000, guid: e35a2ad74cfb25745949af37701a2031, type: 3}
+          Normal: {fileID: 2800000, guid: 5cc7eb61b57e0e9429393b48eebba473, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 6f19619427e6266409092d8fcbc0faa0, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5c4667fe0f51f5546b9dac8e0b56c657, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Chickpea Winter Atlas
+          Albedo: {fileID: 2800000, guid: 96a88d9c997b99348b8d181994f9e82e, type: 3}
+          Normal: {fileID: 2800000, guid: 256f8bdcc377bfe4a9a7b7a4e213885f, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 3bec59acbdc9c324792568052a448fc0, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5c4667fe0f51f5546b9dac8e0b56c657, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Chickpea Winter Atlas
+          Albedo: {fileID: 2800000, guid: 96a88d9c997b99348b8d181994f9e82e, type: 3}
+          Normal: {fileID: 2800000, guid: 256f8bdcc377bfe4a9a7b7a4e213885f, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 3bec59acbdc9c324792568052a448fc0, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 04c1a13dfbbea6d48ba0ba45736a0207, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: pulse_domestication
+          PlantingSeason: Winter
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: pulses:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech: pulse_processing
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Lentils
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1556862007098324, guid: af058cc0a29ece148a82f3ef9f3d9e25, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 21
+        Icon: {fileID: 2800000, guid: 6381842dcb22d154f8175586656b5d3b, type: 3}
+        Variations:
+        - Name: Lentils Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 69ac1bac86ce0c941931fa7522758db8, type: 3}
+          Normal: {fileID: 2800000, guid: 5b9bdd6483d9385469bea94ea54f514a, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 15ebe1c6cbfbe274383a3e2e2ba8d573, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5be508d6d4c1cb84b9b2c78af3557362, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Lentils Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 6b5412c40c1706a4bb38269d1a0df7b8, type: 3}
+          Normal: {fileID: 2800000, guid: 9bb82f6476c6b0b48bb3127d756f91cb, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: ceb78af9ea57adb479bd24590e3f41dd, type: 3}
+          Diseased: {fileID: 2800000, guid: 533c282b9ee611f4ea0c4797f53a2ec5, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: d374a03218ba72a478ac69c401696567, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5be508d6d4c1cb84b9b2c78af3557362, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: ab39e7cab4843a646bb40fb41b2175d3, type: 3}
+          BillboardDiseased: {fileID: 2800000, guid: 5d926388620453f478c8e1238e51076b, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Lentils Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 533c282b9ee611f4ea0c4797f53a2ec5, type: 3}
+          Normal: {fileID: 2800000, guid: 18c0a77da3ee2154bbe51c096ea2e948, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 5d926388620453f478c8e1238e51076b, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5be508d6d4c1cb84b9b2c78af3557362, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Lentils Winter Atlas
+          Albedo: {fileID: 2800000, guid: 3d185cf4bd8e8bc4881411fcd9654656, type: 3}
+          Normal: {fileID: 2800000, guid: 2ef1954a6ac21a345b9a242c089bf20b, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 07a090879ad4abd45a0f1a7c3be4b01d, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: dc4e8c5637e1f6245960a75b17dff504, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Lentils Winter Atlas
+          Albedo: {fileID: 2800000, guid: 3d185cf4bd8e8bc4881411fcd9654656, type: 3}
+          Normal: {fileID: 2800000, guid: 2ef1954a6ac21a345b9a242c089bf20b, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 07a090879ad4abd45a0f1a7c3be4b01d, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: dc4e8c5637e1f6245960a75b17dff504, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: pulse_domestication
+          PlantingSeason: Winter
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: pulses:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech: pulse_processing
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Peas
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1325016490997405, guid: a49084dcdc21fa544a3e8ed2786704aa, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.1
+        AltitudeRange:
+          Min: 1
+          Max: 3
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 20
+        Icon: {fileID: 2800000, guid: ee6f565cc5238cb4db833934261b7978, type: 3}
+        Variations:
+        - Name: Peas Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 92a89adb89bdab9459b232feb60d090b, type: 3}
+          Normal: {fileID: 2800000, guid: c5bce5c2783a4c5419ae0f379952e83f, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: ca88d5487a6eacb4bbb25a1f795d6600, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: add37e89c0ab95540a67b1a6b67c0ac7, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Peas Ripe Atlas
+          Albedo: {fileID: 2800000, guid: c359a2464b8b6284b8815cd782ed2d35, type: 3}
+          Normal: {fileID: 2800000, guid: e0f525cfb10820d41b8c0449533d0d89, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: a19b368769b4f8945a9ce7e86da0c29e, type: 3}
+          Diseased: {fileID: 2800000, guid: 44767e2b2eb9cea42bff4edf2ba40a50, type: 3}
+          BillboardAlbedo: {fileID: 2800000, guid: 01357708a841f784784cd1229c428d19, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: add37e89c0ab95540a67b1a6b67c0ac7, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 186afb4b1c4f1d742845fbe82ba9b91a, type: 3}
+          BillboardDiseased: {fileID: 2800000, guid: 18081cbe811609a43a3fb09d75d6122f, type: 3}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Peas Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 44767e2b2eb9cea42bff4edf2ba40a50, type: 3}
+          Normal: {fileID: 2800000, guid: e375248ec8f93864b82be11939f9bccc, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 18081cbe811609a43a3fb09d75d6122f, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: add37e89c0ab95540a67b1a6b67c0ac7, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Peas Winter Atlas
+          Albedo: {fileID: 2800000, guid: 055fbf63dc855434987a3e62504eca94, type: 3}
+          Normal: {fileID: 2800000, guid: 2fbacb489d12ad94a9a09795696cd52c, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 1d019ca92d72cb842a315f3985582909, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 149cf547f5e768545b5863fe8ff9390c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Peas Winter Atlas
+          Albedo: {fileID: 2800000, guid: 055fbf63dc855434987a3e62504eca94, type: 3}
+          Normal: {fileID: 0}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 1d019ca92d72cb842a315f3985582909, type: 3}
+          BillboardNormal: {fileID: 0}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 1
+          CultivationTech: pulse_domestication
+          PlantingSeason: Winter
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 2
+          ProducedResources: pulses:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech: pulse_processing
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Blackberry
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1049223325638445, guid: b06a8e846693f0146bc8a6d3edb624e8, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.15
+        AltitudeRange:
+          Min: 0.5
+          Max: 3.5
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 2
+          Max: 3
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 16fabd1890372c4419ff8f654f2dc792, type: 3}
+        Variations:
+        - Name: Blackberry Spring Atlas
+          Albedo: {fileID: 2800000, guid: b355b886d17cf9b478918499b0ac58e9, type: 3}
+          Normal: {fileID: 2800000, guid: 068d025e6dd5de343bb01f35d45d456b, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: cc0e5349fd80210499d8e99eecd813f7, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: f26950ac39ac5ea4a89d8c34d9fc0c97, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Blackberry Unripe Atlas
+          Albedo: {fileID: 2800000, guid: a3bd0b322298586449385af8208d1252, type: 3}
+          Normal: {fileID: 2800000, guid: a1745c1a135befc4ea134cb3113347f7, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 02152e8e3fb812c41929e2076ec4533e, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: c87531e23a080d04ba2ec375eb696991, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: f26950ac39ac5ea4a89d8c34d9fc0c97, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 6101740ead173ec498d8c2c9681cf8c7, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Blackberry Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 1c68df2e7da62ff41ad81e71389048dc, type: 3}
+          Normal: {fileID: 2800000, guid: ee0eb1c7a6fca984e9e1e6ad12607e77, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 215a4510c498f5b42a72add92684d141, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: f53d25b41b1c02a45aae3353a861e313, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: f26950ac39ac5ea4a89d8c34d9fc0c97, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: cd985151da468674ca3a42ff145645d9, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Blackberry Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 4a34942be5e83d648a4c36521f8e27ef, type: 3}
+          Normal: {fileID: 2800000, guid: 068d025e6dd5de343bb01f35d45d456b, type: 3}
+          Detail: {fileID: 2800000, guid: 4a34942be5e83d648a4c36521f8e27ef, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 019c9f9e1ba53004888e6da67019060b, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 0daf08c307679c24cbc2e50ea28c3cf8, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 019c9f9e1ba53004888e6da67019060b, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Blackberry Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 3cd720983eea39d448d5b902505d2a5d, type: 3}
+          Normal: {fileID: 2800000, guid: 068d025e6dd5de343bb01f35d45d456b, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 5119b602f44230c46a79166f8830b725, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 0daf08c307679c24cbc2e50ea28c3cf8, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 1
+          ProducedResources: berries:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech:
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Blueberry
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1560594470598148, guid: 67ee08cefa509a747bb5128e6eb14d50, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.15
+        AltitudeRange:
+          Min: 0.5
+          Max: 5
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 2
+          Max: 3
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 16fabd1890372c4419ff8f654f2dc792, type: 3}
+        Variations:
+        - Name: Blueberry Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 2f589a24bd90890488d436b6d5960a7f, type: 3}
+          Normal: {fileID: 2800000, guid: 945dded64afe3e0488913d503452a7e6, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 407165985edc11f48be9b6498bf0e88e, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 172caef394308b94da2098816b7c2a5e, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Blueberry Ripe Atlas
+          Albedo: {fileID: 2800000, guid: ae81bdc5b49d28b489edc8281b51f808, type: 3}
+          Normal: {fileID: 2800000, guid: b6cbb07428eab9841bc014df088ae47f, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 7024d8f82ca82cc45abbd9d058c4af23, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2b2684c68d0dc3f4d86e5f9929f57593, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 172caef394308b94da2098816b7c2a5e, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 33c051388d1074946aa8766fe8aac9bb, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Blueberry Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 0c393c4467126cc45bb48f32bc520ba5, type: 3}
+          Normal: {fileID: 2800000, guid: 945dded64afe3e0488913d503452a7e6, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 0c393c4467126cc45bb48f32bc520ba5, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 25f82cf42f60e6248947b837ad494cb6, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 172caef394308b94da2098816b7c2a5e, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 25f82cf42f60e6248947b837ad494cb6, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Blueberry Winter Atlas
+          Albedo: {fileID: 2800000, guid: 9d0f437e28402e04695b1f1924b21f1b, type: 3}
+          Normal: {fileID: 2800000, guid: 1aafd8a3b39de474480341c3ccbd1ac7, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 3885ef8804e7c1143a5b3abf6b85c920, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 47e76c207be475742a9a388e3b843c0f, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0.235
+        - Name: Blueberry Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 15c9d0913e896ca4c91d3e28f0d141cb, type: 3}
+          Normal: {fileID: 2800000, guid: 1aafd8a3b39de474480341c3ccbd1ac7, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 3907eb840ca675b40a07a2fb3aee7a68, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 47e76c207be475742a9a388e3b843c0f, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0.235
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 1
+          ProducedResources: berries:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech:
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Raspberry
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1821902735338287, guid: 0c417beab60466549b98eb1542cb280f, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.15
+        AltitudeRange:
+          Min: 0.5
+          Max: 3.5
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 2
+          Max: 3
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 16fabd1890372c4419ff8f654f2dc792, type: 3}
+        Variations:
+        - Name: Raspberry Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 9048ae5385f243245a33e71913a2f0f8, type: 3}
+          Normal: {fileID: 2800000, guid: 9a1f5468eeb5d8543ac0cc404bc036fe, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: a997a096dfb4976468538f8ca8cc658e, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 1e8f52a8e09f81a43a8b070500579498, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Raspberry Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 86be94a53b02acb47970efbc315e5cbb, type: 3}
+          Normal: {fileID: 2800000, guid: c895fb44cc2bc7b438884ffd2ed46848, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 02152e8e3fb812c41929e2076ec4533e, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: f838f31e08f7e56438b01bc9c0bf4625, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5c08656ab7bf7944f861bbb9fff6c1a7, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 6101740ead173ec498d8c2c9681cf8c7, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Raspberry Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 6f92507a73359b04ea3d97bf36ad560d, type: 3}
+          Normal: {fileID: 2800000, guid: c895fb44cc2bc7b438884ffd2ed46848, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 6f92507a73359b04ea3d97bf36ad560d, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 763134f15784e8c478cd73c39ffd89ed, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5c08656ab7bf7944f861bbb9fff6c1a7, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 019c9f9e1ba53004888e6da67019060b, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Raspberry Winter Atlas
+          Albedo: {fileID: 2800000, guid: e7763b725b4daf149912bd5fd58ca7f0, type: 3}
+          Normal: {fileID: 2800000, guid: c895fb44cc2bc7b438884ffd2ed46848, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 632eb6b6e500d1c4a8d3430c06445cbd, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5c08656ab7bf7944f861bbb9fff6c1a7, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Raspberry Winter Atlas
+          Albedo: {fileID: 2800000, guid: e7763b725b4daf149912bd5fd58ca7f0, type: 3}
+          Normal: {fileID: 2800000, guid: c895fb44cc2bc7b438884ffd2ed46848, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 632eb6b6e500d1c4a8d3430c06445cbd, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 5c08656ab7bf7944f861bbb9fff6c1a7, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 1
+          ProducedResources: berries:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech:
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: Strawberry
+        PlaceInWorld: 1
+        PlaceInMargins: 0
+        Prefab: {fileID: 1698784167166435, guid: f0562bfe72009424eaf36f0b81ed79c6, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 0.15
+        AltitudeRange:
+          Min: 0.5
+          Max: 3.5
+        GradientRange:
+          Min: 0
+          Max: 1
+        ClumpSize:
+          Min: 2
+          Max: 3
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 16fabd1890372c4419ff8f654f2dc792, type: 3}
+        Variations:
+        - Name: Strawberry Unripe Atlas
+          Albedo: {fileID: 2800000, guid: 1856ec26632569f45961e190543e3fcd, type: 3}
+          Normal: {fileID: 2800000, guid: eec44f61f9e10e44b8269ca81380148b, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: a19c6c01b60a3b14d8992c8d956283d8, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: d8eec5a732496b242ab1765fde9d87cd, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Strawberry Ripe Atlas
+          Albedo: {fileID: 2800000, guid: 100cf7f2fa4929541b2a6274f3cfbf35, type: 3}
+          Normal: {fileID: 2800000, guid: 33a661780071d7c40b569c5d11e62692, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 4171174774455144d85269e31b28a2fb, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 492bd6fd11903444b8a0d9afd52986b3, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: d8eec5a732496b242ab1765fde9d87cd, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 8237dd595e671a340a5f9adbc95c7e50, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Strawberry Overripe Atlas
+          Albedo: {fileID: 2800000, guid: 0e1b4a1620182da41acb375eeead6061, type: 3}
+          Normal: {fileID: 2800000, guid: 33a661780071d7c40b569c5d11e62692, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 2800000, guid: 0e1b4a1620182da41acb375eeead6061, type: 3}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 645d8a9aba36a234a8ed54be8dfeb4f4, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: d8eec5a732496b242ab1765fde9d87cd, type: 3}
+          BillboardHarvested: {fileID: 2800000, guid: 645d8a9aba36a234a8ed54be8dfeb4f4, type: 3}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Strawberry Winter Atlas
+          Albedo: {fileID: 2800000, guid: 0519cc9de86dadc4caf32cd0f19bc7df, type: 3}
+          Normal: {fileID: 2800000, guid: 33a661780071d7c40b569c5d11e62692, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: e3be395189a1b1840a5381bbd2cdd53c, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: d8eec5a732496b242ab1765fde9d87cd, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Strawberry Winter Atlas
+          Albedo: {fileID: 2800000, guid: 0519cc9de86dadc4caf32cd0f19bc7df, type: 3}
+          Normal: {fileID: 2800000, guid: d8eec5a732496b242ab1765fde9d87cd, type: 3}
+          Detail: {fileID: 0}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: e3be395189a1b1840a5381bbd2cdd53c, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 33a661780071d7c40b569c5d11e62692, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 1
+          ProducedResources: berries:1
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability: Summer
+          CollectionTech:
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: YoungBroadleaf
+        PlaceInWorld: 0
+        PlaceInMargins: 1
+        Prefab: {fileID: 1223737597139716, guid: d16ff1d9cf7e3514185911d276b081dc, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 1
+        AltitudeRange:
+          Min: 0
+          Max: 0
+        GradientRange:
+          Min: 0
+          Max: 0
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 1cea83de482d15244a9e2017db83359f, type: 3}
+        Variations:
+        - Name: Young Broadleaf Spring Atlas
+          Albedo: {fileID: 2800000, guid: d814253a2e80ad249b0ad48a6e83d7fc, type: 3}
+          Normal: {fileID: 2800000, guid: ed87a7446b5f9c14bb8063f054c6616d, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 4f9818b05180a6047b8770fedb01378f, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 9ee52b3f5b818944f922b1aa1f73358d, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Young Broadleaf Summer Atlas
+          Albedo: {fileID: 2800000, guid: 7aa70206ee2988942b5120e42a802423, type: 3}
+          Normal: {fileID: 2800000, guid: ed87a7446b5f9c14bb8063f054c6616d, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 0a4bda194cfa76546a1d9f76c722f1fd, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 9ee52b3f5b818944f922b1aa1f73358d, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Young Broadleaf Fall Atlas
+          Albedo: {fileID: 2800000, guid: e184e833830ab054891f36de5bb5cee4, type: 3}
+          Normal: {fileID: 2800000, guid: ed87a7446b5f9c14bb8063f054c6616d, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 009d7e18347296a469a8a3087134ca60, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: 9ee52b3f5b818944f922b1aa1f73358d, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Young Broadleaf Winter Atlas
+          Albedo: {fileID: 2800000, guid: 1b1e34aa693010c4382bd7a300f32e6f, type: 3}
+          Normal: {fileID: 2800000, guid: c88f6210d05bec346936ce757bb4ef77, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: c2c9e2db1305ba248854d0a0d8002448, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: e24bcdb57fb9f8346a25cc7f9214c278, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        - Name: Young Broadleaf Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: bd5304d57c178204ba66d2e4af6cb3fb, type: 3}
+          Normal: {fileID: 2800000, guid: c88f6210d05bec346936ce757bb4ef77, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: a1110430dca46284a8c0359a34a1ee25, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: e24bcdb57fb9f8346a25cc7f9214c278, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+      - Name: YoungConifer
+        PlaceInWorld: 0
+        PlaceInMargins: 1
+        Prefab: {fileID: 1788151879197961, guid: f051d4616985de24db5fb6e64f3c331a, type: 2}
+        YoungPrefab: {fileID: 0}
+        Amount: 1
+        AltitudeRange:
+          Min: 0
+          Max: 0
+        GradientRange:
+          Min: 0
+          Max: 0
+        ClumpSize:
+          Min: 1
+          Max: 1
+        UiOrder: 0
+        Icon: {fileID: 2800000, guid: 584250d2460c5874c8b0c78ed833b84e, type: 3}
+        Variations:
+        - Name: Young Conifer Atlas
+          Albedo: {fileID: 2800000, guid: facf828247ca6bf4b818e259fabe110c, type: 3}
+          Normal: {fileID: 2800000, guid: 558eb86259f3b254a883a89fb87bd36f, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 0e17be1a689c0fa4995a1e8d59a7a638, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: adaee6949eb16134dbb17345be70371c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Young Conifer Atlas
+          Albedo: {fileID: 2800000, guid: facf828247ca6bf4b818e259fabe110c, type: 3}
+          Normal: {fileID: 2800000, guid: 558eb86259f3b254a883a89fb87bd36f, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 0e17be1a689c0fa4995a1e8d59a7a638, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: adaee6949eb16134dbb17345be70371c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Young Conifer Atlas
+          Albedo: {fileID: 2800000, guid: facf828247ca6bf4b818e259fabe110c, type: 3}
+          Normal: {fileID: 2800000, guid: 558eb86259f3b254a883a89fb87bd36f, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 0e17be1a689c0fa4995a1e8d59a7a638, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: adaee6949eb16134dbb17345be70371c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 1
+        - Name: Young Conifer Winter Atlas
+          Albedo: {fileID: 2800000, guid: 25920e6d4b7159d45bb56b4e61bc2031, type: 3}
+          Normal: {fileID: 2800000, guid: 558eb86259f3b254a883a89fb87bd36f, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: b90ecba890d27e8419c92e9a4765d862, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: adaee6949eb16134dbb17345be70371c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0.063
+        - Name: Young Conifer Snow Winter Atlas
+          Albedo: {fileID: 2800000, guid: 1f6881d1ac46f4249b397c15e5b32a3f, type: 3}
+          Normal: {fileID: 2800000, guid: 558eb86259f3b254a883a89fb87bd36f, type: 3}
+          Detail: {fileID: 2800000, guid: 4d79c7fbde524ac449b5a541023cd330, type: 3}
+          Harvested: {fileID: 0}
+          Diseased: {fileID: 0}
+          BillboardAlbedo: {fileID: 2800000, guid: 2e01805b4b586dd4a821e51d30ee9ed0, type: 3}
+          BillboardNormal: {fileID: 2800000, guid: adaee6949eb16134dbb17345be70371c, type: 3}
+          BillboardHarvested: {fileID: 0}
+          BillboardDiseased: {fileID: 0}
+          Color: {r: 1, g: 1, b: 1, a: 1}
+          AmbientOcclusionFactor: 0.072
+        CultivationParameters:
+          CanBeCultivated: 0
+          CultivationTech:
+          PlantingSeason:
+          SpacingMultiplier: 1
+          DiseaseResistance: 0
+        GameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+        SecondaryGameplayParameters:
+          ProductionMode: 0
+          ProducedResources:
+          BonusResources:
+          BonusResourcesChance: 0
+          SeasonalAvailability:
+          CollectionTech:
+    Details:
+      ChunkBaseSize: 8
+      DetailSnowTexture: {fileID: 2800000, guid: 833a5ba8932d1b5499a9a4c35013b828, type: 3}
+      DetailPrototypes:
+      - Name: DetailGrass
+        MaxDensity: 4
+        Asset: {fileID: 1368762084259912, guid: 924183d8fc5fbf94285d979885bad1e5, type: 2}
+        Billboard: 0
+        WidthRange:
+          Min: 1
+          Max: 1.9
+        HeightRange:
+          Min: 1
+          Max: 1.5
+        ClumpDistance: 50
+        ClumpRange:
+          Min: 0
+          Max: 1
+        AltitudeRange:
+          Min: 0
+          Max: 10
+        HumidityRange:
+          Min: 0
+          Max: 0.7
+        GradientRange:
+          Min: 0.4
+          Max: 1.2
+        Edible: 1
+        ProducedResources:
+      - Name: DetailReeds
+        MaxDensity: 5
+        Asset: {fileID: 1478614052858547, guid: 7d4fb808292ba474999fea2a3a1242cf, type: 2}
+        Billboard: 0
+        WidthRange:
+          Min: 1.2
+          Max: 1.5
+        HeightRange:
+          Min: 1.5
+          Max: 2
+        ClumpDistance: 20
+        ClumpRange:
+          Min: 0
+          Max: 0.75
+        AltitudeRange:
+          Min: -2.7
+          Max: -2
+        HumidityRange:
+          Min: 0
+          Max: 1
+        GradientRange:
+          Min: 0
+          Max: 0.85
+        Edible: 0
+        ProducedResources:
+      - Name: DetailFlowers
+        MaxDensity: 2
+        Asset: {fileID: 1618660903777994, guid: a5586d8038c12974789a62b76bd5ba0e, type: 2}
+        Billboard: 0
+        WidthRange:
+          Min: 0.7
+          Max: 1.1
+        HeightRange:
+          Min: 0.7
+          Max: 1.1
+        ClumpDistance: 50
+        ClumpRange:
+          Min: 0.4
+          Max: 0.6
+        AltitudeRange:
+          Min: 0
+          Max: 10
+        HumidityRange:
+          Min: 0
+          Max: 0.3
+        GradientRange:
+          Min: 0.4
+          Max: 0.7
+        Edible: 1
+        ProducedResources:
+      - Name: GroundPlant
+        MaxDensity: 2
+        Asset: {fileID: 1974375190894750, guid: 991024f52afe83043a27af6fbf1d4301, type: 2}
+        Billboard: 0
+        WidthRange:
+          Min: 0.7
+          Max: 1.1
+        HeightRange:
+          Min: 0.7
+          Max: 1.1
+        ClumpDistance: 50
+        ClumpRange:
+          Min: 0
+          Max: 1
+        AltitudeRange:
+          Min: 0
+          Max: 10
+        HumidityRange:
+          Min: 0.6
+          Max: 1
+        GradientRange:
+          Min: 0.4
+          Max: 0.5
+        Edible: 1
+        ProducedResources:
+      - Name: DetailStick
+        MaxDensity: 1
+        Asset: {fileID: 1880288429655866, guid: a6fe52d624315a94ebccc90b1c03e41f, type: 2}
+        Billboard: 0
+        WidthRange:
+          Min: 0.5
+          Max: 1
+        HeightRange:
+          Min: 0.5
+          Max: 1
+        ClumpDistance: 50
+        ClumpRange:
+          Min: 0
+          Max: 0.75
+        AltitudeRange:
+          Min: 2
+          Max: 10
+        HumidityRange:
+          Min: 0.6
+          Max: 0.9
+        GradientRange:
+          Min: 0.4
+          Max: 0.8
+        Edible: 0
+        ProducedResources: sticks:1
+    Props:
+      PropSets:
+      - Name: BigRocks
+        Amount: 0.35
+        Spread: 10
+        AltitudeRange:
+          Min: 5
+          Max: 15
+        AngleRange:
+          Min: 16
+          Max: 32
+        ScaleVariance: 0.1
+        ContextAction:
+        ProducedResources:
+        MiningTech:
+        UseTerrainOrientation: 0
+        Models:
+        - Name: Prop Big Rock 1
+          Variations:
+          - {fileID: 1268552344285123, guid: a444c949e4c3f0a4e8136cb412566c17, type: 2}
+          - {fileID: 1175473550870570, guid: a00d5716212f30146ab39a21091576a2, type: 2}
+      - Name: MediumRocks
+        Amount: 0.35
+        Spread: 10
+        AltitudeRange:
+          Min: 1
+          Max: 5
+        AngleRange:
+          Min: 15
+          Max: 30
+        ScaleVariance: 0.1
+        ContextAction: Mine
+        ProducedResources: stone:20
+        MiningTech: composite_tools
+        UseTerrainOrientation: 1
+        Models:
+        - Name: Prop Medium Rocks 6
+          Variations:
+          - {fileID: 1645454711509356, guid: 55b9c29d60ffa394ca8c475c6987e75e, type: 2}
+          - {fileID: 1783093869227854, guid: 431f1d0c84c16ee47b68da1c23f2949d, type: 2}
+        - Name: Prop Medium Rocks 5
+          Variations:
+          - {fileID: 1764235337967007, guid: 095a4d2e525a8054caaddb6f98723e3e, type: 2}
+          - {fileID: 1537792239006335, guid: f7b4c855b72340148af01795b8268718, type: 2}
+        - Name: Prop Medium Rocks 4
+          Variations:
+          - {fileID: 1414814744549930, guid: 9acb00ca7a6ad134da481e9e7b7fdf9b, type: 2}
+          - {fileID: 1505975502794838, guid: 3491d2dc53122e0409b04f6da5e46681, type: 2}
+        - Name: Prop Medium Rocks 7
+          Variations:
+          - {fileID: 1122791703824129, guid: 7c58a8d2b3efeac46b3341c4eb7d2f94, type: 2}
+          - {fileID: 1101921302405590, guid: 759737970eed0754692bb761bd8da23e, type: 2}
+        - Name: Prop Medium Rocks 8
+          Variations:
+          - {fileID: 1252416305916251, guid: d08542fd36db27441a7fb6511df66bc5, type: 2}
+          - {fileID: 1549044306057621, guid: 2e6151f74e0d3b248b06dd5fe5bdd7ea, type: 2}
+      - Name: Megalith
+        Amount: 0.25
+        Spread: 20
+        AltitudeRange:
+          Min: 1
+          Max: 5
+        AngleRange:
+          Min: 15
+          Max: 30
+        ScaleVariance: 0.1
+        ContextAction: Mine
+        ProducedResources: megalith:1
+        MiningTech: megalithism
+        UseTerrainOrientation: 1
+        Models:
+        - Name: Prop Megalith 1
+          Variations:
+          - {fileID: 1599601712302892, guid: 09580c031056ef145a1b15e941f179b5, type: 2}
+          - {fileID: 1728189985054098, guid: ee6318aa1a05f854ca19a8aa38196401, type: 2}
+        - Name: Prop Megalith 2
+          Variations:
+          - {fileID: 1331166365149939, guid: 11ea7e46b9a46924eaa740616fc5681f, type: 2}
+          - {fileID: 1689102557961623, guid: fd93644b7c3eb0d47bb5eed4b6bdd893, type: 2}
+        - Name: Prop Megalith 3
+          Variations:
+          - {fileID: 1435028415909809, guid: 3837bb08d6221b84ab8496e8aa0ae2c3, type: 2}
+          - {fileID: 1960456316239610, guid: 30ee16b78138e2b4bb60a0310210afc2, type: 2}
+      - Name: Flint
+        Amount: 0.41
+        Spread: 12
+        AltitudeRange:
+          Min: 1
+          Max: 10
+        AngleRange:
+          Min: 2
+          Max: 6
+        ScaleVariance: 0.1
+        ContextAction: GatherProp
+        ProducedResources: flint:10
+        MiningTech:
+        UseTerrainOrientation: 1
+        Models:
+        - Name: Prop Flint 2
+          Variations:
+          - {fileID: 1367774930926804, guid: e203348d9ed505046bc0c39543638937, type: 2}
+          - {fileID: 1800819066882600, guid: 41ee196f739c6bb478023e7490b5cdb6, type: 2}
+        - Name: Prop Flint 3
+          Variations:
+          - {fileID: 1442449497356108, guid: 109e314395e6c2845b686e1d6d6d3517, type: 2}
+          - {fileID: 1189514608689750, guid: 4d4bed602e282f64da458b4c03f7a16f, type: 2}
+        - Name: Prop Flint 4
+          Variations:
+          - {fileID: 1497849064470828, guid: ac18ae5ece2d9a9438186e779532765e, type: 2}
+          - {fileID: 1339923318693579, guid: d59073c4b945706498011efe4fa16e0d, type: 2}
+        - Name: Prop Flint 5
+          Variations:
+          - {fileID: 1691101028710734, guid: 937b35b59a8edd14dbf2ca02cfcbe3bb, type: 2}
+          - {fileID: 1112054985361526, guid: cf81d57fa84bb4c46bdab3aefc24bd38, type: 2}
+      - Name: SmallRocks
+        Amount: 0.605
+        Spread: 10
+        AltitudeRange:
+          Min: 1
+          Max: 10
+        AngleRange:
+          Min: 6
+          Max: 8
+        ScaleVariance: 0.15
+        ContextAction: GatherProp
+        ProducedResources: stone:1
+        MiningTech:
+        UseTerrainOrientation: 1
+        Models:
+        - Name: Prop Small Rocks 3
+          Variations:
+          - {fileID: 1122381378492709, guid: da21481d686ff0f40b1a8783a6ec15c8, type: 2}
+          - {fileID: 1378155043634417, guid: 6ec6d549d7d3b524db674c8616a687dc, type: 2}
+        - Name: Prop Small Rocks 3 A
+          Variations:
+          - {fileID: 1094159269098287, guid: 0a233fa4e62d4424b8d1c0dadf46dd12, type: 2}
+          - {fileID: 1256091232266108, guid: c0b5ab8a002a83640a1f746b253e9334, type: 2}
+        - Name: Prop Small Rocks 3 B
+          Variations:
+          - {fileID: 1569666300268060, guid: a523645f25f28914692ec3b5a2abf45a, type: 2}
+          - {fileID: 1882494837185234, guid: 6c08f5626f08e4d42adb1d377bb52d44, type: 2}
+        - Name: Prop Small Rocks 3 C
+          Variations:
+          - {fileID: 1384455360419772, guid: 2fa501f33965c61488da09c3ac05f189, type: 2}
+          - {fileID: 1519122028331996, guid: 71c24ae828a75384c86437c59726f7bf, type: 2}
+        - Name: Prop Small Rocks 3 D
+          Variations:
+          - {fileID: 1868320946751533, guid: 3122a7c6efc96374db14221c2e28cbfd, type: 2}
+          - {fileID: 1159741425486700, guid: fd4cb1b8b08a14c43be63aa5521dc974, type: 2}
+      - Name: RiverRocks
+        Amount: 0.6
+        Spread: 12
+        AltitudeRange:
+          Min: -3
+          Max: -2
+        AngleRange:
+          Min: 0
+          Max: 25
+        ScaleVariance: 0.1
+        ContextAction: GatherProp
+        ProducedResources: stone:1
+        MiningTech:
+        UseTerrainOrientation: 1
+        Models:
+        - Name: Prop River Rocks 3
+          Variations:
+          - {fileID: 1809819567852399, guid: 36004726143ed2d43b7cfbbd877555ab, type: 2}
+          - {fileID: 1809819567852399, guid: 36004726143ed2d43b7cfbbd877555ab, type: 2}
+        - Name: Prop River Rocks 4
+          Variations:
+          - {fileID: 1760541349700315, guid: b1c209423d0632f4f9ca1bcc7f4e60e7, type: 2}
+          - {fileID: 1760541349700315, guid: b1c209423d0632f4f9ca1bcc7f4e60e7, type: 2}
+        - Name: Prop River Rocks 5
+          Variations:
+          - {fileID: 1237017440047857, guid: 1871c9f331803ea4e998a3e5bf129e75, type: 2}
+          - {fileID: 1237017440047857, guid: 1871c9f331803ea4e998a3e5bf129e75, type: 2}
+        - Name: Prop River Rocks 6
+          Variations:
+          - {fileID: 1919081940518782, guid: b91db03acb73d1846a51083749644c0f, type: 2}
+          - {fileID: 1919081940518782, guid: b91db03acb73d1846a51083749644c0f, type: 2}
+        - Name: Prop River Rocks 7
+          Variations:
+          - {fileID: 1562358485572870, guid: ab01fd1c0a4c42c41a179266797a3cbd, type: 2}
+          - {fileID: 1562358485572870, guid: ab01fd1c0a4c42c41a179266797a3cbd, type: 2}
+    Backdrops:
+      ScaleRange:
+        Min: 600
+        Max: 1000
+      Layers:
+      - Name: Near
+        Count: 8
+        Distance: 0
+        Models:
+        - Name: Backdrop 1
+          Variations:
+          - {fileID: 1089123785110750, guid: 7f8fd15a59d22704aab7dd93258b9dc8, type: 2}
+          - {fileID: 1617341219411003, guid: 2bb7e732a78f3084e9d1a78889cfdcc2, type: 2}
+        - Name: Backdrop 2
+          Variations:
+          - {fileID: 1124624138208672, guid: 3bf5bc8aeee0fde43a71210c1e5ea71c, type: 2}
+          - {fileID: 1959257850361946, guid: b7615a48121e3a647ad2eb0059fee4d6, type: 2}
+        - Name: Backdrop 3
+          Variations:
+          - {fileID: 1313637773240569, guid: 2744238776a46104083756af3f300d0e, type: 2}
+          - {fileID: 1756649375277982, guid: 57fa5ff2870a82241a2fb9eba81a01ad, type: 2}
+        - Name: Backdrop 4
+          Variations:
+          - {fileID: 1691292914203053, guid: 7e2dee9e1a5447b4eb17ec6541e8b6d8, type: 2}
+          - {fileID: 1139967946179819, guid: 47e6e17d3d9fb6a48a2d107d84023655, type: 2}
+      - Name: Mid
+        Count: 12
+        Distance: 500
+        Models:
+        - Name: Backdrop 3
+          Variations:
+          - {fileID: 1313637773240569, guid: 2744238776a46104083756af3f300d0e, type: 2}
+          - {fileID: 1756649375277982, guid: 57fa5ff2870a82241a2fb9eba81a01ad, type: 2}
+        - Name: Backdrop 4
+          Variations:
+          - {fileID: 1691292914203053, guid: 7e2dee9e1a5447b4eb17ec6541e8b6d8, type: 2}
+          - {fileID: 1139967946179819, guid: 47e6e17d3d9fb6a48a2d107d84023655, type: 2}
+      - Name: Far
+        Count: 9
+        Distance: 2700
+        Models:
+        - Name: Backdrop Far 1
+          Variations:
+          - {fileID: 1997707215228916, guid: 3a3e99c9b92ba4a44a85e3f69b873f9c, type: 2}
+          - {fileID: 1921574758870023, guid: 778c28b13e5982e408d53e99732a5a63, type: 2}
+        - Name: Backdrop Far 2
+          Variations:
+          - {fileID: 1668562713162889, guid: 321313a1c134a694e9d6511070dc43ca, type: 2}
+          - {fileID: 1351472726864186, guid: d456d5414953bf64daea0e9320c35160, type: 2}
+        - Name: Backdrop Far 3
+          Variations:
+          - {fileID: 1871142240601364, guid: cb2019c26cef74840ab8755a93c22e51, type: 2}
+          - {fileID: 1540798628908509, guid: 8afe937e24379f24c898a1b396a588d0, type: 2}
+        - Name: Backdrop Far 4
+          Variations:
+          - {fileID: 1819801985176267, guid: f8f3c4e1275f987419efc3bfc6213077, type: 2}
+          - {fileID: 1068686033220618, guid: 5e43bb85816c4194a975cbd845ce180a, type: 2}
+    Deposits:
+      MinHeight: 0
+      MaxHeight: 20
+      Prototypes:
+      - Name: Flint
+        ProducedResources: flint:15
+        MiningTech: composite_tools
+        PrimalVisionTexture: {fileID: 0}
+        Abundance: 0.2
+        Models:
+        - Name: Flint Deposit 1
+          Variations:
+          - {fileID: 1253938851585032, guid: 073723438a596314986345cdbbbc1f22, type: 2}
+          - {fileID: 1907701345334203, guid: 5f9d09940ed5e2d448cc6bc8b341c249, type: 2}
+        - Name: Flint Deposit 2
+          Variations:
+          - {fileID: 1848009585835423, guid: 555bfe91c3d077248b5bd14ae1a2e064, type: 2}
+          - {fileID: 1828410369151286, guid: 04eb823ee9b67204f83d2f3a0c8e6a20, type: 2}
+        ExhaustedModels:
+        - Name:
+          Variations:
+          - {fileID: 1382502222799298, guid: 11c455bfff8b545428be8d44c867d98e, type: 2}
+          - {fileID: 1316621997308826, guid: df788deb993145d43b5463767e36789f, type: 2}
+        - Name:
+          Variations:
+          - {fileID: 1991792849221445, guid: ead18541724ad4e4483a6e9da9272903, type: 2}
+          - {fileID: 1619869302893791, guid: 997af04b5446e3e47aae0195b93a22a4, type: 2}
+        MineExhaustedModels: []
+      - Name: Copper
+        ProducedResources: copper_ore:15
+        MiningTech: copper_smelting
+        PrimalVisionTexture: {fileID: 2800000, guid: 8626cb496e6647c4b8eb08c04fa1d353, type: 3}
+        Abundance: 0.2
+        Models:
+        - Name: Copper Deposit 1
+          Variations:
+          - {fileID: 1045704021383207, guid: 653c7fb268f65ca4fbb3123b550fe1b2, type: 2}
+          - {fileID: 1431850391093581, guid: 1956a2db0bf0dc1428de5308111f1169, type: 2}
+        - Name: Copper Deposit 2
+          Variations:
+          - {fileID: 1372070857574076, guid: 98ab0e54cf17b814a88dda5012dbf26b, type: 2}
+          - {fileID: 1566021072807064, guid: 6ae17bf869e412f4b9417a0a49c2bd63, type: 2}
+        ExhaustedModels:
+        - Name:
+          Variations:
+          - {fileID: 1107575793119597, guid: 7fcd0aebf7c4d6a44b3d0dcab3626cc9, type: 2}
+          - {fileID: 1077404822646503, guid: 7bd0ac6a0d6eff84bb730d69595166c1, type: 2}
+        - Name:
+          Variations:
+          - {fileID: 1256594139152009, guid: acb34151b78ae0f42b0b0d085bf83011, type: 2}
+          - {fileID: 1804803271602901, guid: 7da424c5f477ba34aa365db98115caae, type: 2}
+        MineExhaustedModels: []
+      - Name: Tin
+        ProducedResources: tin_ore:15
+        MiningTech: bronze_smelting
+        PrimalVisionTexture: {fileID: 2800000, guid: 400eec2d53327c440b82db021ca275c2, type: 3}
+        Abundance: 0.1
+        Models:
+        - Name: Tin Deposit 1
+          Variations:
+          - {fileID: 1749413961684964, guid: 3a43567748b4d574fb54934104082740, type: 2}
+          - {fileID: 1937815719728168, guid: b675fbd031fd6f34280a8985a64c288c, type: 2}
+        - Name: Tin Deposit 2
+          Variations:
+          - {fileID: 1086175968505743, guid: 5b4660e492fedec4eac644451a6b1a22, type: 2}
+          - {fileID: 1292769324010706, guid: 093043d0f745255408b0816b6de7dcd0, type: 2}
+        ExhaustedModels:
+        - Name:
+          Variations:
+          - {fileID: 1869873816363193, guid: 6a7a6e33c5cc938478a976c8cc81c9b4, type: 2}
+          - {fileID: 1308020471641372, guid: b06f6ec3f8f3e5c45a5ad6510de8dfe0, type: 2}
+        - Name:
+          Variations:
+          - {fileID: 1199599107224883, guid: 36a6de0e82e733942a7d25f9e1e091c5, type: 2}
+          - {fileID: 1812877662530420, guid: f7a4b9e03115642469a3916c60a0f414, type: 2}
+        MineExhaustedModels: []
+      - Name: Iron
+        ProducedResources: iron_ore:15
+        MiningTech: iron_smelting
+        PrimalVisionTexture: {fileID: 2800000, guid: 63bcffcb26937284c935d84b19312cc4, type: 3}
+        Abundance: 0.2
+        Models:
+        - Name: Iron Deposit 1
+          Variations:
+          - {fileID: 1110630519272516, guid: da9aaaba01e5ae946ac05dc82ca30e08, type: 2}
+          - {fileID: 1962176513695517, guid: 430cd7b26ceba554c99a3fa238f35a05, type: 2}
+        - Name: Iron Deposit 2
+          Variations:
+          - {fileID: 1517728101391698, guid: bef1a67adda761f4ebdfd4c2c500a7cd, type: 2}
+          - {fileID: 1414526459346851, guid: f5eb6a209319f064081365d197d8746d, type: 2}
+        ExhaustedModels:
+        - Name:
+          Variations:
+          - {fileID: 1523258393421747, guid: 820a0519c3852d5409df970851f75fca, type: 2}
+          - {fileID: 1661108739659432, guid: 2957c422941ba9f44b7f8fb3e376abde, type: 2}
+        - Name:
+          Variations:
+          - {fileID: 1224836589725139, guid: 6d87cbc5a05e69c48b4296eadb3eaaea, type: 2}
+          - {fileID: 1165055805696963, guid: cf2b5ed0986694c4cad0b5199e1943ed, type: 2}
+        MineExhaustedModels:
+        - Name:
+          Variations:
+          - {fileID: 1342309470861874, guid: cfbc8f39ab50206488eaa3b5cbfa0c09, type: 2}
+          - {fileID: 1051515503703425, guid: eea8f01bf58b0324e83f01696eeaad6e, type: 2}
+        - Name:
+          Variations:
+          - {fileID: 1013531014639691, guid: 00bbf24e361024045bea9cc3c1d2c4d9, type: 2}
+          - {fileID: 1990697652750895, guid: 5950bb52c1165d1479b29a5a220378ff, type: 2}
+    Sky:
+      Skies:
+      - Name: Sky Sunny
+        Texture: {fileID: 2800000, guid: 156ea1bcc29e4c944ae279b30308bb88, type: 3}
+        Color: {r: 0, g: 0, b: 0, a: 0}
+      - Name: Sky Cloudy
+        Texture: {fileID: 2800000, guid: abce30e619e91364f9a1b25cd436bad8, type: 3}
+        Color: {r: 0.6666667, g: 0.72156864, b: 0.7254902, a: 0.73333335}
+    VisualParameters:
+      ShadowStrenght: 0.75
+      Setups:
+      - Id: Spring
+        SkyColor: {r: 0.22058822, g: 0.42200115, b: 0.625, a: 0.34509805}
+        HorizonColor: {r: 0.67082304, g: 0.686, b: 0.57672566, a: 0.8862745}
+        GradientFactor: 8.71
+        GradientOffset: 0
+        ScatteringHeight: 200
+        ScatteringExcludeFarPixels: 1
+        ScatteringIntensity: 0.0005
+        LightColor: {r: 1, g: 0.98892736, b: 0.6862745, a: 0.60784316}
+        LightAmbient: {r: 0.4627451, g: 0.49019608, b: 0.5137255, a: 0.53333336}
+        LightAngle: 40
+        TreeVariationIndex: 0
+        TreeHiddenColor: {r: 0, g: 1, b: 0, a: 1}
+        PropVariationIndex: 0
+        GrassTint: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+        DetailSnowAmount: 0
+        ShowBlueDetails: 1
+        ShowGreenDetails: 1
+        Textures:
+        - Name: 'Grass '
+          Albedo: {fileID: 2800000, guid: 88f5f842531b8154e95c4d5ef7f64428, type: 3}
+          Normal: {fileID: 2800000, guid: 1da0ceb739e0ced4a9f9e4793407b118, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Wet Grass '
+          Albedo: {fileID: 2800000, guid: 03353b0b34501eb4ca578f0849d25c9c, type: 3}
+          Normal: {fileID: 2800000, guid: a13300cf2892b194c8b3397382cdd47d, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Rock '
+          Albedo: {fileID: 2800000, guid: a8d1ef9a6e83e3040b86e1d633f7ac39, type: 3}
+          Normal: {fileID: 2800000, guid: 2cd5e471f311d43478b04b7b5c3abacc, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Dirt '
+          Albedo: {fileID: 2800000, guid: 86dc8f050a124154e97e39194fa6302e, type: 3}
+          Normal: {fileID: 2800000, guid: 7389361155ad2514f8972b8eaa501d94, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Peak '
+          Albedo: {fileID: 2800000, guid: 6ba4e9121c676744c94f3574c90efc33, type: 3}
+          Normal: {fileID: 2800000, guid: 6b13d074c8a36bf4e98b25f4c96ef6fd, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Bank '
+          Albedo: {fileID: 2800000, guid: f8266ddb917379849a521779683d5ef3, type: 3}
+          Normal: {fileID: 2800000, guid: edb1d1ffcf2679148a82d7b49ee9dcf4, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Field '
+          Albedo: {fileID: 2800000, guid: 8e00e84a5c000954b8c1f23bf1614a9f, type: 3}
+          Normal: {fileID: 2800000, guid: 6f53e8a53be5bf84e8e83c88251b4a81, type: 3}
+          Metallic: 0
+          Tiling: 16
+      - Id: Summer
+        SkyColor: {r: 0.09450691, g: 0.32575482, b: 0.5588235, a: 0.34509805}
+        HorizonColor: {r: 0.48235294, g: 0.627451, b: 0.6431373, a: 0.8862745}
+        GradientFactor: 11.86
+        GradientOffset: 0
+        ScatteringHeight: 200
+        ScatteringExcludeFarPixels: 1
+        ScatteringIntensity: 0.0005
+        LightColor: {r: 1, g: 0.99607843, b: 0.89411765, a: 0.60784316}
+        LightAmbient: {r: 0.4627451, g: 0.49019608, b: 0.5137255, a: 0.53333336}
+        LightAngle: 50
+        TreeVariationIndex: 1
+        TreeHiddenColor: {r: 0, g: 1, b: 0, a: 1}
+        PropVariationIndex: 0
+        GrassTint: {r: 0.57, g: 0.5460839, b: 0.45440558, a: 1}
+        DetailSnowAmount: 0
+        ShowBlueDetails: 0
+        ShowGreenDetails: 1
+        Textures:
+        - Name: 'Dry Grass '
+          Albedo: {fileID: 2800000, guid: 88862bf3fc48a344db474e59f542a76c, type: 3}
+          Normal: {fileID: 2800000, guid: 1da0ceb739e0ced4a9f9e4793407b118, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Wet Grass Summer '
+          Albedo: {fileID: 2800000, guid: 15c4ad52359ed9941b1d7e94d8a84b57, type: 3}
+          Normal: {fileID: 2800000, guid: a13300cf2892b194c8b3397382cdd47d, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Rock '
+          Albedo: {fileID: 2800000, guid: a8d1ef9a6e83e3040b86e1d633f7ac39, type: 3}
+          Normal: {fileID: 2800000, guid: 2cd5e471f311d43478b04b7b5c3abacc, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Dirt '
+          Albedo: {fileID: 2800000, guid: 86dc8f050a124154e97e39194fa6302e, type: 3}
+          Normal: {fileID: 2800000, guid: 7389361155ad2514f8972b8eaa501d94, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Peak '
+          Albedo: {fileID: 2800000, guid: 6ba4e9121c676744c94f3574c90efc33, type: 3}
+          Normal: {fileID: 2800000, guid: 6b13d074c8a36bf4e98b25f4c96ef6fd, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Bank '
+          Albedo: {fileID: 2800000, guid: f8266ddb917379849a521779683d5ef3, type: 3}
+          Normal: {fileID: 2800000, guid: edb1d1ffcf2679148a82d7b49ee9dcf4, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Field '
+          Albedo: {fileID: 2800000, guid: 8e00e84a5c000954b8c1f23bf1614a9f, type: 3}
+          Normal: {fileID: 2800000, guid: 6f53e8a53be5bf84e8e83c88251b4a81, type: 3}
+          Metallic: 0
+          Tiling: 16
+      - Id: Fall
+        SkyColor: {r: 0.19869159, g: 0.3134851, b: 0.3602941, a: 0.039215688}
+        HorizonColor: {r: 0.714, g: 0.63394654, b: 0.42525002, a: 0.74509805}
+        GradientFactor: 5.76
+        GradientOffset: 0
+        ScatteringHeight: 200
+        ScatteringExcludeFarPixels: 1
+        ScatteringIntensity: 0.0006
+        LightColor: {r: 1, g: 0.94403845, b: 0.709, a: 0.5921569}
+        LightAmbient: {r: 0.52156866, g: 0.40392157, b: 0.29803923, a: 0.29803923}
+        LightAngle: 40
+        TreeVariationIndex: 2
+        TreeHiddenColor: {r: 0, g: 1, b: 0, a: 1}
+        PropVariationIndex: 0
+        GrassTint: {r: 0.57, g: 0.54964286, b: 0.45192856, a: 1}
+        DetailSnowAmount: 0
+        ShowBlueDetails: 0
+        ShowGreenDetails: 0
+        Textures:
+        - Name: 'Grass '
+          Albedo: {fileID: 2800000, guid: 88f5f842531b8154e95c4d5ef7f64428, type: 3}
+          Normal: {fileID: 2800000, guid: 1da0ceb739e0ced4a9f9e4793407b118, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Wet Grass Fall '
+          Albedo: {fileID: 2800000, guid: 7cd0dc751c0b1504abcb3de5a6c819ad, type: 3}
+          Normal: {fileID: 2800000, guid: 7177918fcd6d77d4b88a7b1acde7a659, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Rock '
+          Albedo: {fileID: 2800000, guid: a8d1ef9a6e83e3040b86e1d633f7ac39, type: 3}
+          Normal: {fileID: 2800000, guid: 2cd5e471f311d43478b04b7b5c3abacc, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Dirt '
+          Albedo: {fileID: 2800000, guid: 86dc8f050a124154e97e39194fa6302e, type: 3}
+          Normal: {fileID: 2800000, guid: 7389361155ad2514f8972b8eaa501d94, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Peak '
+          Albedo: {fileID: 2800000, guid: 6ba4e9121c676744c94f3574c90efc33, type: 3}
+          Normal: {fileID: 2800000, guid: 6b13d074c8a36bf4e98b25f4c96ef6fd, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Bank '
+          Albedo: {fileID: 2800000, guid: f8266ddb917379849a521779683d5ef3, type: 3}
+          Normal: {fileID: 2800000, guid: edb1d1ffcf2679148a82d7b49ee9dcf4, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Field '
+          Albedo: {fileID: 2800000, guid: 8e00e84a5c000954b8c1f23bf1614a9f, type: 3}
+          Normal: {fileID: 2800000, guid: 6f53e8a53be5bf84e8e83c88251b4a81, type: 3}
+          Metallic: 0
+          Tiling: 16
+      - Id: Winter
+        SkyColor: {r: 0.42344293, g: 0.6172088, b: 0.6544118, a: 0.6}
+        HorizonColor: {r: 0.6666667, g: 0.72156864, b: 0.7254902, a: 0.73333335}
+        GradientFactor: 5.77
+        GradientOffset: 0
+        ScatteringHeight: 200
+        ScatteringExcludeFarPixels: 0
+        ScatteringIntensity: 0.00175
+        LightColor: {r: 0.9019608, g: 0.98309666, b: 1, a: 1}
+        LightAmbient: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.3882353}
+        LightAngle: 40
+        TreeVariationIndex: 3
+        TreeHiddenColor: {r: 1, g: 0, b: 0, a: 1}
+        PropVariationIndex: 0
+        GrassTint: {r: 0.47058824, g: 0.47058824, b: 0.47058824, a: 1}
+        DetailSnowAmount: 0
+        ShowBlueDetails: 0
+        ShowGreenDetails: 0
+        Textures:
+        - Name: 'Grass Winter '
+          Albedo: {fileID: 2800000, guid: a3ac0f6e0b3b73c4db59334171655951, type: 3}
+          Normal: {fileID: 2800000, guid: 1da0ceb739e0ced4a9f9e4793407b118, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Wet Grass Early Winter '
+          Albedo: {fileID: 2800000, guid: d3b6b21f1c869714ea679e1b40b2e700, type: 3}
+          Normal: {fileID: 2800000, guid: d1e44b7ad371a5144b8486918fee6adc, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Rock '
+          Albedo: {fileID: 2800000, guid: a8d1ef9a6e83e3040b86e1d633f7ac39, type: 3}
+          Normal: {fileID: 2800000, guid: 2cd5e471f311d43478b04b7b5c3abacc, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Dirt '
+          Albedo: {fileID: 2800000, guid: 86dc8f050a124154e97e39194fa6302e, type: 3}
+          Normal: {fileID: 2800000, guid: 7389361155ad2514f8972b8eaa501d94, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Rock Snow '
+          Albedo: {fileID: 2800000, guid: cd00539c850bea647a27a1501fa8c5b4, type: 3}
+          Normal: {fileID: 2800000, guid: 92263b3cd97c7eb40bc473dd7534f1b2, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Bank '
+          Albedo: {fileID: 2800000, guid: f8266ddb917379849a521779683d5ef3, type: 3}
+          Normal: {fileID: 2800000, guid: edb1d1ffcf2679148a82d7b49ee9dcf4, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Field '
+          Albedo: {fileID: 2800000, guid: 8e00e84a5c000954b8c1f23bf1614a9f, type: 3}
+          Normal: {fileID: 2800000, guid: 6f53e8a53be5bf84e8e83c88251b4a81, type: 3}
+          Metallic: 0
+          Tiling: 16
+      - Id: WinterSnow
+        SkyColor: {r: 0.42344293, g: 0.6172088, b: 0.6544118, a: 0.6}
+        HorizonColor: {r: 0.7654087, g: 0.8566447, b: 0.8602941, a: 0.73333335}
+        GradientFactor: 9.28
+        GradientOffset: 0
+        ScatteringHeight: 200
+        ScatteringExcludeFarPixels: 0
+        ScatteringIntensity: 0.002
+        LightColor: {r: 0.8088235, g: 0.9670387, b: 1, a: 1}
+        LightAmbient: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.3882353}
+        LightAngle: 40
+        TreeVariationIndex: 4
+        TreeHiddenColor: {r: 1, g: 0, b: 0, a: 1}
+        PropVariationIndex: 1
+        GrassTint: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
+        DetailSnowAmount: 1
+        ShowBlueDetails: 0
+        ShowGreenDetails: 0
+        Textures:
+        - Name: 'Snow '
+          Albedo: {fileID: 2800000, guid: 833a5ba8932d1b5499a9a4c35013b828, type: 3}
+          Normal: {fileID: 2800000, guid: 48774ecde97b4304496d8011322b61a8, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Grass Snow '
+          Albedo: {fileID: 2800000, guid: df74313ba4f32cc43aaf8173e5ace4d4, type: 3}
+          Normal: {fileID: 2800000, guid: ac816f2533694214ea6cd7c81a5a10c0, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Rock Snow '
+          Albedo: {fileID: 2800000, guid: cd00539c850bea647a27a1501fa8c5b4, type: 3}
+          Normal: {fileID: 2800000, guid: 92263b3cd97c7eb40bc473dd7534f1b2, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Dirt Snow '
+          Albedo: {fileID: 2800000, guid: 1c571cd593471c54b9963417eeb32890, type: 3}
+          Normal: {fileID: 2800000, guid: 62e961c3e74f5084d81e1d0d5353d405, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Snow '
+          Albedo: {fileID: 2800000, guid: 833a5ba8932d1b5499a9a4c35013b828, type: 3}
+          Normal: {fileID: 2800000, guid: 48774ecde97b4304496d8011322b61a8, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Bank '
+          Albedo: {fileID: 2800000, guid: f8266ddb917379849a521779683d5ef3, type: 3}
+          Normal: {fileID: 2800000, guid: edb1d1ffcf2679148a82d7b49ee9dcf4, type: 3}
+          Metallic: 0
+          Tiling: 16
+        - Name: 'Field Winter '
+          Albedo: {fileID: 2800000, guid: 630e7080e3dde824d97b0a9f0338d8b5, type: 3}
+          Normal: {fileID: 2800000, guid: 6f53e8a53be5bf84e8e83c88251b4a81, type: 3}
+          Metallic: 0
+          Tiling: 16
+    Weather:
+      WeatherConditions:
+      - Name: Sunny
+        EffectPrefab: {fileID: 0}
+        SkyIndex: 0
+        LightMultiplier: 1
+        SunReflectionFactor: 1
+        FogMultiplier: 1
+        Snowy: 0
+        OverrideFogColor: 0
+      - Name: Rainy
+        EffectPrefab: {fileID: 1599286719301778, guid: e08d35bb4684bc8458cd400dc6db2aa0, type: 2}
+        SkyIndex: 1
+        LightMultiplier: 0.85
+        SunReflectionFactor: 0
+        FogMultiplier: 1.5
+        Snowy: 0
+        OverrideFogColor: 1
+      - Name: Snowy
+        EffectPrefab: {fileID: 1471470798002122, guid: 0a8b52eb586a26b4b943d9e97b3a8017, type: 2}
+        SkyIndex: 1
+        LightMultiplier: 0.85
+        SunReflectionFactor: 0
+        FogMultiplier: 1.5
+        Snowy: 1
+        OverrideFogColor: 0
+      - Name: Storm
+        EffectPrefab: {fileID: 1599286719301778, guid: e08d35bb4684bc8458cd400dc6db2aa0, type: 2}
+        SkyIndex: 1
+        LightMultiplier: 0.6
+        SunReflectionFactor: 0
+        FogMultiplier: 1.5
+        Snowy: 0
+        OverrideFogColor: 1
+      - Name: Blizzard
+        EffectPrefab: {fileID: 0}
+        SkyIndex: 1
+        LightMultiplier: 0.6
+        SunReflectionFactor: 0
+        FogMultiplier: 1.5
+        Snowy: 1
+        OverrideFogColor: 0
