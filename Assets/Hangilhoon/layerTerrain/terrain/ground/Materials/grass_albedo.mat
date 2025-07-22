@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: grass_albedo
-  m_Shader: {fileID: -6465566751694194690, guid: 4fed77a9b2fdc394293760e23db9f89f, type: 3}
-  m_Parent: {fileID: 2100000, guid: 1245f5ea561f49e459f5410ce72283b9, type: 2}
+  m_Shader: {fileID: 10757, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -20,6 +20,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
+  - XRMotionVectors
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
