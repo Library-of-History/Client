@@ -2,13 +2,15 @@ using System;
 
 public class UIControllerModel
 {
-    public UICollection CurrentUI { get; private set; }
-    public UICollection[] EnumArray { get; private set; }
+    public UIControllerCollection CurrentUI { get; private set; }
+    public UIControllerCollection[] EnumArray { get; private set; }
 
-    private static readonly UICollection[] mrEnums = { UICollection.LearningProgress, UICollection.LearningLog };
-    private static readonly UICollection[] vrEnums = { UICollection.LearningProgress };
+    private static readonly UIControllerCollection[] mrEnums =
+        { UIControllerCollection.LearningProgress, UIControllerCollection.ObjectModify };
+    private static readonly UIControllerCollection[] vrEnums =
+        { UIControllerCollection.LearningProgress };
 
-    public UIControllerModel(UICollection collection, UIEnvironment environment)
+    public UIControllerModel(UIControllerCollection collection, UIEnvironment environment)
     {
         CurrentUI = collection;
         UpdateEnumArray(environment);

@@ -9,19 +9,19 @@ public class UIControllerPresenter : MonoBehaviour
     [SerializeField] private UIControllerView view;
     
     [SerializeField] private MonoBehaviour[] presenters;
-    private Dictionary<UICollection, MonoBehaviour> presenterMap;
+    private Dictionary<UIControllerCollection, MonoBehaviour> presenterMap;
     
     private bool isApplicationUIOpened = false;
     private bool didMoveAxis = false;
 
     private void Awake()
     {
-        model = new UIControllerModel(UICollection.LearningProgress, UIEnvironment.MR);
-        presenterMap = new Dictionary<UICollection, MonoBehaviour>();
+        model = new UIControllerModel(UIControllerCollection.LearningProgress, UIEnvironment.MR);
+        presenterMap = new Dictionary<UIControllerCollection, MonoBehaviour>();
 
         foreach (var presenter in presenters)
         {
-            if (Enum.TryParse<UICollection>(presenter.gameObject.name.Substring(
+            if (Enum.TryParse<UIControllerCollection>(presenter.gameObject.name.Substring(
                     0, presenter.gameObject.name.Length - 2), out var collection))
             {
                 presenterMap[collection] = presenter;
@@ -88,6 +88,17 @@ public class UIControllerPresenter : MonoBehaviour
     {
         if (context.performed && context.ReadValueAsButton())
         {
+            if (view.gameObject.activeSelf)
+            {
+                foreach (var pair in presenterMap)
+                {
+                    pair.Value.gameObject.SetActive(pair.Key == model.CurrentUI);
+                }
+                
+                isApplicationUIOpened = true;
+                return;
+            }
+            
             if (isApplicationUIOpened)
             {
                 foreach (var pair in presenterMap)

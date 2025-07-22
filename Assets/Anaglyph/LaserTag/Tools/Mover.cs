@@ -1,10 +1,11 @@
+using System;
 using Anaglyph.XRTemplate;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Anaglyph.Lasertag
 {
-    public class Modifier : MonoBehaviour
+    public class Mover : MonoBehaviour
     {
         [SerializeField] private float rotateSpeed;
         [SerializeField] private float moveSpeed;
@@ -79,9 +80,10 @@ namespace Anaglyph.Lasertag
             if (selectedObject == null)
             {
                 Ray ray = new(transform.position, transform.forward);
-                bool didHit = Physics.Raycast(ray, out RaycastHit hitInfo);
+                bool didHit = Physics.Raycast(ray, out var hitInfo);
+
                 target = hitInfo.collider?.gameObject;
-			
+
                 if (!didHit || target == null)
                 {
                     return;

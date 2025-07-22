@@ -18,6 +18,7 @@ namespace Anaglyph.Lasertag.UI
 		private void OnClick(bool isRight)
 		{
 			ToolPalette p = isRight ? ToolPalette.Right : ToolPalette.Left;
+			p.toolSelector.DeactivateAllChildren();
 			p.toolSelector.SetActiveChild(p.transform.Find(objectName).GetSiblingIndex());
 		}
 	}

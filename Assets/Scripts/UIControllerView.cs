@@ -7,16 +7,16 @@ public class UIControllerView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] texts;
 
-    private Dictionary<UICollection, TextMeshProUGUI> textMap;
+    private Dictionary<UIControllerCollection, TextMeshProUGUI> textMap;
 
     private void Awake()
     {
-        textMap = new Dictionary<UICollection, TextMeshProUGUI>();
+        textMap = new Dictionary<UIControllerCollection, TextMeshProUGUI>();
         
         foreach (var text in texts)
         {
             if (Enum.TryParse(text.gameObject.name.Substring(0, text.gameObject.name.Length - 4),
-                    out UICollection collection))
+                    out UIControllerCollection collection))
             {
                 textMap[collection] = text;
             }
@@ -29,11 +29,11 @@ public class UIControllerView : MonoBehaviour
     {
         foreach (var pair in textMap)
         {
-            pair.Value.text = UIDisplayNameParser.GetDisplayName(pair.Key);
+            pair.Value.text = UIDisplayNameParser.GetDisplayNameGeneric(pair.Key);
         }
     }
 
-    public void SetActiveText(UICollection[] collections)
+    public void SetActiveText(UIControllerCollection[] collections)
     {
         foreach (var pair in textMap)
         {
@@ -59,12 +59,12 @@ public class UIControllerView : MonoBehaviour
         }
     }
 
-    public void HighLightText(UICollection collection)
+    public void HighLightText(UIControllerCollection collection)
     {
         textMap[collection].color = Color.yellow;
     }
     
-    public void UnHighLightText(UICollection collection)
+    public void UnHighLightText(UIControllerCollection collection)
     {
         textMap[collection].color = Color.white;
     }

@@ -23,8 +23,8 @@ namespace Anaglyph.Menu
 			
 			if (initialActiveChild != null && initialActiveChild.transform.parent == transform)
 				SetActiveChild(initialActiveChild.transform.GetSiblingIndex());
-			else
-				SetActiveChild(0);
+			// else
+			// 	SetActiveChild(0);
 		}
 
 		public void DeactivateAllChildren()

@@ -58,7 +58,7 @@ namespace Anaglyph.Lasertag
 			previewObject = InstantiateObjectAsPreview(objectToSpawn);
 		}
 
-		private void Update()
+		private void FixedUpdate()
 		{
 			angleY += Time.deltaTime * rotateSpeed * rotatingY;
 			angleX += Time.deltaTime * rotateSpeed * rotatingX;
@@ -97,7 +97,7 @@ namespace Anaglyph.Lasertag
 			                                   (transform.right * distanceX)
 			                                   + (transform.up * distanceY)
 			                                   + (transform.forward * (distanceZ - 0.1f));
-			previewObject.transform.eulerAngles = new(angleX, angleY, 0);
+			previewObject.transform.eulerAngles = new (angleX, angleY, 0);
 		}
 
 		private void OnEnable()
@@ -126,6 +126,7 @@ namespace Anaglyph.Lasertag
 				var rotation = previewObject.transform.rotation;
 
 				Instantiate(objectToSpawn, position: position, rotation: rotation);
+				
 				gameObject.SetActive(false);
 			}
 		}
