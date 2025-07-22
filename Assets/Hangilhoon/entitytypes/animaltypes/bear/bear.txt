@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animal_type>
+	<flags value="ZealousOfYoung,AttackWhenHungry"/>
+	<max_health value="300"/>
+	<move_speed value="2"/>
+	<sprint_speed value="7.2"/>
+	<diet_type value="Omnivore"/>
+	<reuse_animations value="cave_bear"/>
+	<hunt_radius value="100"/>
+	<reduced_ratio value="0.1"/>
+	<byproducts values="raw_meat:3 raw_skin:3 bone:2"/>
+	<knowledge value="1"/>
+	
+	<!-- Attack parameters -->
+	<attack_damage value="40"/>
+	<attack_period value="1.5"/>
+	<attack_hit_time value="1.0"/>	
+	<knock_back_chance value="0.3"/>
+	
+	<!-- Female with some cubs -->
+	<groups>
+		<animal_definition age="Adult" gender="Female" amount="1"/>
+		<animal_definition age="Young" min="2" max="3"/>
+	</groups>
+
+	<!-- Adults and old -->
+	<loners>
+		<animal_definition age="Adult" gender="Male" amount="1"/>
+		<animal_definition age="Adult" amount="1"/>
+		<animal_definition age="Old" amount="1"/>
+	</loners>
+	
+	<help_id value="predator"/>	
+	
+</animal_type>

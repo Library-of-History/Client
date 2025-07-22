@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animal_type>
+	<flags value="Retaliates"/>
+	<max_health value="300"/>
+	<move_speed value="2"/>
+	<sprint_speed value="10"/>
+	<stamina_time value="40"/>
+	<diet_type value="Herbivore"/>
+	<knowledge value="1"/>
+
+	<domestication_tech value="cattle_domestication"/>
+	<domesticated_variant value="cattle"/>
+
+	<byproducts values="raw_meat:6 raw_skin:4 bone:2"/>
+
+	<!-- Attack parameters -->
+	<attack_damage value="25"/>
+	<attack_period value="1.5"/>
+	<attack_hit_time value="1"/>
+	<knock_back_chance value="0.3"/>	
+	
+	<!-- Alpha male, with some females, and some young -->
+	<groups>
+		<animal_definition age="Adult" gender="Male" amount="1"/>
+		<animal_definition age="Adult" gender="Female" min="2" max="3"/>
+		<animal_definition age="Young" min="3" max="4"/>
+	</groups>
+
+	<!-- Some adults and old -->
+	<loners>
+		<animal_definition age="Adult" gender="Male" amount="1"/>
+		<animal_definition age="Adult" amount="1"/>
+		<animal_definition age="Old" amount="1"/>
+	</loners>
+	
+	<help_id value="large_herbivore"/>	
+	
+</animal_type>

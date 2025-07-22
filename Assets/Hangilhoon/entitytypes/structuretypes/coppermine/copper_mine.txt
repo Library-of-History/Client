@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="500"/>
+	<flags value="NoCollision,Mine"/>
+	<cell_size value="3,3"/>
+	<slots>
+		<slot count="3" slot_type="Human"/>
+		<slot count="4"/>
+	</slots>
+	<build_time value="2m"/>
+	<costs values="log:6"/>
+	<produced_resource value="copper_ore:50"/>
+	<requirements values="underground_mining copper_smelting"/>
+	<knowledge_counts values="1 3"/>
+</structure_type>

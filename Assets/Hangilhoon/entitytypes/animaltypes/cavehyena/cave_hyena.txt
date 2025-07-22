@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animal_type>
+	<flags value="ZealousOfYoung,AttackWhenHungry"/>
+	<max_health value="160"/>
+	<move_speed value="2.4"/>
+	<sprint_speed value="12"/>
+	<diet_type value="Carnivore"/>
+	<hunt_radius value="250"/>
+	<byproducts values="raw_meat:1 raw_skin:3 bone:1"/>
+	
+	<attack_damage value="20"/>
+	<attack_period value="1.0"/>
+	<attack_hit_time value="0.23"/>
+
+	<!-- Alpha male, with some females and males, and some young -->
+	<groups>
+		<animal_definition age="Adult" gender="Female" amount="1"/>
+		<animal_definition age="Adult" min="2" max="3"/>
+		<animal_definition age="Old" min="0" max="1"/>
+		<animal_definition age="Young" min="3" max="4"/>
+	</groups>
+
+	<!-- Some adults and old -->
+	<loners>
+		<animal_definition age="Adult" amount="2"/>
+		<animal_definition age="Old" amount="1"/>
+	</loners>
+
+	<byproducts values="raw_skin:1 raw_meat:1"/>
+	
+	<help_id value="predator"/>		
+</animal_type>

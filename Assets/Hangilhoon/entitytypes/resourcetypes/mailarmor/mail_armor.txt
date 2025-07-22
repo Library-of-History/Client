@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource_type>
+	<flags value="Clothing"/>
+	<attributes>
+		<armor value="2"/>	
+		<warmth value="1"/>
+	</attributes>
+	<min_trade_era value="IronAge"/>
+	<max_trade_era value="IronAge"/>
+	<decay_time value="6y"/>
+	<trade_value value="15"/>
+	<default_limit value="100A"/>
+	<outfit_era value="StoneAge"/>
+	
+	<outfit_colors>
+		<resident>
+			<color_setups>
+				<color_setup primary="#8f9ea2" secondary="#a17642"/>
+				<color_setup primary="#868c5f" secondary="#aaa8ab"/>
+				<color_setup primary="#a79c76" secondary="#cfae8d"/>
+				<color_setup primary="#a17642" secondary="#8f9ea2"/>
+				<color_setup primary="#aaa8ab" secondary="#868c5f"/>
+			</color_setups>
+		</resident>
+		<migrant>
+			<color_setups>
+				<color_setup primary="78,118,135" secondary="170,179,134"/>
+			</color_setups>
+		</migrant>
+		<trader>
+			<color_setups>
+				<color_setup primary="#ffa613" secondary="#ff9925"/>
+				<color_setup primary="#ff9925" secondary="#ffa613"/>
+			</color_setups>
+		</trader>
+		<raider>
+			<color_setups>
+				<color_setup primary="#c40900" secondary="#ad3400"/>
+				<color_setup primary="#ad3400" secondary="#c40900"/>
+				<color_setup primary="#c40900" secondary="#c40900"/>
+			</color_setups>
+		</raider>
+
+	</outfit_colors>
+	
+</resource_type>

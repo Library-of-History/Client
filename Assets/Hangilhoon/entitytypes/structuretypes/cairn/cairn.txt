@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+  <max_health value="2000"/>
+	<flags value="RemoveConstructionResources,NoCollision,HemisphereCollision"/>
+	<cell_size value="9,9"/>
+	<build_time value="18m"/>
+	<morale_restore value="0.5"/>
+	<costs values ="megalith:4 stone:20 mud:20"/>
+	<requirements values="complex_megalithism"/>
+	<prestige value="100"/>
+	<knowledge value="3"/>
+	<people_per_build_task value="100"/>
+	<knowledge_counts values="1 2"/>
+	<burial_capacity value="20"/>
+	<body_decay_factor value="5"/>
+	<max_simultaneous_users value="7"/>
+	<usage_distance value="2.5"/>
+</structure_type>

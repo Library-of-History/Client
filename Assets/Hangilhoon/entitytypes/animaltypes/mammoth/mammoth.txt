@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animal_type>
+	<flags value="LargeParticles,Retaliates"/>
+	<max_health value="900"/>
+	<move_speed value="1.5"/>
+	<sprint_speed value="6.5"/>
+	<diet_type value="Herbivore"/>
+	<knowledge value="2"/>
+	<byproducts values="raw_meat:14 raw_skin:10 bone:4"/>
+	
+	<!-- Attack parameters -->
+	<attack_damage value="50"/>
+	<attack_period value="2.5"/>
+	<attack_hit_time value="1.5"/>
+	<knock_back_chance value="0.4"/>	
+	
+	<!-- Alpha female, with some other females, and some young -->
+	<groups>
+		<animal_definition age="Old" gender="Female" amount="1"/>
+		<animal_definition age="Adult" gender="Female" min="1" max="2"/>
+		<animal_definition age="Young" min="2" max="3"/>
+	</groups>
+
+	<!-- Spawn some adult and old males -->
+	<loners>
+		<animal_definition age="Adult" gender="Male" amount="2"/>
+		<animal_definition age="Old" gender="Male" amount="1"/>
+	</loners>
+
+	<help_id value="large_herbivore"/>		
+	
+</animal_type>

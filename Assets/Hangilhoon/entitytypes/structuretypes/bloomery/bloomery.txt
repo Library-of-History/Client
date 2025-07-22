@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure_type>
+	<max_health value="400"/>
+	<flags value="EnableContinousRecipes,FakeDoors"/>
+	<cell_size value="2,2"/>
+	<slots>
+		<slot count="6"/>
+	</slots>
+	<build_time value="5m"/>
+	<costs values ="mud:8 leather:4"/>
+	<requirements values="iron_smelting"/>
+	<max_crafters value="1"/>
+	<recipes values="recipe_iron recipe_steel"/>
+	<crafting_animation value="SmeltingBloomery"/>
+	<crafting_particles value="SmeltingBloomery"/>
+	<destruction_particles value="DebrisGenericSmall"/>
+</structure_type>
