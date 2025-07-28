@@ -23,7 +23,6 @@ public class LearningProgressUIPresenter : MonoBehaviour
                 model.SwitchCurrentState(subject);
                 model.SwitchCurrentState(LearningProgressUICollection.Age);
                 
-                view.SwitchCurrentUI(model.CurrentUI);
                 view.ShowButtons(model.AgeArray, model.CurrentUI, OnButtonClick);
             }
         }
@@ -33,9 +32,6 @@ public class LearningProgressUIPresenter : MonoBehaviour
             {
                 view.HideButtons();
                 model.SwitchCurrentState(age);
-            
-                view.SwitchCurrentUI(model.CurrentUI);
-                gameObject.SetActive(false);
             }
         }
     }

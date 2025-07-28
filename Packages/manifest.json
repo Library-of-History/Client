@@ -1,4 +1,16 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "VideoKit",
+      "url": "https://registry.npmjs.com",
+      "scopes": ["ai.videokit"]
+    },
+    {
+      "name": "Function",
+      "url": "https://registry.npmjs.com",
+      "scopes": ["ai.fxn"]
+    }
+  ],
   "dependencies": {
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.meta.xr.depthapi": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi",
@@ -55,6 +67,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "ai.videokit.videokit": "1.0.1"
   }
 }

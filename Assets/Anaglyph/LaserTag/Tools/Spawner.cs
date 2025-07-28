@@ -58,7 +58,7 @@ namespace Anaglyph.Lasertag
 			previewObject = InstantiateObjectAsPreview(objectToSpawn);
 		}
 
-		private void FixedUpdate()
+		private void Update()
 		{
 			angleY += Time.deltaTime * rotateSpeed * rotatingY;
 			angleX += Time.deltaTime * rotateSpeed * rotatingX;

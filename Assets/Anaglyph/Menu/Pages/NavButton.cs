@@ -8,9 +8,15 @@ namespace Anaglyph.Menu
 		private NavPage navPage;
 		public NavPage goToPage;
 
-		private void Awake()
+		private void OnEnable()
 		{
 			navPage = GetComponentInParent<NavPage>(true);
+
+			if (navPage != null)
+			{
+				Debug.Log("Yes");
+				Debug.Log(goToPage.name);
+			}
 
 			GetComponent<Button>().onClick.AddListener(delegate
 			{

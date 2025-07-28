@@ -15,11 +15,11 @@ public static class UIDisplayNameParser
     };
     private static readonly Dictionary<Subject, string> sMap = new Dictionary<Subject, string>()
     {
-        { Subject.Lifestyle, "Lifestyle" },
+        { Subject.Lifestyle, "생활 양식" },
     };
     private static readonly Dictionary<Age, string> aMap = new Dictionary<Age, string>()
     {
-        { Age.Prehistory, "Prehistory" },
+        { Age.Prehistory, "선사 시대" },
     };
 
     public static string GetDisplayNameGeneric<T>(T collection)

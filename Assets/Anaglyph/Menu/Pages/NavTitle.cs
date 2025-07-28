@@ -21,7 +21,7 @@ namespace Anaglyph.MenuXR
 			bool showBackButton = parentNavPage.showBackButton && parentNavPage.ParentView?.History.Count > 1;
 
 			backButton.SetActive(showBackButton);
-			titleRectTransform.anchoredPosition = showBackButton ? new Vector2(80, 0) : Vector2.zero;
+			//titleRectTransform.anchoredPosition = showBackButton ? new Vector2(80, 0) : Vector2.zero;
 		}
 	}
 }
