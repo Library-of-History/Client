@@ -60,6 +60,11 @@ namespace Anaglyph.Lasertag
 
 		private void Update()
 		{
+			if (objectToSpawn == null || previewObject == null)
+			{
+				return;
+			}
+			
 			angleY += Time.deltaTime * rotateSpeed * rotatingY;
 			angleX += Time.deltaTime * rotateSpeed * rotatingX;
 			
@@ -122,6 +127,11 @@ namespace Anaglyph.Lasertag
 		{
 			if (context.performed && context.ReadValueAsButton())
 			{
+				if (objectToSpawn == null || previewObject == null)
+				{
+					return;
+				}
+				
 				var position = previewObject.transform.position;
 				var rotation = previewObject.transform.rotation;
 

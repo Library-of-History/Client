@@ -79,7 +79,7 @@ namespace Anaglyph.Menu
 
 		private void SetPose()
 		{
-			Vector3 flatForward = new Vector3(camTransform.forward.x, 0, camTransform.forward.z).normalized;
+			Vector3 flatForward = camTransform.forward.normalized;
 
 			Matrix4x4 pose = Matrix4x4.LookAt(camTransform.position, camTransform.position + flatForward, Vector3.up);
 

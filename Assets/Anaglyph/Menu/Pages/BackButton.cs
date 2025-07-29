@@ -10,7 +10,7 @@ namespace Anaglyph.Menu
 		private void Awake()
 		{
 			navPage = GetComponentInParent<NavPage>(true);
-
+			
 			GetComponent<Button>().onClick.AddListener(delegate
 			{
 				navPage.ParentView.GoBack();

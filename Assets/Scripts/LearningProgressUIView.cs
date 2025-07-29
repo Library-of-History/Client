@@ -15,6 +15,7 @@ public class LearningProgressUIView : MonoBehaviour
 
     private Dictionary<LearningProgressUICollection, GameObject> panelMap;
     private Dictionary<LearningProgressUICollection, GameObject> buttonPrefabMap;
+    
     private List<GameObject> buttons;
 
     private void Awake()
@@ -69,12 +70,16 @@ public class LearningProgressUIView : MonoBehaviour
             
             StringBuilder sb = new StringBuilder(element.ToString());
             sb.Append("Button");
-            button.name = sb.ToString();
+            btnCopy.name = sb.ToString();
             
             sb.Clear();
             sb.Append(UIDisplayNameParser.GetDisplayNameGeneric(element));
-            button.GetComponentInChildren<TextMeshProUGUI>().text = sb.ToString();
-            buttons.Add(button);
+            btnCopy.GetComponentInChildren<TextMeshProUGUI>().text = sb.ToString();
+
+            if (collection == LearningProgressUICollection.Age)
+            {
+                buttons.Add(btnCopy);
+            }
             
             btnCopy.GetComponent<Button>().onClick.AddListener(() => onClick(btnCopy));
         }
@@ -82,21 +87,28 @@ public class LearningProgressUIView : MonoBehaviour
         if (collection == LearningProgressUICollection.Age)
         {
             lineRenderer.points = new Vector2[buttons.Count];
-
+            
+            var layout = panelMap[collection].GetComponent<HorizontalLayoutGroup>();
+            var scrollRect = panelMap[collection].GetComponentInParent<ScrollRect>(true).gameObject.GetComponent<RectTransform>();
+            var ageButtonRect = buttonPrefabMap[collection].GetComponent<RectTransform>();
+            var next = new Vector2(0f, -1f * scrollRect.rect.height / 2);
+                    
             for (int i = 0; i < buttons.Count; i++)
             {
-                lineRenderer.points[i] = buttons[i].GetComponent<RectTransform>().anchoredPosition;
-            }
-        }
-    }
+                if (i == 0)
+                {
+                    next += new Vector2(layout.padding.left, 0f);
+                }
+                else
+                {
+                    next += new Vector2(ageButtonRect.rect.width / 2 + layout.spacing, 0f);
+                }
 
-    public void HideButtons()
-    {
-        foreach (var button in buttons)
-        {
-            Destroy(button);
+                next += new Vector2(ageButtonRect.rect.width / 2, 0f);
+                lineRenderer.points[i] = next;
+            }
+            
+            lineRenderer.SetVerticesDirty();
         }
-        
-        buttons.Clear();
     }
 }

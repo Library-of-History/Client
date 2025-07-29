@@ -1,16 +1,25 @@
 using System;
+using Anaglyph.Menu;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LearningProgressUIPresenter : MonoBehaviour
 {
     private LearningProgressUIModel model;
     [SerializeField] private LearningProgressUIView view;
+    [SerializeField] private Button backButton;
 
     private void Awake()
     {
         model = new LearningProgressUIModel(LearningProgressUICollection.Subject);
+        
         view.ShowButtons(model.SubjectArray, LearningProgressUICollection.Subject, OnButtonClick);
-        gameObject.SetActive(false);
+        view.ShowButtons(model.AgeArray, LearningProgressUICollection.Age, OnButtonClick);
+        
+        backButton.onClick.AddListener(delegate
+        {
+            model.SwitchCurrentState(LearningProgressUICollection.Subject);
+        });
     }
 
     private void OnButtonClick(GameObject btn)
@@ -19,18 +28,14 @@ public class LearningProgressUIPresenter : MonoBehaviour
         {
             if (Enum.TryParse<Subject>(btn.name.Substring(0, btn.name.Length - 6), out var subject))
             {
-                view.HideButtons();
                 model.SwitchCurrentState(subject);
                 model.SwitchCurrentState(LearningProgressUICollection.Age);
-                
-                view.ShowButtons(model.AgeArray, model.CurrentUI, OnButtonClick);
             }
         }
         else if (model.CurrentUI == LearningProgressUICollection.Age)
         {
             if (Enum.TryParse<Age>(btn.name.Substring(0, btn.name.Length - 6), out var age))
             {
-                view.HideButtons();
                 model.SwitchCurrentState(age);
             }
         }
