@@ -3,7 +3,9 @@ using UnityEngine;
 public class SystemManager : MonoBehaviour
 {
     public static SystemManager Inst { get; private set; }
+    
     public string Token;
+    public GameObject Portal;
     
     private void Awake()
     {
