@@ -95,6 +95,12 @@ public class NPCCharacter : MonoBehaviour
     {
         Debug.Log($"{npcName}: {player.name} 멀어짐");
 
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActiveWithNPC(this))
+        {
+            Debug.Log($"{npcName}: 대화 중단 - 플레이어가 범위 벗어남");
+            DialogueManager.Instance.InterruptDialogue();
+        }
+        
         vrPlayerTracker = null;
         StartCoroutine(ReturnToIdleState());
         
@@ -106,6 +112,8 @@ public class NPCCharacter : MonoBehaviour
         {
             VRInteractionManager.Instance.ClearCurrentNPC();
         }
+
+        ResetDialogueState();
     }
 
     public void OnPlayerStayNearby()
@@ -119,6 +127,14 @@ public class NPCCharacter : MonoBehaviour
                 transform.position += direction * Time.deltaTime * 0.5f;
             }
         }
+    }
+
+    private void ResetDialogueState()
+    {
+        currentDialogueIndex = 0;
+        isInCooldown = false;
+        
+        Debug.Log($"{npcName}: 대화 상태 초기화 완료");
     }
     
     public void StartDialogue()

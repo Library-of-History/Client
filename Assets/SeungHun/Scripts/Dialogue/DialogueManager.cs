@@ -380,6 +380,64 @@ public class DialogueManager : MonoBehaviour
         OnDialogueEnd?.Invoke();
     }
 
+    // 대화 강제 중단
+    public void InterruptDialogue()
+    {
+        if (!dialogueActive)
+            return;
+        
+        Debug.Log("대화 중단 - 플레이어가 범위를 벗어남");
+        
+        dialogueActive = false;
+        waitingForChoice = false;
+
+        if (currentNPCUI != null)
+        {
+            currentNPCUI.SetDialoguePanelActive(false);
+            currentNPCUI.SetChoicesPanelActive(false);
+        }
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+        
+        currentDialogueData = null;
+        currentNodeIndex = 0;
+        pendingReturnNodeIndex = -1;
+        selectedChoiceIndex = 0;
+        choiceResponseQueue.Clear();
+        currentChoices = null;
+        isTyping = false;
+        currentSentence = "";
+        
+        currentNPCUI = null;
+        
+        OnDialogueEnd?.Invoke();
+    }
+
+    public bool IsDialogueActiveWithNPC(NPCCharacter npc)
+    {
+        return dialogueActive && currentNPCUI != null && currentNPCUI == npc.npcDialogueUI;
+    }
+
+    public NPCCharacter GetCurrentDialogueNPC()
+    {
+        if (!dialogueActive || currentNPCUI == null)
+            return null;
+
+        NPCCharacter[] allNPCS = FindObjectsOfType<NPCCharacter>();
+        foreach (var npc in allNPCS)
+        {
+            if (npc.npcDialogueUI == currentNPCUI)
+                return npc;
+        }
+
+        return null;
+    }
+    
+
     private void OnDestroy()
     {
         if (VRInputManager.Instance != null)

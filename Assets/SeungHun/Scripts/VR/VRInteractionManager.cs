@@ -63,6 +63,13 @@ public class VRInteractionManager : MonoBehaviour
       if (currentInteractableNPC != null)
       {
          Debug.Log($"VR 상호작용 NPC 해제: {currentInteractableNPC.npcName}");
+
+         if (DialogueManager.Instance != null &&
+             DialogueManager.Instance.IsDialogueActiveWithNPC(currentInteractableNPC))
+         {
+            Debug.Log("VRInteractionManager: 대화 중단 - NPC 범위 이탈");
+            DialogueManager.Instance.InterruptDialogue();
+         }
       }
       currentInteractableNPC = null;
    }
