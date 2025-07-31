@@ -17,23 +17,26 @@ namespace Anaglyph.XRTemplate
 		private void Update()
 		{
 			bool newOverUI = rayInteractor.IsOverUIGameObject();
-				
-			if (newOverUI != overUI) {
-				overUI = newOverUI;
-				foreach (Behaviour behaviour in behaviours)
+			bool newOverPortal = false;
+			
+			if (SystemManager.Inst.Portal != null)
+			{
+				var portalObjects = 
+					SystemManager.Inst.Portal.GetComponentsInChildren<XRSimpleInteractable>();
+
+				foreach (var obj in portalObjects)
 				{
-					behaviour.enabled = !overUI;
+					newOverPortal |= rayInteractor.IsHovering(obj);
 				}
 			}
 
-			bool newOverPortal = rayInteractor.IsHovering(SystemManager.Inst.Portal.GetComponentInChildren<XRSimpleInteractable>());
-
-			if (newOverPortal != overPortal)
+			if (newOverUI != overUI || newOverPortal != overPortal)
 			{
+				overUI = newOverUI;
 				overPortal = newOverPortal;
 				foreach (Behaviour behaviour in behaviours)
 				{
-					behaviour.enabled = !overPortal;
+					behaviour.enabled = !overPortal & !overUI;
 				}
 			}
 		}

@@ -7,7 +7,7 @@ public class URLStreamHandler : DownloadHandlerScript
     private TTSStreamManager _manager;
     private StringBuilder _buffer = new StringBuilder();
 
-    private string Url = "http://221.163.19.142:58026";
+    private string Url = "http://221.163.19.142:58002";
 
     public URLStreamHandler(TTSStreamManager manager) : base(new byte[8192])
     {

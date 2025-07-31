@@ -46,7 +46,7 @@ public class LoginManager : MonoBehaviour
             password = Password
         };
 
-        StartCoroutine(PostRegisterData("http://221.163.19.142:58026/users/register", data));
+        StartCoroutine(PostRegisterData("http://221.163.19.142:58002/users/register", data));
     }
 
     public void OnLogin()
@@ -59,7 +59,7 @@ public class LoginManager : MonoBehaviour
             password = Password
         };
 
-        StartCoroutine(PostLoginData("http://221.163.19.142:58026/login/token", data));
+        StartCoroutine(PostLoginData("http://221.163.19.142:58002/login/token", data));
     }
     
     IEnumerator PostRegisterData(string url, PostData data)

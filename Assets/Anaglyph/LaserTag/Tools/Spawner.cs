@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 namespace Anaglyph.Lasertag
@@ -46,11 +47,14 @@ namespace Anaglyph.Lasertag
 
 			lineRenderer.useWorldSpace = false;
 			lineRenderer.SetPositions(new[] { Vector3.zero, Vector3.zero });
+			
+			gameObject.SetActive(false);
 		}
 
 		public void SetObjectToSpawn(GameObject objectToSpawn)
 		{
 			this.objectToSpawn = objectToSpawn;
+			SystemManager.Inst.MRSelectedObject = objectToSpawn;
 
 			if(previewObject != null)
 				Destroy(previewObject);
@@ -75,13 +79,21 @@ namespace Anaglyph.Lasertag
 			lineRenderer.enabled = false;
 			previewObject.SetActive(false);
 
-			if (previewObject == null)
-			{
-				return;
-			}
-
 			bool overUI = hand.RayInteractor.IsOverUIGameObject();
-			if(overUI)
+			bool overPortal = false;
+			
+			if (SystemManager.Inst.Portal != null)
+			{
+				var portalObjects = 
+					SystemManager.Inst.Portal.GetComponentsInChildren<XRSimpleInteractable>();
+
+				foreach (var obj in portalObjects)
+				{
+					overPortal |= hand.RayInteractor.IsHovering(obj);
+				}
+			}
+			
+			if(overUI || overPortal)
 			{
 				return;
 			}
@@ -136,6 +148,7 @@ namespace Anaglyph.Lasertag
 				var rotation = previewObject.transform.rotation;
 
 				Instantiate(objectToSpawn, position: position, rotation: rotation);
+				SystemManager.Inst.MRSelectedObject = null;
 				
 				gameObject.SetActive(false);
 			}

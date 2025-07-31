@@ -9,7 +9,7 @@ using VideoKit;
 
 public class TTSStreamManager : MonoBehaviour
 {
-    private string apiUrl = "http://221.163.19.142:58026/voice-interaction";
+    private string apiUrl = "http://221.163.19.142:58002/voice-interaction";
     private AudioSource audioSource;
     private Queue<string> audioUrlQueue = new Queue<string>();
     

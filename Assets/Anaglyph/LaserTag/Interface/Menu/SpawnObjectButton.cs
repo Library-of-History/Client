@@ -10,10 +10,17 @@ namespace Anaglyph.Lasertag.UI
 
 		public void OnClick(bool isRight)
 		{
+			if (SystemManager.Inst.MRSelectedObject != null)
+			{
+				return;
+			}
+			
 			var spawner = isRight ? Spawner.Right : Spawner.Left;
 			spawner.gameObject.SetActive(true);
 			spawner.SetObjectToSpawn(objectToSpawn);
-			Destroy(gameObject);
+			
+			Destroy(SystemManager.Inst.Portal);
+			SystemManager.Inst.Portal = null;
 		}
 	}
 }

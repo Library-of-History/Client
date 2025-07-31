@@ -73,6 +73,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5889c144acbb92b479fd2b277b53791a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5207265678558263788}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5889c144acbb92b479fd2b277b53791a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6099891206482734993}
   m_SourcePrefab: {fileID: 100100000, guid: 5889c144acbb92b479fd2b277b53791a, type: 3}
 --- !u!1 &8666708391649060411 stripped
 GameObject:
@@ -175,7 +178,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6099891206482734993}
+        m_TargetAssemblyTypeName: PortalSelectReceiver, Assembly-CSharp
+        m_MethodName: OnSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -200,3 +215,15 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
+--- !u!114 &6099891206482734993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666708391649060411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264668e6fa2787a4aa076ae869ae656c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
