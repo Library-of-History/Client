@@ -51,7 +51,14 @@ public class UIManager : MonoBehaviour
 
         if (currentNPC != null)
         {
-            ShowInteractionUI(currentNPC);
+            if (IsPlayerInNPCRange(currentNPC))
+            {
+                ShowInteractionUI(currentNPC);
+            }
+            else
+            {
+                Debug.Log("UI: 플레이어가 범위 밖에 있음");
+            }
         }
         
         Debug.Log("UI: 대화 종료, interaction panel 복원");
@@ -97,6 +104,15 @@ public class UIManager : MonoBehaviour
         currentNPCUI = null;
     }
 
+    private bool IsPlayerInNPCRange(NPCCharacter npc)
+    {
+        if (npc == null)
+            return false;
+
+        var detection = npc.GetComponent<NPCTriggerDetection>();
+        return detection != null && detection.PlayerInRange;
+    }
+    
     private void OnDestroy()
     {
         DialogueManager.OnDialogueStart -= OnDialogueStarted;
