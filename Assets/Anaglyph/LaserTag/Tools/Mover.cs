@@ -2,6 +2,7 @@ using System;
 using Anaglyph.XRTemplate;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 namespace Anaglyph.Lasertag
 {
@@ -69,7 +70,20 @@ namespace Anaglyph.Lasertag
             cursor.gameObject.SetActive(false);
 
             bool overUI = hand.RayInteractor.IsOverUIGameObject();
-            if(overUI)
+            bool overPortal = false;
+			
+            if (SystemManager.Inst.Portal != null)
+            {
+                var portalObjects = 
+                    SystemManager.Inst.Portal.GetComponentsInChildren<XRSimpleInteractable>();
+
+                foreach (var obj in portalObjects)
+                {
+                    overPortal |= hand.RayInteractor.IsHovering(obj);
+                }
+            }
+            
+            if(overUI || overPortal)
             {
                 return;
             }
@@ -138,7 +152,6 @@ namespace Anaglyph.Lasertag
                     storedPos = selectedObject.transform.position;
                     storedRot = selectedObject.transform.eulerAngles;
                     selectedObject = null;
-                    gameObject.SetActive(false);
                 }
             }
         }

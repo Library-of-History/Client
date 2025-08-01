@@ -2,11 +2,12 @@ using System;
 using Anaglyph.XRTemplate;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 namespace Anaglyph.Lasertag
 {
-	public class Deleter : MonoBehaviour
+	public class Modifier : MonoBehaviour
 	{
 		[SerializeField] private Transform cursor;
 		[SerializeField] LineRenderer lineRenderer;
@@ -68,7 +69,8 @@ namespace Anaglyph.Lasertag
 		{
 			if (context.performed && context.ReadValueAsButton())
 			{
-				Destroy(selectedObject);
+				PassthroughManager.SetPassthrough(false);
+				SceneManager.LoadScene(1);
 			}
 		}
 	}
