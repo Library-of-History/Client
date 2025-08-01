@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class NPCTriggerDetection : MonoBehaviour
 {
     [Header("감지 설정")]
-    [SerializeField] private float detectionRadius = 3f;
+    [SerializeField] private float detectionRadius = 2f;
     [SerializeField] private bool detectOnlyInFront = false;
     [SerializeField] private float frontAngle = 120f;
     [SerializeField] private LayerMask playerLayerMask = -1;
