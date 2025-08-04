@@ -1434,6 +1434,7 @@ GameObject:
   - component: {fileID: 1348620931}
   - component: {fileID: 1348620930}
   - component: {fileID: 1348620929}
+  - component: {fileID: 1348620932}
   m_Layer: 0
   m_Name: NPCCanvas
   m_TagString: Untagged
@@ -1526,6 +1527,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1348620932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348620927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf96cdf4474cdb48bf7fd6176d54d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrCameraTransform: {fileID: 0}
+  lockY: 1
+  smoothRotation: 1
+  rotationSpeed: 5
+  updateInterval: 0.2
+  maxDistance: 0
 --- !u!1 &1442196214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,37 +2601,50 @@ MonoBehaviour:
     npcName: "\uAF2C\uB9C8 \uC544\uC774"
     dialogueNodes:
     - dialogue: "\uC7A0\uAE50\uB9CC \uB098 \uC880 \uB3C4\uC640\uC918!"
+      voiceClip: {fileID: 0}
+      voiceVolume: 1
+      voiceTimingMode: 0
       hasChoices: 1
       choices:
       - choiceText: "\uC548\uB155 \uAF2C\uB9C8\uC57C, \uBB50\uD558\uACE0 \uC788\uC5B4?"
         responseDialogues:
-        - "\uAF2C\uB9C8\uB77C\uB2C8! \uB098 \uC694\uC998 \uD0A4\uB3C4 \uB9CE\uC774
-          \uCEF7\uAC70\uB4E0!"
+        - text: "\uAF2C\uB9C8\uB77C\uB2C8! \uB098 \uD0A4\uB3C4 \uB9CE\uC774 \uCEF7\uAC70\uB4E0!"
+          voiceClip: {fileID: 0}
+          voiceVolume: 1
+          voiceTimingMode: 0
         actionType: 0
         returnToNodeIndex: 0
       nodeId: 
     - dialogue: "\uC544\uBB34\uD2BC \uC9C0\uAE08 \uADF8\uAC8C \uC911\uC694\uD55C\uAC8C
         \uC544\uB2C8\uACE0, \uC544\uAE4C \uC544\uBC84\uC9C0\uD55C\uD14C\r\n    \r\uC8FC\uBA39
         \uB3C4\uB07C \uB9CC\uB4DC\uB294 \uBC95\uC744 \uBC30\uC6E0\uB294\uB370"
+      voiceClip: {fileID: 0}
+      voiceVolume: 1
+      voiceTimingMode: 0
       hasChoices: 0
       choices: []
       nodeId: 
     - dialogue: "\uC774 \uB3CC\uC740 \uB108\uBB34 \uBB34\uAC70\uC6CC! \uB0B4 \uD798\uC73C\uB85C
         \uB4E4\uAE30 \uB108\uBB34 \uD798\uB4E0\uB370 \uB098 \uC880 \uB3C4\uC640\uC918!"
+      voiceClip: {fileID: 0}
+      voiceVolume: 1
+      voiceTimingMode: 0
       hasChoices: 1
       choices:
       - choiceText: "\uC7A0\uAE50\uB9CC, \uC8FC\uBA39\uB3C4\uB07C\uAC00 \uBB54\uB370?"
         responseDialogues:
-        - "\uBB50\uC57C, \uC774\uAC83\uB3C4 \uBAB0\uB77C? \uC8FC\uBA39 \uB3C4\uB07C\uB294
-          \uC7A1\uB294 \uACF3\uC740 \uB465\uAE00\uACE0, \uBC18\uB300\uCABD \uB05D\uC740
-          \uBFB0\uC871\uD558\uAC8C \uC0DD\uACBC\uC5B4. "
+        - text: 
+          voiceClip: {fileID: 0}
+          voiceVolume: 1
+          voiceTimingMode: 0
         actionType: 0
         returnToNodeIndex: 2
       - choiceText: "\uC8FC\uBA39\uB3C4\uB07C\uB294 \uC5B4\uB5BB\uAC8C \uB9CC\uB4E4\uC5B4?"
         responseDialogues:
-        - "\uC774 \uCEE4\uB2E4\uB780 \uBAB8\uB3CC\uC744 \uB9DD\uCE58\uB3CC\uB85C
-          \uB0B4\uB9AC\uCCD0\uC11C \uAE68\uB728\uB9AC\uACE0 \uB2E4\uB4EC\uC73C\uBA74
-          \uB3FC!"
+        - text: 
+          voiceClip: {fileID: 0}
+          voiceVolume: 1
+          voiceTimingMode: 0
         actionType: 0
         returnToNodeIndex: 2
       - choiceText: "\uC88B\uC544, \uD55C\uBC88 \uD574\uBCF4\uC790!"
@@ -2621,24 +2653,33 @@ MonoBehaviour:
         returnToNodeIndex: 0
       nodeId: 2
     - dialogue: "\uB610 \uBB3C\uC5B4\uBCFC \uAC70 \uC788\uC5B4?"
+      voiceClip: {fileID: 0}
+      voiceVolume: 1
+      voiceTimingMode: 0
       hasChoices: 1
       choices:
       - choiceText: "\uC7A0\uAE50\uB9CC, \uC8FC\uBA39\uB3C4\uB07C\uAC00 \uBB54\uB370?"
         responseDialogues:
-        - "\uBB50\uC57C, \uC774\uAC83\uB3C4 \uBAB0\uB77C? \uC8FC\uBA39 \uB3C4\uB07C\uB294
-          \uC7A1\uB294 \uACF3\uC740 \uB465\uAE00\uACE0, \uBC18\uB300\uCABD \uB05D\uC740
-          \uBFB0\uC871\uD558\uAC8C \uC0DD\uACBC\uC5B4. "
+        - text: 
+          voiceClip: {fileID: 0}
+          voiceVolume: 1
+          voiceTimingMode: 0
         actionType: 1
         returnToNodeIndex: 3
       - choiceText: "\uC8FC\uBA39\uB3C4\uB07C\uB294 \uC5B4\uB5BB\uAC8C \uB9CC\uB4E4\uC5B4?"
         responseDialogues:
-        - "\uC774 \uCEE4\uB2E4\uB780 \uBAB8\uB3CC\uC744 \uB9DD\uCE58\uB3CC\uB85C
-          \uB0B4\uB9AC\uCCD0\uC11C \uAE68\uB728\uB9AC\uACE0 \uB2E4\uB4EC\uC73C\uBA74
-          \uB3FC!"
+        - text: 
+          voiceClip: {fileID: 0}
+          voiceVolume: 1
+          voiceTimingMode: 0
         actionType: 1
         returnToNodeIndex: 3
       - choiceText: "\uC88B\uC544, \uD55C\uBC88 \uD574\uBCF4\uC790!"
-        responseDialogues: []
+        responseDialogues:
+        - text: 
+          voiceClip: {fileID: 0}
+          voiceVolume: 0
+          voiceTimingMode: 0
         actionType: 2
         returnToNodeIndex: 0
       nodeId: 3
@@ -2757,6 +2798,7 @@ MonoBehaviour:
   - {fileID: 1703236322}
   interactionPanel: {fileID: 1442196214}
   interactionText: {fileID: 153375121}
+  voiceAudioSource: {fileID: 0}
   normalChoiceColor: {r: 1, g: 1, b: 1, a: 1}
   selectedChoiceColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!4 &1924751329 stripped
@@ -13626,7 +13668,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150306572227099306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.63500005}
+  m_LocalPosition: {x: 0, y: 0, z: 0.80099994}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -13637,7 +13679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -1.507, y: -0.284}
+  m_AnchoredPosition: {x: -1.0619998, y: -0.284}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1705965216898382129
@@ -32239,6 +32281,7 @@ MonoBehaviour:
   - {fileID: 9107395100504153431}
   interactionPanel: {fileID: 2002978296447494346}
   interactionText: {fileID: 2070934103501356967}
+  voiceAudioSource: {fileID: 0}
   normalChoiceColor: {r: 1, g: 1, b: 1, a: 1}
   selectedChoiceColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &4142607296791958588
@@ -38326,7 +38369,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8492069842157547837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.635}
+  m_LocalPosition: {x: 0, y: 0, z: 0.801}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -38336,7 +38379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.991, y: 0.368}
+  m_AnchoredPosition: {x: -1.546, y: 0.368}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5702935907562981256
@@ -41423,7 +41466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: da3ce461e97fb3849863fc26415f32ae, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -46685,7 +46728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: da3ce461e97fb3849863fc26415f32ae, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -48616,7 +48659,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: da3ce461e97fb3849863fc26415f32ae, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -48700,23 +48743,32 @@ MonoBehaviour:
     npcName: "\uBCBD\uD654 \uADF8\uB9AC\uB294 \uC5EC\uC131"
     dialogueNodes:
     - dialogue: "\uC548\uB155 \uB0B4 \uADF8\uB9BC \uC880 \uBD10. \uC798\uADF8\uB838\uC9C0?"
+      voiceClip: {fileID: 0}
+      voiceVolume: 1
+      voiceTimingMode: 0
       hasChoices: 0
       choices: []
       nodeId: 
     - dialogue: "\uBB50 \uBB3C\uC5B4\uBCF4\uACE0 \uC2F6\uC740\uAC70 \uC788\uC5B4?"
+      voiceClip: {fileID: 0}
+      voiceVolume: 1
+      voiceTimingMode: 0
       hasChoices: 1
       choices:
       - choiceText: "\uC774\uAC74 \uBB34\uC2A8 \uADF8\uB9BC\uC778\uAC00\uC694?"
         responseDialogues:
-        - "\uC0AC\uB0E5\uD55C \uB3D9\uBB3C\uB4E4\uC774\uB098, \uC0AC\uB0E5\uD558\uACE0
-          \uC2F6\uC740 \uB3D9\uBB3C\uB4E4\uC744 \uADF8\uB9B0\uAC70\uC57C."
+        - text: 
+          voiceClip: {fileID: 0}
+          voiceVolume: 1
+          voiceTimingMode: 0
         actionType: 1
         returnToNodeIndex: 1
       - choiceText: "\uADF8\uB9B4\uB54C \uC5B4\uB5A4 \uB3C4\uAD6C\uB97C \uC0AC\uC6A9\uD588\uB098\uC694?"
         responseDialogues:
-        - "\uD669\uD1A0\uAC19\uC740 \uC0C9\uC774 \uC788\uB294 \uD759\uC774\uB098
-          \uB3CC\uAC00\uB8E8,  \uC22F\uACFC \uBF08 \uB4F1\uC744 \uC774\uC6A9\uD574
-          \uADF8\uB838\uC5B4."
+        - text: 
+          voiceClip: {fileID: 0}
+          voiceVolume: 1
+          voiceTimingMode: 0
         actionType: 1
         returnToNodeIndex: 1
       - choiceText: "\uC544\uB2C8\uC694, \uC774 \uADF8\uB9BC \uC815\uB9D0 \uBA4B\uC788\uB124\uC694!"
@@ -48810,7 +48862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8140417387169909916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50347,7 +50399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: da3ce461e97fb3849863fc26415f32ae, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -57501,7 +57553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89c70259a70e4349b753d00cfd7d2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SnapTurnInputAction: {fileID: -8525429354371678379, guid: 616e1c785ffcdf143b4e0c78a1535fad, type: 3}
+  SnapTurnInputAction: {fileID: -8525429354371678379, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!224 &9222525280559782874
 RectTransform:
   m_ObjectHideFlags: 0
