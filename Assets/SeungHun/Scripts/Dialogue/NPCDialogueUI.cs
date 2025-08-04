@@ -17,6 +17,9 @@ public class NPCDialogueUI : MonoBehaviour
     public GameObject interactionPanel;
     public TextMeshProUGUI interactionText;
     
+    [Header("음성 재생")]
+    public AudioSource voiceAudioSource;
+    
     [Header("VR 설정")] 
     public Color normalChoiceColor = Color.white;
     public Color selectedChoiceColor = Color.yellow;
@@ -33,6 +36,25 @@ public class NPCDialogueUI : MonoBehaviour
         {
             interactionPanel.SetActive(false);
         }
+
+        SetupVoiceAudioSource();
+    }
+
+    private void SetupVoiceAudioSource()
+    {
+        if (voiceAudioSource == null)
+        {
+            voiceAudioSource = GetComponent<AudioSource>();
+        }
+
+        if (voiceAudioSource == null)
+        {
+            voiceAudioSource = gameObject.AddComponent<AudioSource>();
+        }
+        
+        voiceAudioSource.playOnAwake = false;
+        voiceAudioSource.loop = false;
+        voiceAudioSource.spatialBlend = 1f;
     }
 
     public void SetDialoguePanelActive(bool active)
@@ -75,4 +97,37 @@ public class NPCDialogueUI : MonoBehaviour
             }
         }
     }
+
+    public void PlayVoice(AudioClip clip, float volume = 1f)
+    {
+        if (voiceAudioSource != null && clip != null)
+        {
+            voiceAudioSource.clip = clip;
+            voiceAudioSource.volume = volume;
+            voiceAudioSource.Play();
+
+            Debug.Log($"음성 재생 시작 - {clip.name}");
+        }
+    }
+
+    public void StopVoice()
+    {
+        if (voiceAudioSource != null && voiceAudioSource.isPlaying)
+        {
+            voiceAudioSource.Stop();
+            Debug.Log("음성 재생 중단");
+        }
+    }
+
+    public bool IsVoicePlaying()
+    {
+        return voiceAudioSource != null && voiceAudioSource.isPlaying;
+    }
+
+    public float GetVoiceLength()
+    {
+        return voiceAudioSource != null && voiceAudioSource.clip != null ? 
+            voiceAudioSource.clip.length : 0f;
+    }
+    
 }
