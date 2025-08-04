@@ -33,7 +33,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
 
     private DialogueChoice[] currentChoices;
-    private Queue<string> choiceResponseQueue;
+    private Queue<ResponseDialogue> choiceResponseQueue;
     private int pendingReturnNodeIndex = -1;
 
     private int selectedChoiceIndex = 0;
@@ -56,7 +56,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        choiceResponseQueue = new Queue<string>();
+        choiceResponseQueue = new Queue<ResponseDialogue>();
         InitializeUI();
         SetupVRInput();
     }
@@ -186,9 +186,10 @@ public class DialogueManager : MonoBehaviour
 
         if (choiceResponseQueue.Count > 0)
         {
-            string response = choiceResponseQueue.Dequeue();
-            currentSentence = response;
-            typingCoroutine = StartCoroutine(TypeSentence(response));
+            ResponseDialogue response = choiceResponseQueue.Dequeue();
+            currentSentence = response.text;
+            
+            typingCoroutine = StartCoroutine(TypeResponseWithVoice(response));
             return;
         }
         
@@ -217,11 +218,27 @@ public class DialogueManager : MonoBehaviour
         if (DialogueText != null)
             DialogueText.text = "";
 
-        foreach (char letter in sentence.ToCharArray())
+        if (node != null && node.voiceClip != null && currentNPCUI != null)
         {
-            if (DialogueText != null)
-              DialogueText.text += letter;
-            yield return new WaitForSecondsRealtime(typingSpeed);
+            switch (node.voiceTimingMode)
+            {
+                case VoiceTimingMode.BeforeTyping:
+                    yield return StartCoroutine(PlayVoiceBeforeTyping(node, sentence));
+                    break;
+                
+                case VoiceTimingMode.WithTyping:
+                default:
+                    yield return StartCoroutine(PlayVoiceWithTyping(node, sentence));
+                    break;  
+                
+                case VoiceTimingMode.AfterTyping:
+                    yield return StartCoroutine(PlayVoiceAfterTyping(node, sentence));
+                    break;
+            }
+        }
+        else
+        {
+            yield return StartCoroutine(TypeText(sentence));
         }
 
         isTyping = false;
@@ -232,6 +249,109 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayVoiceBeforeTyping(DialogueNode node, string sentence)
+    {
+        currentNPCUI.PlayVoice(node.voiceClip, node.voiceVolume);
+        
+        yield return new WaitForSeconds(node.voiceClip.length);
+        
+        yield return StartCoroutine(TypeText(sentence));
+    }
+
+    private IEnumerator PlayVoiceWithTyping(DialogueNode node, string sentence)
+    {
+        currentNPCUI.PlayVoice(node.voiceClip, node.voiceVolume);
+        
+        float voiceLength = node.voiceClip.length;
+        float adjustedTypingSpeed = sentence.Length > 0 ? voiceLength / sentence.Length : typingSpeed;
+        
+        yield return StartCoroutine(TypeTextWithSpeed(sentence, adjustedTypingSpeed));
+    }
+
+    private IEnumerator PlayVoiceAfterTyping(DialogueNode node, string sentence)
+    {
+        yield return StartCoroutine(TypeText(sentence));
+        
+        currentNPCUI.PlayVoice(node.voiceClip, node.voiceVolume);
+        
+        yield return new WaitForSeconds(node.voiceClip.length);
+    }
+    
+    private IEnumerator TypeText(string sentence)
+    {
+        foreach (char letter in sentence.ToCharArray())
+        {
+            if (DialogueText != null)
+                DialogueText.text += letter;
+            yield return new WaitForSecondsRealtime(typingSpeed);
+        }
+    }
+
+    private IEnumerator TypeTextWithSpeed(string sentence, float customSpeed)
+    {
+        foreach (char letter in sentence.ToCharArray())
+        {
+            if (DialogueText != null)
+                DialogueText.text += letter;
+            yield return new WaitForSecondsRealtime(typingSpeed);
+        }
+    }
+
+    private IEnumerator TypeResponseWithVoice(ResponseDialogue response)
+    {
+        isTyping = true;
+        if (DialogueText != null)
+            DialogueText.text = "";
+
+        if (response.voiceClip != null && currentNPCUI != null)
+        {
+            switch (response.voiceTimingMode)
+            {case VoiceTimingMode.BeforeTyping:
+                    yield return StartCoroutine(PlayResponseVoiceBeforeTyping(response));
+                    break;
+                
+                case VoiceTimingMode.WithTyping:
+                default:
+                    yield return StartCoroutine(PlayResponseVoiceWithTyping(response));
+                    break;
+                
+                case VoiceTimingMode.AfterTyping:
+                    yield return StartCoroutine(PlayResponseVoiceAfterTyping(response));
+                    break;
+            }            
+        }
+        else
+        {
+            yield return StartCoroutine(TypeText(response.text));
+        }
+        
+        isTyping = false;
+    }
+    
+    private IEnumerator PlayResponseVoiceBeforeTyping(ResponseDialogue response)
+    {
+        currentNPCUI.PlayVoice(response.voiceClip, response.voiceVolume);
+        yield return new WaitForSeconds(response.voiceClip.length);
+        yield return StartCoroutine(TypeText(response.text));
+    }
+
+    private IEnumerator PlayResponseVoiceWithTyping(ResponseDialogue response)
+    {
+        currentNPCUI.PlayVoice(response.voiceClip, response.voiceVolume);
+    
+        float voiceLength = response.voiceClip.length;
+        float adjustedTypingSpeed = response.text.Length > 0 ? voiceLength / response.text.Length : typingSpeed;
+    
+        yield return StartCoroutine(TypeTextWithSpeed(response.text, adjustedTypingSpeed));
+    }
+
+    private IEnumerator PlayResponseVoiceAfterTyping(ResponseDialogue response)
+    {
+        yield return StartCoroutine(TypeText(response.text));
+        currentNPCUI.PlayVoice(response.voiceClip, response.voiceVolume);
+        yield return new WaitForSeconds(response.voiceClip.length);
+    }
+    
     private void ShowChoices(DialogueChoice[] choices)
     {
         currentChoices = choices;
@@ -291,9 +411,9 @@ public class DialogueManager : MonoBehaviour
 
         if (selectedChoice.responseDialogues != null && selectedChoice.responseDialogues.Length > 0)
         {
-            foreach (string response in selectedChoice.responseDialogues)
+            foreach (ResponseDialogue response in selectedChoice.responseDialogues)
             {
-                if (!string.IsNullOrEmpty(response))
+                if (response != null && !string.IsNullOrEmpty(response.text))
                 {
                     choiceResponseQueue.Enqueue(response);
                 }
@@ -345,9 +465,13 @@ public class DialogueManager : MonoBehaviour
         }
         
         isTyping = false;
-        
         if (DialogueText != null)
          DialogueText.text = currentSentence;
+
+        if (currentNPCUI != null)
+        {
+            currentNPCUI.StopVoice();
+        }
     }
 
     public void EndDialogue()
@@ -356,8 +480,13 @@ public class DialogueManager : MonoBehaviour
 
         dialogueActive = false;
         waitingForChoice = false;
+
+        if (currentNPCUI != null)
+        {
+            currentNPCUI.StopVoice();
+            currentNPCUI.SetDialoguePanelActive(false);
+        }
         
-        currentNPCUI.SetDialoguePanelActive(false);
         HideChoices();
         
         Time.timeScale = 1f;
@@ -387,6 +516,11 @@ public class DialogueManager : MonoBehaviour
             return;
         
         Debug.Log("대화 중단 - 플레이어가 범위를 벗어남");
+
+        if (currentNPCUI != null)
+        {
+            currentNPCUI.StopVoice();
+        }
         
         dialogueActive = false;
         waitingForChoice = false;
