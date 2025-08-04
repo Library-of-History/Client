@@ -44,6 +44,11 @@ namespace Anaglyph.Menu
 
 		public void ToggleVisible()
 		{
+			if (mainCamera == null)
+			{
+				mainCamera = Camera.main;
+			}
+			
 			Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
 
 			bool isInView = viewPos.x > 0f && viewPos.x < 1f && viewPos.y > 0f && viewPos.y < 1f && viewPos.z > 0;

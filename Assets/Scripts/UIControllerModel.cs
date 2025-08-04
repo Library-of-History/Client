@@ -6,14 +6,16 @@ public class UIControllerModel
     public UIControllerCollection[] EnumArray { get; private set; }
 
     private static readonly UIControllerCollection[] mrEnums =
-        { UIControllerCollection.LearningProgress, UIControllerCollection.ObjectModify };
+        { UIControllerCollection.Progress, UIControllerCollection.Tool, UIControllerCollection.Log,
+            UIControllerCollection.Setting, UIControllerCollection.Quit };
     private static readonly UIControllerCollection[] vrEnums =
-        { UIControllerCollection.LearningProgress };
+        { UIControllerCollection.Log, UIControllerCollection.Setting, UIControllerCollection.BackToMR,
+            UIControllerCollection.Quit };
 
-    public UIControllerModel(UIControllerCollection collection, UIEnvironment environment)
+    public UIControllerModel(UIEnvironment environment, UIControllerCollection current)
     {
-        CurrentUI = collection;
         UpdateEnumArray(environment);
+        SetCurrentUI(current);
     }
 
     public void UpdateEnumArray(UIEnvironment environment)
@@ -28,17 +30,8 @@ public class UIControllerModel
         }
     }
 
-    public void SwitchUpCurrentUI()
+    public void SetCurrentUI(UIControllerCollection current)
     {
-        int idx = Array.IndexOf(EnumArray, CurrentUI);
-        idx = (idx - 1 + EnumArray.Length) % EnumArray.Length;
-        CurrentUI = EnumArray[idx];
-    }
-
-    public void SwitchDownCurrentUI()
-    {
-        int idx = Array.IndexOf(EnumArray, CurrentUI);
-        idx = (idx + 1) % EnumArray.Length;
-        CurrentUI = EnumArray[idx];
+        CurrentUI = current;
     }
 }

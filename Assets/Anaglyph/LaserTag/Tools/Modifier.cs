@@ -1,5 +1,7 @@
 using System;
+using Anaglyph.Menu;
 using Anaglyph.XRTemplate;
+using com.meta.xr.depthapi.utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -69,8 +71,30 @@ namespace Anaglyph.Lasertag
 		{
 			if (context.performed && context.ReadValueAsButton())
 			{
-				PassthroughManager.SetPassthrough(false);
-				SceneManager.LoadScene(1);
+				if (selectedObject != null)
+				{
+					var book = selectedObject.GetComponent<BookState>();
+
+					if (!book.IsOpened)
+					{
+						book.ChangeState(true);
+
+						SystemManager.Inst.SystemUI.GetComponentInChildren<UIControllerPresenter>().EnvSwitch();
+
+						if (SystemManager.Inst.SystemUI.activeSelf)
+						{
+							SystemManager.Inst.SystemUI.GetComponent<MenuPositioner>().ToggleVisible();
+						}
+						
+						SceneManager.LoadSceneAsync("LifeStyle_Prehistory_Paleolithic", LoadSceneMode.Additive);
+						SystemManager.Inst.MRScene.SetActive(false);
+						PassthroughManager.SetPassthrough(false);
+					}
+					else
+					{
+						book.ChangeState(false);
+					}
+				}
 			}
 		}
 	}

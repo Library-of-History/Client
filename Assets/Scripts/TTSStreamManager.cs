@@ -9,7 +9,7 @@ using VideoKit;
 
 public class TTSStreamManager : MonoBehaviour
 {
-    private string apiUrl = "http://221.163.19.142:58002/voice-interaction";
+    private string apiUrl = "/voice-interaction";
     private AudioSource audioSource;
     private Queue<string> audioUrlQueue = new Queue<string>();
     
@@ -18,18 +18,12 @@ public class TTSStreamManager : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        apiUrl = SystemManager.ApiUrl + apiUrl;
     }
 
     // 외부에서 호출: 사용자의 질의 전달 시작
     public async UniTask StartTTSStream(string filename)
     {
-        // byte[] bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(new QueryRequest { text = query }));
-        //
-        // UnityWebRequest request = new UnityWebRequest(apiUrl, "POST");
-        // request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-        // request.downloadHandler = new URLStreamHandler(this); // DownloadHandlerScript 커스텀
-        // request.SetRequestHeader("Content-Type", "multipart/form-data");
-        
         string filepath = Path.Combine(Application.persistentDataPath, filename);
         byte[] wavData = File.ReadAllBytes(filepath);
         
@@ -48,7 +42,8 @@ public class TTSStreamManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("스트리밍 시작..");
+            Debug.Log("스트리밍 성공!");
+            SystemManager.Inst.IsDocentProcessing = false;
         }
     }
 

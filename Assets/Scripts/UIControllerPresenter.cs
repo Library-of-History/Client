@@ -8,115 +8,29 @@ public class UIControllerPresenter : MonoBehaviour
     private UIControllerModel model;
     [SerializeField] private UIControllerView view;
     
-    [SerializeField] private MonoBehaviour[] presenters;
-    private Dictionary<UIControllerCollection, MonoBehaviour> presenterMap;
-    
-    private bool isApplicationUIOpened = false;
-    private bool didMoveAxis = false;
-
     private void Awake()
     {
-        model = new UIControllerModel(UIControllerCollection.LearningProgress, UIEnvironment.MR);
-        presenterMap = new Dictionary<UIControllerCollection, MonoBehaviour>();
-
-        foreach (var presenter in presenters)
-        {
-            if (Enum.TryParse<UIControllerCollection>(presenter.gameObject.name.Substring(
-                    0, presenter.gameObject.name.Length - 2), out var collection))
-            {
-                presenterMap[collection] = presenter;
-            }
-        }
+        model = new UIControllerModel(UIEnvironment.MR, UIControllerCollection.Progress);
     }
 
     private void OnEnable()
     {
-        view.HighLightText(model.CurrentUI);
+        view.SetActiveButton(model.EnumArray);
+        view.SetActiveCurrentUI(model.CurrentUI);
     }
 
-    private void OnLeftAxis(InputAction.CallbackContext context)
+    public void EnvSwitch()
     {
-        if (!view.gameObject.activeSelf)
+        if (SystemManager.Inst.CurrentEnv == UIEnvironment.MR)
         {
-            return;
+            SystemManager.Inst.CurrentEnv = UIEnvironment.VR;
+        }
+        else
+        {
+            SystemManager.Inst.CurrentEnv = UIEnvironment.MR;
         }
         
-        if (context.performed)
-        {
-            if (!didMoveAxis)
-            {
-                if (context.ReadValue<Vector2>().y > 0f)
-                {
-                    didMoveAxis = true;
-                    view.UnHighLightText(model.CurrentUI);
-                    model.SwitchUpCurrentUI();
-                    view.HighLightText(model.CurrentUI);
-                }
-                else if (context.ReadValue<Vector2>().y < 0f)
-                {
-                    didMoveAxis = true;
-                    view.UnHighLightText(model.CurrentUI);
-                    model.SwitchDownCurrentUI();
-                    view.HighLightText(model.CurrentUI);
-                }
-            }
-        }
-        else if (context.canceled)
-        {
-            didMoveAxis = false;
-        }
-    }
-
-    private void OnLeftAxisClick(InputAction.CallbackContext context)
-    {
-        if (context.performed && context.ReadValueAsButton())
-        {
-            if (view.gameObject.activeSelf)
-            {
-                view.gameObject.SetActive(false);
-            }
-            else
-            {
-                view.gameObject.SetActive(true);
-                view.HighLightText(model.CurrentUI);
-                view.SetActiveText(model.EnumArray);
-            }
-        }
-    }
-
-    private void OnRightAxisClick(InputAction.CallbackContext context)
-    {
-        if (context.performed && context.ReadValueAsButton())
-        {
-            if (view.gameObject.activeSelf)
-            {
-                foreach (var pair in presenterMap)
-                {
-                    pair.Value.gameObject.SetActive(pair.Key == model.CurrentUI);
-                }
-                
-                isApplicationUIOpened = true;
-                return;
-            }
-            
-            if (isApplicationUIOpened)
-            {
-                foreach (var pair in presenterMap)
-                {
-                    pair.Value.gameObject.SetActive(false);
-                }
-                
-                isApplicationUIOpened = false;
-            }
-            else
-            {
-                foreach (var pair in presenterMap)
-                {
-                    pair.Value.gameObject.SetActive(pair.Key == model.CurrentUI);
-                }
-                
-                isApplicationUIOpened = true;
-            }
-        }
+        model.UpdateEnumArray(SystemManager.Inst.CurrentEnv);
+        model.SetCurrentUI(model.EnumArray[0]);
     }
 }

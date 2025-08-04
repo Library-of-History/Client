@@ -1,41 +1,31 @@
 using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIControllerView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI[] texts;
+    [SerializeField] private Button[] buttons;
 
-    private Dictionary<UIControllerCollection, TextMeshProUGUI> textMap;
+    private Dictionary<UIControllerCollection, Button> buttonMap;
 
     private void Awake()
     {
-        textMap = new Dictionary<UIControllerCollection, TextMeshProUGUI>();
+        buttonMap = new Dictionary<UIControllerCollection, Button>();
         
-        foreach (var text in texts)
+        foreach (var button in buttons)
         {
-            if (Enum.TryParse(text.gameObject.name.Substring(0, text.gameObject.name.Length - 4),
-                    out UIControllerCollection collection))
+            if (Enum.TryParse(button.gameObject.name, out UIControllerCollection collection))
             {
-                textMap[collection] = text;
+                buttonMap[collection] = button;
             }
         }
-        
-        SetTextName();
     }
 
-    public void SetTextName()
+    public void SetActiveButton(UIControllerCollection[] collections)
     {
-        foreach (var pair in textMap)
-        {
-            pair.Value.text = UIDisplayNameParser.GetDisplayNameGeneric(pair.Key);
-        }
-    }
-
-    public void SetActiveText(UIControllerCollection[] collections)
-    {
-        foreach (var pair in textMap)
+        foreach (var pair in buttonMap)
         {
             bool check = false;
             
@@ -59,13 +49,8 @@ public class UIControllerView : MonoBehaviour
         }
     }
 
-    public void HighLightText(UIControllerCollection collection)
+    public void SetActiveCurrentUI(UIControllerCollection collection)
     {
-        textMap[collection].color = Color.yellow;
-    }
-    
-    public void UnHighLightText(UIControllerCollection collection)
-    {
-        textMap[collection].color = Color.white;
+        buttonMap[collection].onClick.Invoke();
     }
 }

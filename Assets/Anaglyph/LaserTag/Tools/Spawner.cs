@@ -147,8 +147,10 @@ namespace Anaglyph.Lasertag
 				var position = previewObject.transform.position;
 				var rotation = previewObject.transform.rotation;
 
-				Instantiate(objectToSpawn, position: position, rotation: rotation);
+				var obj = Instantiate(objectToSpawn, position: position, rotation: rotation);
 				SystemManager.Inst.MRSelectedObject = null;
+				
+				obj.transform.SetParent(SystemManager.Inst.MRScene.transform);
 				
 				gameObject.SetActive(false);
 			}

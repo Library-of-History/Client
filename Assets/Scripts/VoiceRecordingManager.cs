@@ -20,6 +20,11 @@ public class VoiceRecordingManager : MonoBehaviour
     {
         if (context.performed && context.ReadValueAsButton())
         {
+            if (SystemManager.Inst.IsDocentProcessing)
+            {
+                return;
+            }
+            
             if (!isRecording)
             {
                 isRecording = true;
@@ -28,6 +33,7 @@ public class VoiceRecordingManager : MonoBehaviour
             }
 
             isRecording = false;
+            SystemManager.Inst.IsDocentProcessing = true;
             StopRecording();
         }
     }

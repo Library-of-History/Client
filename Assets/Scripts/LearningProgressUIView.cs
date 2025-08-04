@@ -47,10 +47,10 @@ public class LearningProgressUIView : MonoBehaviour
     {
         foreach (var element in array)
         {
-            // if (element.ToString() == "None")
-            // {
-            //     continue;
-            // }
+            if (element.ToString() == "None")
+            {
+                continue;
+            }
             
             var button = Instantiate(buttonPrefabMap[collection], panelMap[collection].transform, false);
             var btnCopy = button;

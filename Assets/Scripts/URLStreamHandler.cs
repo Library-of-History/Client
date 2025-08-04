@@ -7,8 +7,6 @@ public class URLStreamHandler : DownloadHandlerScript
     private TTSStreamManager _manager;
     private StringBuilder _buffer = new StringBuilder();
 
-    private string Url = "http://221.163.19.142:58002";
-
     public URLStreamHandler(TTSStreamManager manager) : base(new byte[8192])
     {
         _manager = manager;
@@ -63,7 +61,7 @@ public class URLStreamHandler : DownloadHandlerScript
                         AudioUrlMessage body = JsonUtility.FromJson<AudioUrlMessage>(line);
                         
                         string url = body.data.url;
-                        url = Url + url;
+                        url = SystemManager.ApiUrl + url;
                         
                         Debug.Log(url);
 

@@ -1,6 +1,9 @@
 public enum UIControllerCollection
 {
-    LearningProgress,
-    LearningLog,
-    ObjectModify,
+    Progress,
+    Tool,
+    Log,
+    Setting,
+    BackToMR,
+    Quit
 }
