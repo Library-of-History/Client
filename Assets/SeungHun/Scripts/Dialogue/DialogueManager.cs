@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     
     [Header("대화 설정")]
     public float typingSpeed = 0.05f;
-    
+    private float lastTypingStartTime = 0f;
     private GameObject DialoguePanel => currentNPCUI?.dialoguePanel;
     private TextMeshProUGUI DialogueText => currentNPCUI?.dialogueText;
     private Button NextButton => currentNPCUI?.nextButton;
@@ -123,6 +123,12 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            if (isTyping && Time.time - lastTypingStartTime < 0.5f)
+            {
+                Debug.Log("VR: 타이핑 시작 직후 입력 무시됨");
+                return;
+            }
+            
             DisplayNextSentence();
         }
     }
@@ -167,9 +173,16 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-        
+
         DialogueNode currentNode = currentDialogueData.dialogueNodes[currentNodeIndex];
-        currentSentence = currentNode.dialogue;
+        
+        Debug.Log($"노드 {currentNodeIndex} 시작 - '{currentNode.dialogue}'");
+        
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
         typingCoroutine = StartCoroutine(TypeSentence(currentNode.dialogue, currentNode));
     }
 
@@ -187,8 +200,13 @@ public class DialogueManager : MonoBehaviour
         if (choiceResponseQueue.Count > 0)
         {
             ResponseDialogue response = choiceResponseQueue.Dequeue();
-            currentSentence = response.text;
-            
+
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+                typingCoroutine = null; 
+            }
+                
             typingCoroutine = StartCoroutine(TypeResponseWithVoice(response));
             return;
         }
@@ -214,10 +232,16 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator TypeSentence(string sentence, DialogueNode node = null)
     {
+        lastTypingStartTime = Time.time;
         isTyping = true;
+        
         if (DialogueText != null)
             DialogueText.text = "";
 
+        yield return null;
+        
+        currentSentence = sentence;
+        
         if (node != null && node.voiceClip != null && currentNPCUI != null)
         {
             switch (node.voiceTimingMode)
@@ -263,7 +287,17 @@ public class DialogueManager : MonoBehaviour
         currentNPCUI.PlayVoice(node.voiceClip, node.voiceVolume);
         
         float voiceLength = node.voiceClip.length;
-        float adjustedTypingSpeed = sentence.Length > 0 ? voiceLength / sentence.Length : typingSpeed;
+        
+        float adjustedTypingSpeed;
+        if (sentence.Length > 0)
+        {
+            adjustedTypingSpeed = voiceLength / sentence.Length;
+            adjustedTypingSpeed = Mathf.Clamp(adjustedTypingSpeed, 0.01f, 0.2f);
+        }
+        else
+        {
+            adjustedTypingSpeed = typingSpeed;
+        }
         
         yield return StartCoroutine(TypeTextWithSpeed(sentence, adjustedTypingSpeed));
     }
@@ -293,13 +327,16 @@ public class DialogueManager : MonoBehaviour
         {
             if (DialogueText != null)
                 DialogueText.text += letter;
-            yield return new WaitForSecondsRealtime(typingSpeed);
+            yield return new WaitForSecondsRealtime(customSpeed);
         }
     }
 
     private IEnumerator TypeResponseWithVoice(ResponseDialogue response)
     {
         isTyping = true;
+        
+        currentSentence = response.text;
+        
         if (DialogueText != null)
             DialogueText.text = "";
 
@@ -340,8 +377,18 @@ public class DialogueManager : MonoBehaviour
         currentNPCUI.PlayVoice(response.voiceClip, response.voiceVolume);
     
         float voiceLength = response.voiceClip.length;
-        float adjustedTypingSpeed = response.text.Length > 0 ? voiceLength / response.text.Length : typingSpeed;
-    
+        
+        float adjustedTypingSpeed;
+        if (response.text.Length > 0)
+        {
+            adjustedTypingSpeed = voiceLength / response.text.Length;
+            adjustedTypingSpeed = Mathf.Clamp(adjustedTypingSpeed, 0.01f, 0.2f);
+        }
+        else
+        {
+            adjustedTypingSpeed = typingSpeed;
+        }
+        
         yield return StartCoroutine(TypeTextWithSpeed(response.text, adjustedTypingSpeed));
     }
 
@@ -392,10 +439,9 @@ public class DialogueManager : MonoBehaviour
         {
             if (i < currentChoices.Length && ChoiceButtons[i] != null)
             {
-                Image buttonImage = ChoiceButtons[i].GetComponent<Image>();
-                if (buttonImage != null)
+                if (ChoiceButtonTexts[i] != null)
                 {
-                    buttonImage.color = (i == selectedChoiceIndex) ? SelectedChoiceColor : NormalChoiceColor;
+                    ChoiceButtonTexts[i].color = (i == selectedChoiceIndex) ? SelectedChoiceColor : NormalChoiceColor;
                 }
             }
         }
@@ -462,11 +508,25 @@ public class DialogueManager : MonoBehaviour
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
         }
         
         isTyping = false;
-        if (DialogueText != null)
-         DialogueText.text = currentSentence;
+
+        if (DialogueText != null && !string.IsNullOrEmpty(currentSentence))
+        {
+            Debug.Log($"'{currentSentence}' 설정됨");
+            DialogueText.text = currentSentence;
+        }
+        else
+        {
+            Debug.Log("currentSentence가 비어있거나 null");
+        }
+        
+        if (DialogueText != null && !string.IsNullOrEmpty(currentSentence))
+        {
+            DialogueText.text = currentSentence;
+        }
 
         if (currentNPCUI != null)
         {

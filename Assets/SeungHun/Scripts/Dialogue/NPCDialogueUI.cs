@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+
 public class NPCDialogueUI : MonoBehaviour
 {
     [Header("대화 UI 요소들")] 
@@ -26,6 +27,11 @@ public class NPCDialogueUI : MonoBehaviour
 
     private void Awake()
     {
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+        }
+        
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 
