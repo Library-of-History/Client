@@ -22,7 +22,8 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI[] ChoiceButtonTexts => currentNPCUI?.choiceButtonTexts;
     private Color NormalChoiceColor => currentNPCUI?.normalChoiceColor ?? Color.white;
     private Color SelectedChoiceColor => currentNPCUI?.selectedChoiceColor ?? Color.yellow;
-    
+
+    private float lastCompletionTime = 0f;
     
     private DialogueData currentDialogueData;
     private int currentNodeIndex = 0;
@@ -117,18 +118,18 @@ public class DialogueManager : MonoBehaviour
         if (!dialogueActive)
             return;
 
+        if (isTyping)
+        {
+            Debug.Log("VR: 타이핑 중 - 입력 무시됨");
+            return;
+        }
+        
         if (waitingForChoice)
         {
             OnChoiceSelected(selectedChoiceIndex);
         }
         else
         {
-            if (isTyping && Time.time - lastTypingStartTime < 0.5f)
-            {
-                Debug.Log("VR: 타이핑 시작 직후 입력 무시됨");
-                return;
-            }
-            
             DisplayNextSentence();
         }
     }
@@ -188,12 +189,6 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (isTyping)
-        {
-            CompleteCurrentSentence();
-            return;
-        }
-
         if (waitingForChoice)
             return;
 
@@ -501,37 +496,6 @@ public class DialogueManager : MonoBehaviour
         
         if (NextButton != null)
             NextButton.gameObject.SetActive(true);
-    }
-    
-    private void CompleteCurrentSentence()
-    {
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
-        
-        isTyping = false;
-
-        if (DialogueText != null && !string.IsNullOrEmpty(currentSentence))
-        {
-            Debug.Log($"'{currentSentence}' 설정됨");
-            DialogueText.text = currentSentence;
-        }
-        else
-        {
-            Debug.Log("currentSentence가 비어있거나 null");
-        }
-        
-        if (DialogueText != null && !string.IsNullOrEmpty(currentSentence))
-        {
-            DialogueText.text = currentSentence;
-        }
-
-        if (currentNPCUI != null)
-        {
-            currentNPCUI.StopVoice();
-        }
     }
 
     public void EndDialogue()
