@@ -2,7 +2,6 @@ using System;
 
 public class UIControllerModel
 {
-    public UIControllerCollection CurrentUI { get; private set; }
     public UIControllerCollection[] EnumArray { get; private set; }
 
     private static readonly UIControllerCollection[] mrEnums =
@@ -15,7 +14,6 @@ public class UIControllerModel
     public UIControllerModel(UIEnvironment environment, UIControllerCollection current)
     {
         UpdateEnumArray(environment);
-        SetCurrentUI(current);
     }
 
     public void UpdateEnumArray(UIEnvironment environment)
@@ -28,10 +26,5 @@ public class UIControllerModel
         {
             EnumArray = vrEnums;
         }
-    }
-
-    public void SetCurrentUI(UIControllerCollection current)
-    {
-        CurrentUI = current;
     }
 }

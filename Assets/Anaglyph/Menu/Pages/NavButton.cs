@@ -12,12 +12,6 @@ namespace Anaglyph.Menu
 		{
 			navPage = GetComponentInParent<NavPage>(true);
 
-			if (navPage != null)
-			{
-				Debug.Log("Yes");
-				Debug.Log(goToPage.name);
-			}
-
 			GetComponent<Button>().onClick.AddListener(delegate
 			{
 				navPage.ParentView.GoToPage(goToPage);

@@ -10,6 +10,8 @@ namespace Anaglyph.MenuXR
 		[SerializeField] private GameObject nextButton;
 		[SerializeField] private RectTransform titleRectTransform;
 
+		private bool showBackButton;
+
 		private void Awake()
 		{
 			parentNavPage = GetComponentInParent<NavPage>(true);
@@ -19,10 +21,21 @@ namespace Anaglyph.MenuXR
 		{
 			parentNavPage = GetComponentInParent<NavPage>(true);
 
-			bool showBackButton = parentNavPage.showBackButton && parentNavPage.ParentView?.History.Count > 1;
+			if (parentNavPage != null)
+			{
+				showBackButton = parentNavPage.showBackButton && parentNavPage.ParentView?.History.Count > 1;
+			}
 
-			backButton.SetActive(showBackButton);
-			nextButton.SetActive(showBackButton);
+			if (backButton != null)
+			{
+				backButton.SetActive(showBackButton);
+			}
+			
+			if (nextButton != null)
+			{
+				nextButton.SetActive(!showBackButton);
+			}
+			
 			//titleRectTransform.anchoredPosition = showBackButton ? new Vector2(80, 0) : Vector2.zero;
 		}
 	}

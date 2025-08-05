@@ -11,12 +11,13 @@ public class UIControllerPresenter : MonoBehaviour
     private void Awake()
     {
         model = new UIControllerModel(UIEnvironment.MR, UIControllerCollection.Progress);
+        view.Init();
     }
 
     private void OnEnable()
     {
         view.SetActiveButton(model.EnumArray);
-        view.SetActiveCurrentUI(model.CurrentUI);
+        view.SetActiveCurrentUI();
     }
 
     public void EnvSwitch()
@@ -31,6 +32,6 @@ public class UIControllerPresenter : MonoBehaviour
         }
         
         model.UpdateEnumArray(SystemManager.Inst.CurrentEnv);
-        model.SetCurrentUI(model.EnumArray[0]);
+        view.SetCurrentSelectedButton(model.EnumArray[0]);
     }
 }

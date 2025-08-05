@@ -16,22 +16,11 @@ namespace Anaglyph.Lasertag
 		private GameObject objectToSpawn;
 		private GameObject previewObject;
 		
-		private float rotatingX;
-		private float rotatingY;
-		private float angleX;
 		private float angleY;
-		
-		private float directionX;
-		private float directionY;
-		private float directionZ;
-		private float distanceX;
-		private float distanceY;
-		private float distanceZ;
 
 		[SerializeField] private LineRenderer lineRenderer;
 		
 		private HandedHierarchy hand;
-		private bool isGripClicked = false;
 
 		public static Spawner Left { get; private set; }
 		public static Spawner Right { get; private set; }
@@ -68,13 +57,6 @@ namespace Anaglyph.Lasertag
 			{
 				return;
 			}
-			
-			angleY += Time.deltaTime * rotateSpeed * rotatingY;
-			angleX += Time.deltaTime * rotateSpeed * rotatingX;
-			
-			distanceX += Time.deltaTime * moveSpeed * directionX;
-			distanceY += Time.deltaTime * moveSpeed * directionY;
-			distanceZ += Time.deltaTime * moveSpeed * directionZ;
 
 			lineRenderer.enabled = false;
 			previewObject.SetActive(false);
@@ -110,23 +92,15 @@ namespace Anaglyph.Lasertag
 
 			previewObject.SetActive(true);
 
-			previewObject.transform.position = result.point +
-			                                   (transform.right * distanceX)
-			                                   + (transform.up * distanceY)
-			                                   + (transform.forward * (distanceZ - 0.1f));
-			previewObject.transform.eulerAngles = new (angleX, angleY, 0);
+			previewObject.transform.position = result.point + (transform.forward * (-0.2f));
+			previewObject.transform.eulerAngles = new (0, angleY + 90f, 90f);
 		}
 
 		private void OnEnable()
 		{
 			Vector3 forw = transform.forward;
-			forw.y = 0;
+			forw.y = 0f;
 			angleY = Vector3.SignedAngle(Vector3.forward, forw, Vector3.up);
-			angleX = 0f;
-
-			distanceX = 0f;
-			distanceY = 0f;
-			distanceZ = 0f;
 		}
 		
 		private void OnDisable()
@@ -156,59 +130,7 @@ namespace Anaglyph.Lasertag
 			}
 		}
 
-		private void OnRightButtonA(InputAction.CallbackContext context)
-		{
-			if (context.performed)
-			{
-				directionZ = -1f;
-			}
-			else if (context.canceled)
-			{
-				directionZ = 0f;
-			}
-		}
-
-		private void OnRightButtonB(InputAction.CallbackContext context)
-		{
-			if (context.performed)
-			{
-				directionZ = 1f;
-			}
-			else if (context.canceled)
-			{
-				directionZ = 0f;
-			}	
-		}
 		
-		private void OnRightAxis(InputAction.CallbackContext context)
-		{
-			if (!isGripClicked)
-			{
-				rotatingX = context.ReadValue<Vector2>().y;
-				rotatingY = -context.ReadValue<Vector2>().x;
-			}
-			else
-			{
-				directionX = context.ReadValue<Vector2>().x;
-				directionY = context.ReadValue<Vector2>().y;
-			}
-		}
-
-		private void OnRightGrip(InputAction.CallbackContext context)
-		{
-			if (context.performed)
-			{
-				isGripClicked = true;
-				rotatingX = 0f;
-				rotatingY = 0f;
-			}
-			else if (context.canceled)
-			{
-				isGripClicked = false;
-				directionX = 0f;
-				directionY = 0f;
-			}
-		}
 
 		private static GameObject InstantiateObjectAsPreview(GameObject obj)
 		{

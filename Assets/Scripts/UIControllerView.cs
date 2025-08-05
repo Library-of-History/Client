@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,8 +10,9 @@ public class UIControllerView : MonoBehaviour
     [SerializeField] private Button[] buttons;
 
     private Dictionary<UIControllerCollection, Button> buttonMap;
+    private UIControllerCollection currentSelectedButton;
 
-    private void Awake()
+    public void Init()
     {
         buttonMap = new Dictionary<UIControllerCollection, Button>();
         
@@ -19,6 +21,24 @@ public class UIControllerView : MonoBehaviour
             if (Enum.TryParse(button.gameObject.name, out UIControllerCollection collection))
             {
                 buttonMap[collection] = button;
+                
+                button.onClick.AddListener(delegate
+                {
+                    SetCurrentSelectedButton(collection);
+
+                    foreach (var pair in buttonMap)
+                    {
+                        if (pair.Key == currentSelectedButton)
+                        {
+                            pair.Value.gameObject.GetComponentInChildren<TextMeshProUGUI>().color = Color.yellow;
+                        }
+                        else
+                        {
+                            pair.Value.gameObject.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+
+                        }
+                    }
+                });
             }
         }
     }
@@ -49,8 +69,14 @@ public class UIControllerView : MonoBehaviour
         }
     }
 
-    public void SetActiveCurrentUI(UIControllerCollection collection)
+    public void SetActiveCurrentUI()
     {
-        buttonMap[collection].onClick.Invoke();
+        buttonMap[currentSelectedButton].onClick.Invoke();
     }
+
+    public void SetCurrentSelectedButton(UIControllerCollection collection)
+    {
+        currentSelectedButton = collection;
+    }
+
 }

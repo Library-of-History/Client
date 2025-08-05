@@ -43,7 +43,7 @@ public class TTSStreamManager : MonoBehaviour
         else
         {
             Debug.Log("스트리밍 성공!");
-            SystemManager.Inst.IsDocentProcessing = false;
+            CheckIfDonePlaying();
         }
     }
 
@@ -55,7 +55,7 @@ public class TTSStreamManager : MonoBehaviour
             audioUrlQueue.Enqueue(url);
         }
 
-        if (!isPlaying)
+        if (!isPlaying && audioSource.clip != null)
         {
             await PlayQueue();
         }
@@ -102,5 +102,16 @@ public class TTSStreamManager : MonoBehaviour
         }
 
         isPlaying = false;
+    }
+
+    private async UniTaskVoid CheckIfDonePlaying()
+    {
+        while (audioSource.isPlaying)
+        {
+            await UniTask.Delay(50);
+        }
+        
+        audioSource.clip = null;
+        SystemManager.Inst.IsDocentProcessing = false;
     }
 }
