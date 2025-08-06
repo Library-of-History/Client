@@ -3,15 +3,20 @@
     {
       "name": "VideoKit",
       "url": "https://registry.npmjs.com",
-      "scopes": ["ai.videokit"]
+      "scopes": [
+        "ai.videokit"
+      ]
     },
     {
       "name": "Function",
       "url": "https://registry.npmjs.com",
-      "scopes": ["ai.fxn"]
+      "scopes": [
+        "ai.fxn"
+      ]
     }
   ],
   "dependencies": {
+    "ai.videokit.videokit": "1.0.1",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.meta.xr.depthapi": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi",
     "com.meta.xr.depthapi.urp": "https://github.com/oculus-samples/Unity-DepthAPI.git?path=/Packages/com.meta.xr.depthapi.urp",
@@ -31,6 +36,7 @@
     "com.unity.test-framework": "1.5.1",
     "com.unity.timeline": "1.8.8",
     "com.unity.ugui": "2.0.0",
+    "com.unity.visualeffectgraph": "17.1.0",
     "com.unity.visualscripting": "1.9.7",
     "com.unity.xr.arcore": "6.1.1",
     "com.unity.xr.arfoundation": "6.1.1",
@@ -69,7 +75,6 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "ai.videokit.videokit": "1.0.1"
+    "com.unity.modules.xr": "1.0.0"
   }
 }
