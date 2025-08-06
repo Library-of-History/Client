@@ -8,12 +8,17 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
+    [Header("진행도 설정")] 
+    public bool showProgressDebug = true;
+    private const string TOTAL_CHOICES_KEY = "Lifestyle_Prehistory_Paleolithic";
+    private const string SELECTED_CHOICES_PREFIX = "SelectedChoice_";
+    
     [Header("현재 활성화된 NPC UI")] 
     [SerializeField] private NPCDialogueUI currentNPCUI;
     
     [Header("대화 설정")]
     public float typingSpeed = 0.05f;
-    
+    private float lastTypingStartTime = 0f;
     private GameObject DialoguePanel => currentNPCUI?.dialoguePanel;
     private TextMeshProUGUI DialogueText => currentNPCUI?.dialogueText;
     private Button NextButton => currentNPCUI?.nextButton;
@@ -22,7 +27,9 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI[] ChoiceButtonTexts => currentNPCUI?.choiceButtonTexts;
     private Color NormalChoiceColor => currentNPCUI?.normalChoiceColor ?? Color.white;
     private Color SelectedChoiceColor => currentNPCUI?.selectedChoiceColor ?? Color.yellow;
+    private Color AlreadySelectedColor => currentNPCUI?.alreadySelectedColor ?? Color.green;
     
+    private float lastCompletionTime = 0f;
     
     private DialogueData currentDialogueData;
     private int currentNodeIndex = 0;
@@ -117,6 +124,12 @@ public class DialogueManager : MonoBehaviour
         if (!dialogueActive)
             return;
 
+        if (isTyping)
+        {
+            Debug.Log("VR: 타이핑 중 - 입력 무시됨");
+            return;
+        }
+        
         if (waitingForChoice)
         {
             OnChoiceSelected(selectedChoiceIndex);
@@ -167,28 +180,34 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-        
+
         DialogueNode currentNode = currentDialogueData.dialogueNodes[currentNodeIndex];
-        currentSentence = currentNode.dialogue;
+        
+        Debug.Log($"노드 {currentNodeIndex} 시작 - '{currentNode.dialogue}'");
+        
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
         typingCoroutine = StartCoroutine(TypeSentence(currentNode.dialogue, currentNode));
     }
 
     public void DisplayNextSentence()
     {
-        if (isTyping)
-        {
-            CompleteCurrentSentence();
-            return;
-        }
-
         if (waitingForChoice)
             return;
 
         if (choiceResponseQueue.Count > 0)
         {
             ResponseDialogue response = choiceResponseQueue.Dequeue();
-            currentSentence = response.text;
-            
+
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+                typingCoroutine = null; 
+            }
+                
             typingCoroutine = StartCoroutine(TypeResponseWithVoice(response));
             return;
         }
@@ -214,10 +233,16 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator TypeSentence(string sentence, DialogueNode node = null)
     {
+        lastTypingStartTime = Time.time;
         isTyping = true;
+        
         if (DialogueText != null)
             DialogueText.text = "";
 
+        yield return null;
+        
+        currentSentence = sentence;
+        
         if (node != null && node.voiceClip != null && currentNPCUI != null)
         {
             switch (node.voiceTimingMode)
@@ -263,7 +288,17 @@ public class DialogueManager : MonoBehaviour
         currentNPCUI.PlayVoice(node.voiceClip, node.voiceVolume);
         
         float voiceLength = node.voiceClip.length;
-        float adjustedTypingSpeed = sentence.Length > 0 ? voiceLength / sentence.Length : typingSpeed;
+        
+        float adjustedTypingSpeed;
+        if (sentence.Length > 0)
+        {
+            adjustedTypingSpeed = voiceLength / sentence.Length;
+            adjustedTypingSpeed = Mathf.Clamp(adjustedTypingSpeed, 0.01f, 0.2f);
+        }
+        else
+        {
+            adjustedTypingSpeed = typingSpeed;
+        }
         
         yield return StartCoroutine(TypeTextWithSpeed(sentence, adjustedTypingSpeed));
     }
@@ -293,13 +328,16 @@ public class DialogueManager : MonoBehaviour
         {
             if (DialogueText != null)
                 DialogueText.text += letter;
-            yield return new WaitForSecondsRealtime(typingSpeed);
+            yield return new WaitForSecondsRealtime(customSpeed);
         }
     }
 
     private IEnumerator TypeResponseWithVoice(ResponseDialogue response)
     {
         isTyping = true;
+        
+        currentSentence = response.text;
+        
         if (DialogueText != null)
             DialogueText.text = "";
 
@@ -340,8 +378,18 @@ public class DialogueManager : MonoBehaviour
         currentNPCUI.PlayVoice(response.voiceClip, response.voiceVolume);
     
         float voiceLength = response.voiceClip.length;
-        float adjustedTypingSpeed = response.text.Length > 0 ? voiceLength / response.text.Length : typingSpeed;
-    
+        
+        float adjustedTypingSpeed;
+        if (response.text.Length > 0)
+        {
+            adjustedTypingSpeed = voiceLength / response.text.Length;
+            adjustedTypingSpeed = Mathf.Clamp(adjustedTypingSpeed, 0.01f, 0.2f);
+        }
+        else
+        {
+            adjustedTypingSpeed = typingSpeed;
+        }
+        
         yield return StartCoroutine(TypeTextWithSpeed(response.text, adjustedTypingSpeed));
     }
 
@@ -371,6 +419,8 @@ public class DialogueManager : MonoBehaviour
                 if (ChoiceButtonTexts[i] != null)
                 {
                     ChoiceButtonTexts[i].text = choices[i].choiceText;
+                    
+                    SetChoiceTextColor(i, choices[i].choiceText);
                 }
             }
             else
@@ -383,6 +433,24 @@ public class DialogueManager : MonoBehaviour
         Debug.Log($"선택지 표시됨 : {choices.Length}개");
     }
 
+    private void SetChoiceTextColor(int choiceIndex, string choiceText)
+    {
+        if (ChoiceButtonTexts[choiceIndex] == null)
+            return;
+
+        string uniqueChoiceKey = GenerateChoiceKey(choiceText);
+        bool isAlreadySelected = HasSelectedChoice(uniqueChoiceKey);
+
+        if (isAlreadySelected)
+        {
+            ChoiceButtonTexts[choiceIndex].color = AlreadySelectedColor;
+        }
+        else
+        {
+            ChoiceButtonTexts[choiceIndex].color = NormalChoiceColor;
+        }
+    }
+
     private void UpdateChoiceHighlight()
     {
         if (ChoiceButtons == null) 
@@ -392,10 +460,27 @@ public class DialogueManager : MonoBehaviour
         {
             if (i < currentChoices.Length && ChoiceButtons[i] != null)
             {
-                Image buttonImage = ChoiceButtons[i].GetComponent<Image>();
-                if (buttonImage != null)
+                if (ChoiceButtonTexts[i] != null)
                 {
-                    buttonImage.color = (i == selectedChoiceIndex) ? SelectedChoiceColor : NormalChoiceColor;
+                    if (i == selectedChoiceIndex)
+                    {
+                        ChoiceButtonTexts[i].color = SelectedChoiceColor;
+                    }
+                    else
+                    {
+                        string choiceText = currentChoices[i].choiceText;
+                        string uniqueChoiceKey = GenerateChoiceKey(choiceText);
+                        bool isAlreadySelected = HasSelectedChoice(uniqueChoiceKey);
+
+                        if (isAlreadySelected)
+                        {
+                            ChoiceButtonTexts[i].color = AlreadySelectedColor;
+                        }
+                        else
+                        {
+                            ChoiceButtonTexts[i].color = NormalChoiceColor;
+                        }
+                    }
                 }
             }
         }
@@ -409,6 +494,8 @@ public class DialogueManager : MonoBehaviour
         DialogueChoice selectedChoice = currentChoices[choiceIndex];
         Debug.Log($"선택지 선택됨 : {currentChoices[choiceIndex].choiceText}, 액션: {selectedChoice.actionType}");
 
+        RecordChoiceProgress(selectedChoice.choiceText);
+        
         if (selectedChoice.responseDialogues != null && selectedChoice.responseDialogues.Length > 0)
         {
             foreach (ResponseDialogue response in selectedChoice.responseDialogues)
@@ -445,6 +532,54 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    private void RecordChoiceProgress(string choiceText)
+    {
+        string uniqueChoiceKey = GenerateChoiceKey(choiceText);
+
+        if (HasSelectedChoice(uniqueChoiceKey))
+        {
+            if (showProgressDebug)
+            {
+                Debug.Log($"이미 선택한 선택지 - 진행도 증가 안함: '{choiceText}");
+            }
+            return;
+        }
+        
+        MakeChoiceAsSelected(uniqueChoiceKey);
+        
+        int currentChoices = PlayerPrefs.GetInt(TOTAL_CHOICES_KEY, 0);
+        
+        currentChoices++;
+        
+        PlayerPrefs.SetInt(TOTAL_CHOICES_KEY, currentChoices);
+        PlayerPrefs.Save();
+
+        if (showProgressDebug)
+        {
+            Debug.Log($"진행도: {currentChoices}번째 선택지 선택됨 - {choiceText}");
+        }
+    }
+
+    private string GenerateChoiceKey(string choiceText)
+    {
+        string npcName = currentDialogueData?.npcName ?? "Unknown";
+        
+        string normalizedNPCName = npcName.Replace(" ", "").Replace("_", "");
+        string normalizedChoiceText = choiceText.Replace(" ", "").Replace("_", "");
+
+        return $"{SELECTED_CHOICES_PREFIX}{normalizedNPCName}_{normalizedChoiceText}";
+    }
+
+    private bool HasSelectedChoice(string choiceKey)
+    {
+        return PlayerPrefs.GetInt(choiceKey, 0) == 1;
+    }
+
+    private void MakeChoiceAsSelected(string choiceKey)
+    {
+        PlayerPrefs.SetInt(choiceKey, 1);
+    }
+
     private void HideChoices()
     {
         waitingForChoice = false;
@@ -455,23 +590,6 @@ public class DialogueManager : MonoBehaviour
         
         if (NextButton != null)
             NextButton.gameObject.SetActive(true);
-    }
-    
-    private void CompleteCurrentSentence()
-    {
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-        }
-        
-        isTyping = false;
-        if (DialogueText != null)
-         DialogueText.text = currentSentence;
-
-        if (currentNPCUI != null)
-        {
-            currentNPCUI.StopVoice();
-        }
     }
 
     public void EndDialogue()
@@ -555,23 +673,36 @@ public class DialogueManager : MonoBehaviour
     {
         return dialogueActive && currentNPCUI != null && currentNPCUI == npc.npcDialogueUI;
     }
-
-    public NPCCharacter GetCurrentDialogueNPC()
+    
+    public bool HasPlayerSelectedChoice(string npcName, string choiceText)
     {
-        if (!dialogueActive || currentNPCUI == null)
-            return null;
-
-        NPCCharacter[] allNPCS = FindObjectsOfType<NPCCharacter>();
-        foreach (var npc in allNPCS)
-        {
-            if (npc.npcDialogueUI == currentNPCUI)
-                return npc;
-        }
-
-        return null;
+        string normalizedNPCName = npcName.Replace(" ", "").Replace("_", "");
+        string normalizedChoiceText = choiceText.Replace(" ", "").Replace("_", "");
+        string choiceKey = $"{SELECTED_CHOICES_PREFIX}{normalizedNPCName}_{normalizedChoiceText}";
+        
+        return HasSelectedChoice(choiceKey);
     }
     
+    public int GetTotalChoicesMade()
+    {
+        return PlayerPrefs.GetInt(TOTAL_CHOICES_KEY, 0);
+    }
 
+    [ContextMenu("Show Progress")]
+    public void ShowCurrentProgress()
+    {
+        int totalChoices = GetTotalChoicesMade();
+        Debug.Log($"현재 진행도 : 총 {totalChoices}개의 선택지를 선택함.");
+    }
+
+    [ContextMenu("Complete Reset All PlayerPrefs")]
+    public void CompleteReset()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        Debug.Log("모든 PlayerPrefs 삭제");
+    }
+    
     private void OnDestroy()
     {
         if (VRInputManager.Instance != null)

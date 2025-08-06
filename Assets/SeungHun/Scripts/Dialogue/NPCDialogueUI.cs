@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+
 public class NPCDialogueUI : MonoBehaviour
 {
     [Header("대화 UI 요소들")] 
@@ -23,9 +24,15 @@ public class NPCDialogueUI : MonoBehaviour
     [Header("VR 설정")] 
     public Color normalChoiceColor = Color.white;
     public Color selectedChoiceColor = Color.yellow;
-
+    public Color alreadySelectedColor = Color.green;
+    
     private void Awake()
     {
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+        }
+        
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 

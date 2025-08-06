@@ -34,7 +34,7 @@ public class ResponseDialogue
 
 [System.Serializable]
 public class DialogueChoice
-{
+{ 
     [TextArea(1, 3)] 
     public string choiceText;
     
@@ -115,7 +115,7 @@ public class DialogueNode
     public DialogueNode(string text, AudioClip voice, string id = "", params DialogueChoice[] nodeChoices)
     {
         dialogue = text;
-        hasChoices = true;
+        voiceClip = voice;
         voiceVolume = 1f;
         voiceTimingMode = VoiceTimingMode.WithTyping;
         hasChoices = nodeChoices != null && nodeChoices.Length > 0;

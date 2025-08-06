@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -26,11 +27,21 @@ public class NPCCharacter : MonoBehaviour
     [Tooltip("회전 속도")] 
     public float rotationSpeed = 2f;
     
+    [Header("애니메이션 설정")]
+    [Tooltip("NPC의 Animator 컴포넌트")]
+    public Animator npcAnimator;
+    
+    [Tooltip("Talking 상태 파라미티")]
+    public string talkingParameterName = "IsTalking";
+
+    [Tooltip("애니메이션 디버깅")] 
+    public bool showAnimationDebug = true;    
+    
+    
     private NPCTriggerDetection detection;
     private VRPlayerTracker vrPlayerTracker;
     private bool isInCooldown = false;
     private Quaternion originalRotation;
-    
     private int currentDialogueIndex = 0;
 
     private void Start()
@@ -47,8 +58,60 @@ public class NPCCharacter : MonoBehaviour
         {
             Debug.LogError($"{npcName}: NPCDialogueUI 없음");
         }
+
+        SetupAnimator();
+
+        SetTalkingAnimation(false);
     }
 
+    private void SetupAnimator()
+    {
+        if (npcAnimator == null)
+        {
+            npcAnimator = GetComponent<Animator>();
+        }
+
+        if (npcAnimator == null)
+        {
+            npcAnimator = GetComponentInChildren<Animator>();
+        }
+
+        if (npcAnimator == null)
+        {
+            if (showAnimationDebug)
+            {
+                Debug.Log($"Animator 찾을 수 없음");
+            }
+        }
+        else
+        {
+            if (showAnimationDebug)
+            {
+                Debug.Log($"Animator 설정 - {npcAnimator.name}");
+            }
+        }
+    }
+
+    private void SetTalkingAnimation(bool isTalking)
+    {
+        if (npcAnimator == null)
+            return;
+
+        try
+        {
+            npcAnimator.SetBool(talkingParameterName, isTalking);
+
+            if (showAnimationDebug)
+            {
+                Debug.Log($"{npcName}: 애니메이션 전환");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"{npcName}: 애니메이션 파라미터 설정 실패");
+        }
+    }
+    
     private void InitializeNPC()
     {
         detection = GetComponent<NPCTriggerDetection>();
@@ -83,6 +146,8 @@ public class NPCCharacter : MonoBehaviour
         
         canTalk = true;
         
+        SetTalkingAnimation(true);
+        
         UIManager.Instance?.ShowInteractionUI(this);
         
         if (VRInteractionManager.Instance != null)
@@ -105,6 +170,8 @@ public class NPCCharacter : MonoBehaviour
         StartCoroutine(ReturnToIdleState());
         
         canTalk = false;
+        
+        SetTalkingAnimation(false);
         
         UIManager.Instance?.HideInteractionUI();
 
