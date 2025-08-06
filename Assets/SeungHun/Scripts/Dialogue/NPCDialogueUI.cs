@@ -24,7 +24,8 @@ public class NPCDialogueUI : MonoBehaviour
     [Header("VR 설정")] 
     public Color normalChoiceColor = Color.white;
     public Color selectedChoiceColor = Color.yellow;
-
+    public Color alreadySelectedColor = Color.green;
+    
     private void Awake()
     {
         if (dialogueText != null)

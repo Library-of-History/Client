@@ -8,6 +8,11 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
+    [Header("진행도 설정")] 
+    public bool showProgressDebug = true;
+    private const string TOTAL_CHOICES_KEY = "Lifestyle_Prehistory_Paleolithic";
+    private const string SELECTED_CHOICES_PREFIX = "SelectedChoice_";
+    
     [Header("현재 활성화된 NPC UI")] 
     [SerializeField] private NPCDialogueUI currentNPCUI;
     
@@ -22,7 +27,8 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI[] ChoiceButtonTexts => currentNPCUI?.choiceButtonTexts;
     private Color NormalChoiceColor => currentNPCUI?.normalChoiceColor ?? Color.white;
     private Color SelectedChoiceColor => currentNPCUI?.selectedChoiceColor ?? Color.yellow;
-
+    private Color AlreadySelectedColor => currentNPCUI?.alreadySelectedColor ?? Color.green;
+    
     private float lastCompletionTime = 0f;
     
     private DialogueData currentDialogueData;
@@ -413,6 +419,8 @@ public class DialogueManager : MonoBehaviour
                 if (ChoiceButtonTexts[i] != null)
                 {
                     ChoiceButtonTexts[i].text = choices[i].choiceText;
+                    
+                    SetChoiceTextColor(i, choices[i].choiceText);
                 }
             }
             else
@@ -423,6 +431,24 @@ public class DialogueManager : MonoBehaviour
 
         UpdateChoiceHighlight();
         Debug.Log($"선택지 표시됨 : {choices.Length}개");
+    }
+
+    private void SetChoiceTextColor(int choiceIndex, string choiceText)
+    {
+        if (ChoiceButtonTexts[choiceIndex] == null)
+            return;
+
+        string uniqueChoiceKey = GenerateChoiceKey(choiceText);
+        bool isAlreadySelected = HasSelectedChoice(uniqueChoiceKey);
+
+        if (isAlreadySelected)
+        {
+            ChoiceButtonTexts[choiceIndex].color = AlreadySelectedColor;
+        }
+        else
+        {
+            ChoiceButtonTexts[choiceIndex].color = NormalChoiceColor;
+        }
     }
 
     private void UpdateChoiceHighlight()
@@ -436,7 +462,25 @@ public class DialogueManager : MonoBehaviour
             {
                 if (ChoiceButtonTexts[i] != null)
                 {
-                    ChoiceButtonTexts[i].color = (i == selectedChoiceIndex) ? SelectedChoiceColor : NormalChoiceColor;
+                    if (i == selectedChoiceIndex)
+                    {
+                        ChoiceButtonTexts[i].color = SelectedChoiceColor;
+                    }
+                    else
+                    {
+                        string choiceText = currentChoices[i].choiceText;
+                        string uniqueChoiceKey = GenerateChoiceKey(choiceText);
+                        bool isAlreadySelected = HasSelectedChoice(uniqueChoiceKey);
+
+                        if (isAlreadySelected)
+                        {
+                            ChoiceButtonTexts[i].color = AlreadySelectedColor;
+                        }
+                        else
+                        {
+                            ChoiceButtonTexts[i].color = NormalChoiceColor;
+                        }
+                    }
                 }
             }
         }
@@ -450,6 +494,8 @@ public class DialogueManager : MonoBehaviour
         DialogueChoice selectedChoice = currentChoices[choiceIndex];
         Debug.Log($"선택지 선택됨 : {currentChoices[choiceIndex].choiceText}, 액션: {selectedChoice.actionType}");
 
+        RecordChoiceProgress(selectedChoice.choiceText);
+        
         if (selectedChoice.responseDialogues != null && selectedChoice.responseDialogues.Length > 0)
         {
             foreach (ResponseDialogue response in selectedChoice.responseDialogues)
@@ -484,6 +530,54 @@ public class DialogueManager : MonoBehaviour
         
         HideChoices();
         DisplayNextSentence();
+    }
+
+    private void RecordChoiceProgress(string choiceText)
+    {
+        string uniqueChoiceKey = GenerateChoiceKey(choiceText);
+
+        if (HasSelectedChoice(uniqueChoiceKey))
+        {
+            if (showProgressDebug)
+            {
+                Debug.Log($"이미 선택한 선택지 - 진행도 증가 안함: '{choiceText}");
+            }
+            return;
+        }
+        
+        MakeChoiceAsSelected(uniqueChoiceKey);
+        
+        int currentChoices = PlayerPrefs.GetInt(TOTAL_CHOICES_KEY, 0);
+        
+        currentChoices++;
+        
+        PlayerPrefs.SetInt(TOTAL_CHOICES_KEY, currentChoices);
+        PlayerPrefs.Save();
+
+        if (showProgressDebug)
+        {
+            Debug.Log($"진행도: {currentChoices}번째 선택지 선택됨 - {choiceText}");
+        }
+    }
+
+    private string GenerateChoiceKey(string choiceText)
+    {
+        string npcName = currentDialogueData?.npcName ?? "Unknown";
+        
+        string normalizedNPCName = npcName.Replace(" ", "").Replace("_", "");
+        string normalizedChoiceText = choiceText.Replace(" ", "").Replace("_", "");
+
+        return $"{SELECTED_CHOICES_PREFIX}{normalizedNPCName}_{normalizedChoiceText}";
+    }
+
+    private bool HasSelectedChoice(string choiceKey)
+    {
+        return PlayerPrefs.GetInt(choiceKey, 0) == 1;
+    }
+
+    private void MakeChoiceAsSelected(string choiceKey)
+    {
+        PlayerPrefs.SetInt(choiceKey, 1);
     }
 
     private void HideChoices()
@@ -579,23 +673,36 @@ public class DialogueManager : MonoBehaviour
     {
         return dialogueActive && currentNPCUI != null && currentNPCUI == npc.npcDialogueUI;
     }
-
-    public NPCCharacter GetCurrentDialogueNPC()
+    
+    public bool HasPlayerSelectedChoice(string npcName, string choiceText)
     {
-        if (!dialogueActive || currentNPCUI == null)
-            return null;
-
-        NPCCharacter[] allNPCS = FindObjectsOfType<NPCCharacter>();
-        foreach (var npc in allNPCS)
-        {
-            if (npc.npcDialogueUI == currentNPCUI)
-                return npc;
-        }
-
-        return null;
+        string normalizedNPCName = npcName.Replace(" ", "").Replace("_", "");
+        string normalizedChoiceText = choiceText.Replace(" ", "").Replace("_", "");
+        string choiceKey = $"{SELECTED_CHOICES_PREFIX}{normalizedNPCName}_{normalizedChoiceText}";
+        
+        return HasSelectedChoice(choiceKey);
     }
     
+    public int GetTotalChoicesMade()
+    {
+        return PlayerPrefs.GetInt(TOTAL_CHOICES_KEY, 0);
+    }
 
+    [ContextMenu("Show Progress")]
+    public void ShowCurrentProgress()
+    {
+        int totalChoices = GetTotalChoicesMade();
+        Debug.Log($"현재 진행도 : 총 {totalChoices}개의 선택지를 선택함.");
+    }
+
+    [ContextMenu("Complete Reset All PlayerPrefs")]
+    public void CompleteReset()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        Debug.Log("모든 PlayerPrefs 삭제");
+    }
+    
     private void OnDestroy()
     {
         if (VRInputManager.Instance != null)
