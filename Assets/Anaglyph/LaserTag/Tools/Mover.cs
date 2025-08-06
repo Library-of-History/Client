@@ -132,7 +132,7 @@ namespace Anaglyph.Lasertag
                                                     (transform.right * distanceX)
                                                     + (transform.up * distanceY)
                                                     + (transform.forward * (distanceZ - 0.1f));;
-                selectedObject.transform.eulerAngles = new(angleX, angleY, 0);
+                selectedObject.transform.eulerAngles = new(0f, angleY + 90f, angleX + 90f);
             }
         }
 
@@ -142,7 +142,7 @@ namespace Anaglyph.Lasertag
             {
                 if (selectedObject == null)
                 {
-                    selectedObject = target;
+                    selectedObject = target.GetComponentInParent<BookState>().gameObject;
                     storedPos = selectedObject.transform.position;
                     storedRot = selectedObject.transform.eulerAngles;
                     target = null;

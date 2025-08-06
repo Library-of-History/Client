@@ -1,19 +1,28 @@
 using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using VideoKit;
 
-[RequireComponent(typeof(VideoKitRecorder))]
 public class MediaCaptureManager : MonoBehaviour
 {
-    private VideoKitRecorder recorder;
+    private StringBuilder sb;
+    private string saveDir;
     
-    private bool isRecording = false;
+    private int count;
     private bool delayForNextCapture = false;
 
     private void Awake()
     {
-        recorder = GetComponent<VideoKitRecorder>();
+        sb = new StringBuilder();
+        saveDir = Path.Combine(Application.persistentDataPath, SystemManager.Inst.CurrentSceneName);
+
+        if (!Directory.Exists(saveDir))
+        {
+            Directory.CreateDirectory(saveDir);
+        }
+
+        var files = Directory.GetFiles(saveDir);
+        count = files.Length + 1;
     }
     
     public void OnLeftButtonX(InputAction.CallbackContext context)
@@ -22,26 +31,15 @@ public class MediaCaptureManager : MonoBehaviour
         {
             if (!delayForNextCapture)
             {
-                ScreenCapture.CaptureScreenshot("sample.png");
+                sb.Clear();
+                sb.Append(Path.Combine(saveDir, count.ToString()));
+                sb.Append(".png");
+                
+                ScreenCapture.CaptureScreenshot(sb.ToString());
+                count++;
                 delayForNextCapture = true;
                 Invoke(nameof(ChangeFlag), 3f);
             }
-        }
-    }
-
-    public void OnLeftButtonY(InputAction.CallbackContext context)
-    {
-        if (context.performed && context.ReadValueAsButton())
-        {
-            if (isRecording)
-            {
-                isRecording = false;
-                recorder.StopRecording();
-                return;
-            }
-
-            isRecording = true;
-            recorder.StartRecording();
         }
     }
 

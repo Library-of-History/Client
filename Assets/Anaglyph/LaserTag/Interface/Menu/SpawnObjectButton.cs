@@ -14,7 +14,8 @@ namespace Anaglyph.Lasertag.UI
 			{
 				return;
 			}
-			
+
+			SystemManager.Inst.CurrentSelectedBookName = gameObject.name;
 			var spawner = isRight ? Spawner.Right : Spawner.Left;
 			spawner.gameObject.SetActive(true);
 			spawner.SetObjectToSpawn(objectToSpawn);

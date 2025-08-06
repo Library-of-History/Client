@@ -2,6 +2,7 @@ using System;
 using Anaglyph.Menu;
 using Anaglyph.XRTemplate;
 using com.meta.xr.depthapi.utils;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -81,12 +82,21 @@ namespace Anaglyph.Lasertag
 					{
 						book.ChangeState(true);
 
-						var ui = Instantiate(bookUI, selectedObject.transform, false);
+						var ui = Instantiate(bookUI, book.gameObject.transform, false);
 						ui.transform.localPosition = new Vector3(0.5f, 0f, 0f);
 						ui.transform.localRotation = Quaternion.Euler(-90f, -90f, 0f);
 						
+						var summary = ui.GetComponentInChildren<ScrollRect>();
+						var summaryText = summary.GetComponentInChildren<TextMeshProUGUI>();
+						summaryText.text = SystemManager.Inst.ScenesData.SummaryMap[book.gameObject.name];
+						
 						ui.GetComponentInChildren<Button>().onClick.AddListener(delegate
 						{
+							if (SystemManager.Inst.IsDocentProcessing)
+							{
+								return;
+							}
+							
 							SystemManager.Inst.SystemUI.GetComponentInChildren<UIControllerPresenter>().EnvSwitch();
 
 							if (SystemManager.Inst.SystemUI.activeSelf)
@@ -94,7 +104,13 @@ namespace Anaglyph.Lasertag
 								SystemManager.Inst.SystemUI.GetComponent<MenuPositioner>().ToggleVisible();
 							}
 						
-							SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+							SceneManager.LoadSceneAsync(book.gameObject.name, LoadSceneMode.Additive);
+
+							var navPagesParent = ui.GetComponentInChildren<NavPagesParent>();
+							var summaryPage = navPagesParent.GetComponentInChildren<NavPage>();
+							
+							navPagesParent.GoToPage(summaryPage);
+							
 							SystemManager.Inst.MRScene.SetActive(false);
 							PassthroughManager.SetPassthrough(false);
 						});

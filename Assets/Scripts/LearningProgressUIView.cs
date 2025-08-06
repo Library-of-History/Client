@@ -82,6 +82,14 @@ public class LearningProgressUIView : MonoBehaviour
             }
             
             btnCopy.GetComponent<Button>().onClick.AddListener(() => onClick(btnCopy));
+
+            if (collection == LearningProgressUICollection.Age)
+            {
+                btnCopy.GetComponent<Button>().onClick.AddListener(delegate
+                {
+                    btnCopy.GetComponent<SummonPortal>().OnClick();
+                });
+            }
         }
 
         if (collection == LearningProgressUICollection.Age)

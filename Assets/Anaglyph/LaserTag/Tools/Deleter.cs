@@ -68,7 +68,7 @@ namespace Anaglyph.Lasertag
 		{
 			if (context.performed && context.ReadValueAsButton())
 			{
-				Destroy(selectedObject);
+				Destroy(selectedObject.GetComponentInParent<BookState>().gameObject);
 			}
 		}
 	}

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Cysharp.Threading.Tasks;
-using VideoKit;
 
 public class TTSStreamManager : MonoBehaviour
 {
@@ -55,7 +54,7 @@ public class TTSStreamManager : MonoBehaviour
             audioUrlQueue.Enqueue(url);
         }
 
-        if (!isPlaying && audioSource.clip != null)
+        if (!isPlaying)
         {
             await PlayQueue();
         }

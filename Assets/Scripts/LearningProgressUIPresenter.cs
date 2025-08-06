@@ -22,6 +22,11 @@ public class LearningProgressUIPresenter : MonoBehaviour
         });
     }
 
+    public LearningProgressUIModel GetModel()
+    {
+        return model;
+    }
+
     private void OnButtonClick(GameObject btn)
     {
         if (model.CurrentUI == LearningProgressUICollection.Subject)

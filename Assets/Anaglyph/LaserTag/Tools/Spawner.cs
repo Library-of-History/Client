@@ -122,6 +122,7 @@ namespace Anaglyph.Lasertag
 				var rotation = previewObject.transform.rotation;
 
 				var obj = Instantiate(objectToSpawn, position: position, rotation: rotation);
+				obj.name = SystemManager.Inst.CurrentSelectedBookName;
 				SystemManager.Inst.MRSelectedObject = null;
 				
 				obj.transform.SetParent(SystemManager.Inst.MRScene.transform);
