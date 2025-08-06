@@ -89,6 +89,9 @@ namespace Anaglyph.Lasertag
 						var summary = ui.GetComponentInChildren<ScrollRect>();
 						var summaryText = summary.GetComponentInChildren<TextMeshProUGUI>();
 						summaryText.text = SystemManager.Inst.ScenesData.SummaryMap[book.gameObject.name];
+
+						var record = ui.GetComponentInChildren<LoadingMedia>(true);
+						record.SetBookName(book.gameObject.name);
 						
 						ui.GetComponentInChildren<Button>().onClick.AddListener(delegate
 						{
@@ -103,11 +106,12 @@ namespace Anaglyph.Lasertag
 							{
 								SystemManager.Inst.SystemUI.GetComponent<MenuPositioner>().ToggleVisible();
 							}
-						
+
+							SystemManager.Inst.CurrentSceneName = book.gameObject.name;
 							SceneManager.LoadSceneAsync(book.gameObject.name, LoadSceneMode.Additive);
 
-							var navPagesParent = ui.GetComponentInChildren<NavPagesParent>();
-							var summaryPage = navPagesParent.GetComponentInChildren<NavPage>();
+							var navPagesParent = ui.GetComponentInChildren<NavPagesParent>(true);
+							var summaryPage = navPagesParent.GetComponentInChildren<NavPage>(true);
 							
 							navPagesParent.GoToPage(summaryPage);
 							
