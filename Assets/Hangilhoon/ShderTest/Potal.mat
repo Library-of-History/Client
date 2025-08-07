@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 1999
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
@@ -26,6 +26,10 @@ Material:
     m_TexEnvs:
     - _PortalTexture:
         m_Texture: {fileID: 2800000, guid: 369b2c490985c3d4d8ab8ef86979a111, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_1d66fce0ce7949f38d370a3ed5fba4f1_Texture_1_Texture2D:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -43,7 +47,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Opacity: 0.474
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _RadialDistortion: 1.68
     - _RadialScale: 20
