@@ -8,7 +8,7 @@ public class LoadingMedia : MonoBehaviour
 {
     [SerializeField] private GameObject imagePref;
     
-    private string bookName = String.Empty;
+    private string bookName;
     private List<GameObject> images;
     private string saveDir;
 
@@ -20,6 +20,11 @@ public class LoadingMedia : MonoBehaviour
         if (Directory.Exists(saveDir))
         {
             var files = Directory.GetFiles(saveDir);
+
+            if (files.Length == 0)
+            {
+                return;
+            }
 
             foreach (var file in files)
             {

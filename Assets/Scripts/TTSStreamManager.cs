@@ -17,6 +17,7 @@ public class TTSStreamManager : MonoBehaviour
     private void Awake()
     {
         audioSource = SystemManager.Inst.AudioManagerInst.GetDocentVoiceSource();
+        audioSource.spatialBlend = 0f;
         apiUrl = SystemManager.ApiUrl + apiUrl;
     }
 

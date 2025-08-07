@@ -56,7 +56,7 @@ public class NPCDialogueUI : MonoBehaviour
         
         voiceAudioSource.playOnAwake = false;
         voiceAudioSource.loop = false;
-        voiceAudioSource.spatialBlend = 1f;
+        voiceAudioSource.spatialBlend = 0f;
     }
 
     public void SetDialoguePanelActive(bool active)

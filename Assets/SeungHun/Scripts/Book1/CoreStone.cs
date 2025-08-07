@@ -62,7 +62,7 @@ public class CoreStone : MonoBehaviour
       }
       
       audioSource.playOnAwake = false;
-      audioSource.spatialBlend = 1f;
+      audioSource.spatialBlend = 0f;
       
       MeshCollider meshCollider = GetComponent<MeshCollider>();
       if (meshCollider)
