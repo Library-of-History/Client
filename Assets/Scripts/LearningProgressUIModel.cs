@@ -3,8 +3,6 @@ using System;
 public class LearningProgressUIModel
 {
     public LearningProgressUICollection CurrentUI { get; private set; }
-    public readonly LearningProgressUICollection[] UICollectionArray =
-        Enum.GetValues(typeof(LearningProgressUICollection)) as LearningProgressUICollection[];
     
     public Subject CurrentSubject { get; private set; }
     public readonly Subject[] SubjectArray =

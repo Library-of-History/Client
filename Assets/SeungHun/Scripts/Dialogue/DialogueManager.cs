@@ -276,7 +276,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator PlayVoiceBeforeTyping(DialogueNode node, string sentence)
     {
-        currentNPCUI.PlayVoice(node.voiceClip, node.voiceVolume);
+        currentNPCUI.PlayVoice(node.voiceClip);
         
         yield return new WaitForSeconds(node.voiceClip.length);
         
@@ -285,7 +285,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator PlayVoiceWithTyping(DialogueNode node, string sentence)
     {
-        currentNPCUI.PlayVoice(node.voiceClip, node.voiceVolume);
+        currentNPCUI.PlayVoice(node.voiceClip);
         
         float voiceLength = node.voiceClip.length;
         
@@ -307,7 +307,7 @@ public class DialogueManager : MonoBehaviour
     {
         yield return StartCoroutine(TypeText(sentence));
         
-        currentNPCUI.PlayVoice(node.voiceClip, node.voiceVolume);
+        currentNPCUI.PlayVoice(node.voiceClip);
         
         yield return new WaitForSeconds(node.voiceClip.length);
     }
@@ -368,14 +368,14 @@ public class DialogueManager : MonoBehaviour
     
     private IEnumerator PlayResponseVoiceBeforeTyping(ResponseDialogue response)
     {
-        currentNPCUI.PlayVoice(response.voiceClip, response.voiceVolume);
+        currentNPCUI.PlayVoice(response.voiceClip);
         yield return new WaitForSeconds(response.voiceClip.length);
         yield return StartCoroutine(TypeText(response.text));
     }
 
     private IEnumerator PlayResponseVoiceWithTyping(ResponseDialogue response)
     {
-        currentNPCUI.PlayVoice(response.voiceClip, response.voiceVolume);
+        currentNPCUI.PlayVoice(response.voiceClip);
     
         float voiceLength = response.voiceClip.length;
         
@@ -396,7 +396,7 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator PlayResponseVoiceAfterTyping(ResponseDialogue response)
     {
         yield return StartCoroutine(TypeText(response.text));
-        currentNPCUI.PlayVoice(response.voiceClip, response.voiceVolume);
+        currentNPCUI.PlayVoice(response.voiceClip);
         yield return new WaitForSeconds(response.voiceClip.length);
     }
     

@@ -15,7 +15,7 @@ public class SummonPreviewBook : MonoBehaviour
         var age = presenter.GetModel().CurrentAge;
         string key = subject + "_" + age;
         
-        var nameList = SystemManager.Inst.ScenesData.BookMap[key];
+        var nameList = SystemManager.Inst.SceneDataInst.BookMap[key];
 
         initPos = new Vector3(0f, -0.135f, 0.658f);
 

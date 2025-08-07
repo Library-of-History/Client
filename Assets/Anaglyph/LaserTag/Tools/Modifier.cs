@@ -88,7 +88,7 @@ namespace Anaglyph.Lasertag
 						
 						var summary = ui.GetComponentInChildren<ScrollRect>();
 						var summaryText = summary.GetComponentInChildren<TextMeshProUGUI>();
-						summaryText.text = SystemManager.Inst.ScenesData.SummaryMap[book.gameObject.name];
+						summaryText.text = SystemManager.Inst.SceneDataInst.SummaryMap[book.gameObject.name];
 
 						var record = ui.GetComponentInChildren<LoadingMedia>(true);
 						record.SetBookName(book.gameObject.name);

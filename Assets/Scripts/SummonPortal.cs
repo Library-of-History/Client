@@ -33,6 +33,6 @@ public class SummonPortal : MonoBehaviour
         }
         
         SystemManager.Inst.Portal = Instantiate(portal, position, rotation * Quaternion.Euler(-110f, 0f, 180f));
-        GetComponentInParent<MenuPositioner>().gameObject.SetActive(false);
+        GetComponentInParent<MenuPositioner>().ToggleVisible();
     }
 }

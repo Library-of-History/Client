@@ -51,12 +51,7 @@ public class NPCDialogueUI : MonoBehaviour
     {
         if (voiceAudioSource == null)
         {
-            voiceAudioSource = GetComponent<AudioSource>();
-        }
-
-        if (voiceAudioSource == null)
-        {
-            voiceAudioSource = gameObject.AddComponent<AudioSource>();
+            voiceAudioSource = SystemManager.Inst.AudioManagerInst.GetCharaVoiceSource();
         }
         
         voiceAudioSource.playOnAwake = false;
@@ -105,12 +100,11 @@ public class NPCDialogueUI : MonoBehaviour
         }
     }
 
-    public void PlayVoice(AudioClip clip, float volume = 1f)
+    public void PlayVoice(AudioClip clip)
     {
         if (voiceAudioSource != null && clip != null)
         {
             voiceAudioSource.clip = clip;
-            voiceAudioSource.volume = volume;
             voiceAudioSource.Play();
 
             Debug.Log($"음성 재생 시작 - {clip.name}");

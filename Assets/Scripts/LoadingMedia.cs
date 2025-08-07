@@ -8,7 +8,7 @@ public class LoadingMedia : MonoBehaviour
 {
     [SerializeField] private GameObject imagePref;
     
-    private string bookName;
+    private string bookName = String.Empty;
     private List<GameObject> images;
     private string saveDir;
 

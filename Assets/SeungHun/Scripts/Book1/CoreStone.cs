@@ -58,11 +58,7 @@ public class CoreStone : MonoBehaviour
       //Audio
       if (audioSource == null)
       {
-         audioSource = GetComponent<AudioSource>();
-         if (audioSource == null)
-         {
-            audioSource = gameObject.AddComponent<AudioSource>();
-         }
+         audioSource = SystemManager.Inst.AudioManagerInst.GetSfxSource();
       }
       
       audioSource.playOnAwake = false;

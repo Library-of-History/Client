@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
+[DefaultExecutionOrder(-100)]
 public class SystemManager : MonoBehaviour
 {
     public static SystemManager Inst { get; private set; }
     public static string ApiUrl = "http://221.163.19.142:58002";
 
-    public SceneData ScenesData;
+    public AudioManager AudioManagerInst;
+    public SceneData SceneDataInst;
     
     public string Token;
     public UIEnvironment CurrentEnv = UIEnvironment.MR;
@@ -25,7 +28,7 @@ public class SystemManager : MonoBehaviour
         if (Inst == null)
         {
             Inst = this;
-            ScenesData.Init();
+            SceneDataInst.Init();
             DontDestroyOnLoad(gameObject);
         }
         else

@@ -129,7 +129,7 @@ public class NPCCharacter : MonoBehaviour
     {
         detection.OnPlayerEnter.AddListener(OnPlayerApproach);
         detection.OnPlayerExit.AddListener(OnPlayerLeave);
-        detection.OnPlayerStay.AddListener(OnPlayerStayNearby);
+        // detection.OnPlayerStay.AddListener(OnPlayerStayNearby);
     }
 
     public void OnPlayerApproach(Transform player)
@@ -183,18 +183,18 @@ public class NPCCharacter : MonoBehaviour
         ResetDialogueState();
     }
 
-    public void OnPlayerStayNearby()
-    {
-        if (detection.CurrentPlayer != null)
-        {
-            float distance = Vector3.Distance(transform.position, detection.CurrentPlayer.position);
-            if (distance < 1f)
-            {
-                Vector3 direction = (transform.position - detection.CurrentPlayer.position).normalized;
-                transform.position += direction * Time.deltaTime * 0.5f;
-            }
-        }
-    }
+    // public void OnPlayerStayNearby()
+    // {
+    //     if (detection.CurrentPlayer != null)
+    //     {
+    //         float distance = Vector3.Distance(transform.position, detection.CurrentPlayer.position);
+    //         if (distance < 1f)
+    //         {
+    //             Vector3 direction = (transform.position - detection.CurrentPlayer.position).normalized;
+    //             transform.position += direction * Time.deltaTime * 0.5f;
+    //         }
+    //     }
+    // }
 
     private void ResetDialogueState()
     {
