@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: RenderObjects
-    Event: 500
+    Event: 300
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -125,13 +125,13 @@ MonoBehaviour:
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 0
-    stencilCompareFunction: 8
-    passOperation: 2
+    stencilCompareFunction: 3
+    passOperation: 0
     failOperation: 0
     zFailOperation: 0
   m_ShadowTransparentReceive: 1
-  m_RenderingMode: 0
-  m_DepthPrimingMode: 2
+  m_RenderingMode: 2
+  m_DepthPrimingMode: 1
   m_CopyDepthMode: 0
   m_DepthAttachmentFormat: 0
   m_DepthTextureFormat: 0
