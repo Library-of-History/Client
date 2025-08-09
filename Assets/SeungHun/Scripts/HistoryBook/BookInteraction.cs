@@ -1,8 +1,10 @@
+using Anaglyph.XRTemplate;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.XR.Interaction.Toolkit;
+using Cysharp.Threading.Tasks;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class BookInteraction : MonoBehaviour
@@ -46,11 +48,11 @@ public class BookInteraction : MonoBehaviour
     
     private Vector3 originalPosition;   
     private Quaternion originalRotation;
-    private bool isAnimating = false;
+    
+    public bool IsAnimating = false;
     private bool isBookOpened = false;
     
     private Sequence animationSequence;
-    private XRSimpleInteractable simpleInteractable;
     
     private void Start()
     {
@@ -58,6 +60,13 @@ public class BookInteraction : MonoBehaviour
         StoreOriginalTransform();
         SetupInteractionEvents();
         InitializeLights();
+
+        SystemManager.Inst.AudioManagerInst.OnSfxVolumeChanged += VolumeChange;
+    }
+
+    private void VolumeChange(float value)
+    {
+        bookOpenSFX.volume = value;
     }
 
     private void InitializeComponents()
@@ -66,13 +75,6 @@ public class BookInteraction : MonoBehaviour
         {
             AutoFindRequiredComponents();
         }
-
-        if (simpleInteractable == null)
-        {
-            simpleInteractable = GetComponent<XRSimpleInteractable>();
-        }
-        
-        RegisterWithInteractionManager();
     }
 
     private void AutoFindRequiredComponents()
@@ -83,7 +85,7 @@ public class BookInteraction : MonoBehaviour
 
             if (vrCamera == null)
             {
-                var xrOrigin = FindFirstObjectByType<Unity.XR.CoreUtils.XROrigin>();
+                var xrOrigin = MainXROrigin.Instance;
                 if (xrOrigin != null)
                 {
                     vrCamera = xrOrigin.Camera?.transform;
@@ -111,18 +113,6 @@ public class BookInteraction : MonoBehaviour
         }
     }
     
-    private void RegisterWithInteractionManager()
-    {
-        if (simpleInteractable != null)
-        {
-            var interactionManager = FindFirstObjectByType<UnityEngine.XR.Interaction.Toolkit.XRInteractionManager>();
-            if (interactionManager != null)
-            {
-                interactionManager.RegisterInteractable((IXRInteractable)simpleInteractable);
-            }
-        }
-    }
-    
     private void StoreOriginalTransform()
     {
         originalPosition = transform.position;
@@ -139,11 +129,6 @@ public class BookInteraction : MonoBehaviour
 
     private void SetupInteractionEvents()
     {
-        if (simpleInteractable != null)
-        {
-            simpleInteractable.selectEntered.AddListener(OnBookTouched);
-        }
-
         if (timelineDirector != null)
         {
             timelineDirector.stopped += OnTimeLineFinished;
@@ -160,7 +145,7 @@ public class BookInteraction : MonoBehaviour
     
     private bool CanStartAnimation()
     {
-        return !isAnimating && !isBookOpened;
+        return !IsAnimating && !isBookOpened;
     }
 
     private void StartBookInteractionSequence()
@@ -170,7 +155,7 @@ public class BookInteraction : MonoBehaviour
             return;
         }
         
-        isAnimating = true;
+        IsAnimating = true;
         
         if (animationSequence != null)
         {
@@ -190,7 +175,7 @@ public class BookInteraction : MonoBehaviour
         animationSequence.Play();
     }
     
-    private void PlayBookOpenTimeLine()
+    public void PlayBookOpenTimeLine()
     {
         if (timelineDirector == null)
         {
@@ -202,12 +187,54 @@ public class BookInteraction : MonoBehaviour
         {
             timelineDirector.playableAsset = bookOpenTimeLine;
         }
+
+        IsAnimating = true;
+        gameObject.transform.DOLocalRotate(new Vector3(0f, 90f, 0f), 1f, RotateMode.LocalAxisAdd);
         
-        PlayBookOpenParticles();
-        EnableBookOpenLight();
-        PlayBookOpenSFX();
+        // PlayBookOpenParticles();
+        // EnableBookOpenLight();
+        // PlayBookOpenSFX();
         
         timelineDirector.Play();
+    }
+    
+    public void PlayBookCloseTimeLine()
+    {
+        if (timelineDirector == null)
+        {
+            OnTimeLineFinished(null);
+            return;
+        }
+
+        if (bookOpenTimeLine != null)
+        {
+            timelineDirector.playableAsset = bookOpenTimeLine;
+        }
+
+        IsAnimating = true;
+        timelineDirector.time = timelineDirector.duration;
+        BookClose();
+        
+        // PlayBookOpenParticles();
+        // EnableBookOpenLight();
+        // PlayBookOpenSFX();
+    }
+
+    private async UniTaskVoid BookClose()
+    {
+        while (timelineDirector.time > 0)
+        {
+            timelineDirector.time -= Time.deltaTime;
+            timelineDirector.Evaluate();
+
+            await UniTask.Yield();
+        }
+        
+        gameObject.transform.DOLocalRotate(new Vector3(0f, -90f, 0f), 1f, RotateMode.LocalAxisAdd)
+            .OnComplete(() =>
+            {
+                IsAnimating = false;
+            });
     }
 
     private void PlayBookOpenParticles()
@@ -247,7 +274,7 @@ public class BookInteraction : MonoBehaviour
     private void OnTimeLineFinished(PlayableDirector director)
     {
         isBookOpened = true;
-        isAnimating = false;
+        IsAnimating = false;
         
         TriggerSceneTransition();
     }
@@ -275,11 +302,6 @@ public class BookInteraction : MonoBehaviour
         if (bookOpenLight != null)
         {
             bookOpenLight.DOKill();
-        }
-        
-        if (simpleInteractable != null)
-        {
-            simpleInteractable.selectEntered.RemoveListener(OnBookTouched);
         }
 
         if (timelineDirector != null)

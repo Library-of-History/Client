@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Anaglyph.Menu;
 using Anaglyph.XRTemplate;
 using com.meta.xr.depthapi.utils;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using Cysharp.Threading.Tasks;
 
 namespace Anaglyph.Lasertag
 {
@@ -77,56 +79,77 @@ namespace Anaglyph.Lasertag
 				if (selectedObject != null)
 				{
 					var book = selectedObject.GetComponentInParent<BookState>();
+					var animHandler = book.gameObject.GetComponent<BookInteraction>();
 
-					if (!book.IsOpened)
+					if (!animHandler.IsAnimating)
 					{
-						book.ChangeState(true);
-
-						var ui = Instantiate(bookUI, book.gameObject.transform, false);
-						ui.transform.localPosition = new Vector3(0.5f, 0f, 0f);
-						ui.transform.localRotation = Quaternion.Euler(-90f, -90f, 0f);
-						
-						var summary = ui.GetComponentInChildren<ScrollRect>();
-						var summaryText = summary.GetComponentInChildren<TextMeshProUGUI>();
-						summaryText.text = SystemManager.Inst.SceneDataInst.SummaryMap[book.gameObject.name];
-
-						var record = ui.GetComponentInChildren<LoadingMedia>(true);
-						record.SetBookName(book.gameObject.name);
-						
-						ui.GetComponentInChildren<Button>().onClick.AddListener(delegate
+						if (!book.IsOpened)
 						{
-							if (SystemManager.Inst.IsDocentProcessing)
-							{
-								return;
-							}
-							
-							SystemManager.Inst.SystemUI.GetComponentInChildren<UIControllerPresenter>().EnvSwitch();
+							book.ChangeState(true);
+							animHandler.PlayBookOpenTimeLine();
 
-							if (SystemManager.Inst.SystemUI.activeSelf)
-							{
-								SystemManager.Inst.SystemUI.GetComponent<MenuPositioner>().ToggleVisible();
-							}
-
-							SystemManager.Inst.CurrentSceneName = book.gameObject.name;
-							SceneManager.LoadSceneAsync(book.gameObject.name, LoadSceneMode.Additive);
-
-							var navPagesParent = ui.GetComponentInChildren<NavPagesParent>(true);
-							var summaryPage = navPagesParent.GetComponentInChildren<NavPage>(true);
+							DisplayUI(book);
+						}
+						else
+						{
+							book.ChangeState(false);
+							animHandler.PlayBookCloseTimeLine();
 							
-							navPagesParent.GoToPage(summaryPage);
-							
-							SystemManager.Inst.MRScene.SetActive(false);
-							PassthroughManager.SetPassthrough(false);
-						});
-						
-						book.SetUI(ui);
-					}
-					else
-					{
-						book.ChangeState(false);
-						Destroy(book.UI);
+							book.UI.SetActive(false);
+						}
 					}
 				}
+			}
+		}
+
+		private async UniTaskVoid DisplayUI(BookState book)
+		{
+			await UniTask.Delay(TimeSpan.FromSeconds(2f));
+			
+			if (book.UI == null)
+			{
+				var ui = Instantiate(bookUI, book.gameObject.transform, false);
+				ui.transform.localPosition = new Vector3(0f, 0f, 0.5f);
+				ui.transform.localRotation = Quaternion.Euler(-90f, -180f, 0f);
+						
+				var summary = ui.GetComponentInChildren<ScrollRect>();
+				var summaryText = summary.GetComponentInChildren<TextMeshProUGUI>();
+				summaryText.text = SystemManager.Inst.SceneDataInst.SummaryMap[book.gameObject.name];
+
+				var record = ui.GetComponentInChildren<LoadingMedia>(true);
+				record.SetBookName(book.gameObject.name);
+						
+				ui.GetComponentInChildren<Button>().onClick.AddListener(delegate
+				{
+					if (SystemManager.Inst.IsDocentProcessing)
+					{
+						return;
+					}
+							
+					SystemManager.Inst.SystemUI.GetComponentInChildren<UIControllerPresenter>().EnvSwitch();
+
+					if (SystemManager.Inst.SystemUI.activeSelf)
+					{
+						SystemManager.Inst.SystemUI.GetComponent<MenuPositioner>().ToggleVisible();
+					}
+
+					SystemManager.Inst.CurrentSceneName = book.gameObject.name;
+					SceneManager.LoadSceneAsync(book.gameObject.name, LoadSceneMode.Additive);
+
+					var navPagesParent = ui.GetComponentInChildren<NavPagesParent>(true);
+					var summaryPage = navPagesParent.GetComponentInChildren<NavPage>(true);
+							
+					navPagesParent.GoToPage(summaryPage);
+							
+					SystemManager.Inst.MRScene.SetActive(false);
+					PassthroughManager.SetPassthrough(false);
+				});
+						
+				book.SetUI(ui);
+			}
+			else
+			{
+				book.UI.SetActive(true);
 			}
 		}
 	}

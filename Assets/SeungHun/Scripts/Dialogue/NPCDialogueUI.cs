@@ -49,14 +49,15 @@ public class NPCDialogueUI : MonoBehaviour
 
     private void SetupVoiceAudioSource()
     {
-        if (voiceAudioSource == null)
-        {
-            voiceAudioSource = SystemManager.Inst.AudioManagerInst.GetCharaVoiceSource();
-        }
-        
         voiceAudioSource.playOnAwake = false;
         voiceAudioSource.loop = false;
-        voiceAudioSource.spatialBlend = 0f;
+        voiceAudioSource.spatialBlend = 1f;
+        SystemManager.Inst.AudioManagerInst.OnCharaVolumeChanged += VolumeChange;
+    }
+    
+    private void VolumeChange(float value)
+    {
+        voiceAudioSource.volume = value;
     }
 
     public void SetDialoguePanelActive(bool active)

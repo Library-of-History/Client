@@ -8,17 +8,24 @@ using Cysharp.Threading.Tasks;
 
 public class TTSStreamManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
+
     private string apiUrl = "/voice-interaction";
-    private AudioSource audioSource;
     private Queue<string> audioUrlQueue = new Queue<string>();
     
     private bool isPlaying = false;
 
     private void Awake()
     {
-        audioSource = SystemManager.Inst.AudioManagerInst.GetDocentVoiceSource();
         audioSource.spatialBlend = 0f;
+        SystemManager.Inst.AudioManagerInst.OnDocentVolumeChanged += VolumeChange;
+        
         apiUrl = SystemManager.ApiUrl + apiUrl;
+    }
+
+    private void VolumeChange(float value)
+    {
+        audioSource.volume = value;
     }
 
     // 외부에서 호출: 사용자의 질의 전달 시작

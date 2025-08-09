@@ -56,13 +56,9 @@ public class CoreStone : MonoBehaviour
       }
       
       //Audio
-      if (audioSource == null)
-      {
-         audioSource = SystemManager.Inst.AudioManagerInst.GetSfxSource();
-      }
-      
       audioSource.playOnAwake = false;
-      audioSource.spatialBlend = 0f;
+      audioSource.spatialBlend = 1f;
+      SystemManager.Inst.AudioManagerInst.OnSfxVolumeChanged += VolumeChange;
       
       MeshCollider meshCollider = GetComponent<MeshCollider>();
       if (meshCollider)
@@ -90,6 +86,11 @@ public class CoreStone : MonoBehaviour
             ProcessImpact(hammer, collision);  
          }
       }
+   }
+   
+   private void VolumeChange(float value)
+   {
+      audioSource.volume = value;
    }
 
    private void ProcessImpact(HammerStone hammer, Collision collision)

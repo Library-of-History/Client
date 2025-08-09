@@ -68,6 +68,13 @@ namespace Anaglyph.Lasertag
 		{
 			if (context.performed && context.ReadValueAsButton())
 			{
+				var animHandler = selectedObject.GetComponentInParent<BookInteraction>();
+
+				if (animHandler.IsAnimating)
+				{
+					return;
+				}
+				
 				Destroy(selectedObject.GetComponentInParent<BookState>().gameObject);
 			}
 		}

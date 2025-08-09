@@ -1,29 +1,74 @@
+using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource bgmSource;
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioSource docentVoiceSource;
-    [SerializeField] private AudioSource charaVoiceSource;
+    public event Action<float> OnBgmVolumeChanged;
+    public event Action<float> OnSfxVolumeChanged;
+    public event Action<float> OnDocentVolumeChanged;
+    public event Action<float> OnCharaVolumeChanged;
 
-    public AudioSource GetBgmSource()
+    private float masterBgmVolume;
+    public float MasterBgmVolume
     {
-        return bgmSource;
+        get => masterBgmVolume;
+        set
+        {
+            if (Mathf.Approximately(masterBgmVolume, value))
+            {
+                return;
+            }
+
+            masterBgmVolume = value;
+            OnBgmVolumeChanged?.Invoke(masterBgmVolume);
+        }
     }
-    
-    public AudioSource GetSfxSource()
+
+    private float masterSfxVolume;
+    public float MasterSfxVolume
     {
-        return sfxSource;
+        get => masterSfxVolume;
+        set
+        {
+            if (Mathf.Approximately(masterSfxVolume, value))
+            {
+                return;
+            }
+
+            masterSfxVolume = value;
+            OnSfxVolumeChanged?.Invoke(masterSfxVolume);
+        }
     }
-    
-    public AudioSource GetDocentVoiceSource()
+
+    private float masterDocentVolume;
+    public float MasterDocentVolume
     {
-        return docentVoiceSource;
+        get => masterDocentVolume;
+        set
+        {
+            if (Mathf.Approximately(masterDocentVolume, value))
+            {
+                return;
+            }
+
+            masterDocentVolume = value;
+            OnDocentVolumeChanged?.Invoke(masterDocentVolume);
+        }
     }
-    
-    public AudioSource GetCharaVoiceSource()
+
+    private float masterCharaVolume;
+    public float MasterCharaVolume
     {
-        return charaVoiceSource;
+        get => masterCharaVolume;
+        set
+        {
+            if (Mathf.Approximately(masterCharaVolume, value))
+            {
+                return;
+            }
+
+            masterCharaVolume = value;
+            OnCharaVolumeChanged?.Invoke(masterCharaVolume);
+        }
     }
 }

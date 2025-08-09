@@ -31,6 +31,8 @@ namespace Anaglyph.Lasertag
         private float distanceX;
         private float distanceY;
         private float distanceZ;
+
+        private float offset;
         
         private bool isGripClicked = false;
 
@@ -132,7 +134,16 @@ namespace Anaglyph.Lasertag
                                                     (transform.right * distanceX)
                                                     + (transform.up * distanceY)
                                                     + (transform.forward * (distanceZ - 0.1f));;
-                selectedObject.transform.eulerAngles = new(0f, angleY + 90f, angleX + 90f);
+
+                if (Mathf.Approximately(offset, -90f))
+                {
+                    selectedObject.transform.eulerAngles = new(offset, angleY + 90f, 90f);
+                    selectedObject.transform.eulerAngles -= new Vector3(angleX, 0f, 0f);
+                }
+                else
+                {
+                    selectedObject.transform.eulerAngles = new(offset, angleY + 90f, angleX + 90f);
+                }
             }
         }
 
@@ -142,7 +153,24 @@ namespace Anaglyph.Lasertag
             {
                 if (selectedObject == null)
                 {
-                    selectedObject = target.GetComponentInParent<BookState>().gameObject;
+                    var book = target.GetComponentInParent<BookState>();
+                    var animHandler = book.gameObject.GetComponent<BookInteraction>();
+
+                    if (animHandler.IsAnimating)
+                    {
+                        return;
+                    }
+                    
+                    if (book.IsOpened)
+                    {
+                        offset = -90f;
+                    }
+                    else
+                    {
+                        offset = 0f;
+                    }
+                    
+                    selectedObject = book.gameObject;
                     storedPos = selectedObject.transform.position;
                     storedRot = selectedObject.transform.eulerAngles;
                     target = null;
@@ -158,6 +186,11 @@ namespace Anaglyph.Lasertag
         
         private void OnRightButtonA(InputAction.CallbackContext context)
         {
+            if (selectedObject == null)
+            {
+                return;
+            }
+            
             if (context.performed)
             {
                 directionZ = -1f;
@@ -170,6 +203,11 @@ namespace Anaglyph.Lasertag
 
         private void OnRightButtonB(InputAction.CallbackContext context)
         {
+            if (selectedObject == null)
+            {
+                return;
+            }
+            
             if (context.performed)
             {
                 directionZ = 1f;
@@ -182,6 +220,11 @@ namespace Anaglyph.Lasertag
 		
         private void OnRightAxis(InputAction.CallbackContext context)
         {
+            if (selectedObject == null)
+            {
+                return;
+            }
+            
             if (!isGripClicked)
             {
                 rotatingX = context.ReadValue<Vector2>().y;
@@ -196,6 +239,11 @@ namespace Anaglyph.Lasertag
 
         private void OnRightGrip(InputAction.CallbackContext context)
         {
+            if (selectedObject == null)
+            {
+                return;
+            }
+            
             if (context.performed)
             {
                 isGripClicked = true;

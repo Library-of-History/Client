@@ -5,21 +5,21 @@ public class ModifySound : MonoBehaviour
 {
     public void OnBgmSliderValueChanged(float value)
     {
-        SystemManager.Inst.AudioManagerInst.GetBgmSource().volume = value;
+        SystemManager.Inst.AudioManagerInst.MasterBgmVolume = value;
     }
     
     public void OnSfxSliderValueChanged(float value)
     {
-        SystemManager.Inst.AudioManagerInst.GetSfxSource().volume = value;
+        SystemManager.Inst.AudioManagerInst.MasterSfxVolume = value;
     }
     
     public void OnDocentSliderValueChanged(float value)
     {
-        SystemManager.Inst.AudioManagerInst.GetDocentVoiceSource().volume = value;
+        SystemManager.Inst.AudioManagerInst.MasterDocentVolume = value;
     }
     
     public void OnCharaSliderValueChanged(float value)
     {
-        SystemManager.Inst.AudioManagerInst.GetCharaVoiceSource().volume = value;
+        SystemManager.Inst.AudioManagerInst.MasterCharaVolume = value;
     }
 }
