@@ -28,6 +28,7 @@ public class VoiceRecordingManager : MonoBehaviour
             if (!isRecording)
             {
                 isRecording = true;
+                SystemManager.Inst.SummonDocent();
                 StartRecording();
                 return;
             }

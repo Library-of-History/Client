@@ -1,3 +1,4 @@
+using System;
 using Anaglyph.XRTemplate;
 using UnityEngine;
 using DG.Tweening;
@@ -53,11 +54,12 @@ public class BookInteraction : MonoBehaviour
     private bool isBookOpened = false;
     
     private Sequence animationSequence;
+    private Action callBack;
     
     private void Start()
     {
         InitializeComponents();
-        StoreOriginalTransform();
+        StoreOriginalPosition();
         SetupInteractionEvents();
         InitializeLights();
 
@@ -113,9 +115,13 @@ public class BookInteraction : MonoBehaviour
         }
     }
     
-    private void StoreOriginalTransform()
+    private void StoreOriginalPosition()
     {
         originalPosition = transform.position;
+    }
+    
+    public void StoreOriginalRotation()
+    {
         originalRotation = transform.rotation;
     }
 
@@ -135,34 +141,27 @@ public class BookInteraction : MonoBehaviour
         }
     }
     
-    public void OnBookTouched(SelectEnterEventArgs args)
-    {
-        if (CanStartAnimation())
-        {
-            StartBookInteractionSequence();   
-        }
-    }
-    
     private bool CanStartAnimation()
     {
         return !IsAnimating && !isBookOpened;
     }
 
-    private void StartBookInteractionSequence()
+    public void StartBookInteractionSequence(Action action)
     {
         if (vrCamera == null)
         {
             return;
         }
         
-        IsAnimating = true;
-        
         if (animationSequence != null)
         {
             animationSequence.Kill();
         }
-        
+
+        IsAnimating = true;
         animationSequence = DOTween.Sequence();
+        callBack = action;
+        StoreOriginalRotation();
         
         Vector3 targetWorldPosition = vrCamera.TransformPoint(targetLocalPosition);
         Quaternion targetWorldRotation = vrCamera.rotation * Quaternion.Euler(targetRotation);  
@@ -170,17 +169,50 @@ public class BookInteraction : MonoBehaviour
         animationSequence.Append(transform.DOMove(targetWorldPosition, moveRotationDuration).SetEase(movementEase));
         animationSequence.Join(transform.DORotateQuaternion(targetWorldRotation, moveRotationDuration).SetEase(rotationEase));
 
-        animationSequence.AppendCallback(PlayBookOpenTimeLine);
-
-        animationSequence.Play();
+        animationSequence.Play()
+            .OnComplete(() =>
+            {
+                PlayBookOpenParticles();
+                EnableBookOpenLight();
+                PlayBookOpenSFX();
+                SystemManager.Inst.FadeUI.FadeToWhite(callBack);
+            });
     }
     
-    public void PlayBookOpenTimeLine()
+    public void FinishBookInteractionSequence(Action action)
+    {
+        if (vrCamera == null)
+        {
+            return;
+        }
+        
+        if (animationSequence != null)
+        {
+            animationSequence.Kill();
+        }
+
+        IsAnimating = true;
+        animationSequence = DOTween.Sequence();
+        callBack = null;
+        
+        animationSequence.Append(transform.DOMove(originalPosition, moveRotationDuration).SetEase(movementEase));
+        animationSequence.Join(transform.DORotateQuaternion(originalRotation, moveRotationDuration).SetEase(rotationEase));
+
+        animationSequence.Play()
+            .OnComplete(() =>
+            {
+                action.Invoke();
+                bookOpenLight.enabled = false;
+                IsAnimating = false;
+            });
+    }
+    
+    public PlayableDirector PlayBookOpenTimeLine()
     {
         if (timelineDirector == null)
         {
             OnTimeLineFinished(null);
-            return;
+            return null;
         }
 
         if (bookOpenTimeLine != null)
@@ -191,11 +223,8 @@ public class BookInteraction : MonoBehaviour
         IsAnimating = true;
         gameObject.transform.DOLocalRotate(new Vector3(0f, 90f, 0f), 1f, RotateMode.LocalAxisAdd);
         
-        // PlayBookOpenParticles();
-        // EnableBookOpenLight();
-        // PlayBookOpenSFX();
-        
         timelineDirector.Play();
+        return timelineDirector;
     }
     
     public void PlayBookCloseTimeLine()
@@ -214,10 +243,6 @@ public class BookInteraction : MonoBehaviour
         IsAnimating = true;
         timelineDirector.time = timelineDirector.duration;
         BookClose();
-        
-        // PlayBookOpenParticles();
-        // EnableBookOpenLight();
-        // PlayBookOpenSFX();
     }
 
     private async UniTaskVoid BookClose()
@@ -257,9 +282,9 @@ public class BookInteraction : MonoBehaviour
         {
             bookOpenLight.enabled = true;
             bookOpenLight.intensity = 0.1f;
-            
+
             bookOpenLight.DOIntensity(targetLightIntensity, lightIntensityDuration)
-                         .SetEase(lightIntensityEase);
+                .SetEase(lightIntensityEase);
         }
     }
 
@@ -275,19 +300,6 @@ public class BookInteraction : MonoBehaviour
     {
         isBookOpened = true;
         IsAnimating = false;
-        
-        TriggerSceneTransition();
-    }
-
-    private void TriggerSceneTransition()
-    {
-        if (AutoExposureFade.Instance != null)
-        {
-            if (useSceneTransition && !string.IsNullOrEmpty(nextSceneName))
-            {
-                AutoExposureFade.Instance.TransitionToScene(nextSceneName);
-            }
-        }
     }
     
     private void OnDestroy()

@@ -115,10 +115,11 @@ public class TTSStreamManager : MonoBehaviour
     {
         while (audioSource.isPlaying)
         {
-            await UniTask.Delay(50);
+            await UniTask.Yield();
         }
         
         audioSource.clip = null;
         SystemManager.Inst.IsDocentProcessing = false;
+        SystemManager.Inst.DeleteDocent();
     }
 }

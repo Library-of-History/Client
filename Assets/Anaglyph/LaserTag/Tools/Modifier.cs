@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Playables;
 
 namespace Anaglyph.Lasertag
 {
@@ -86,9 +87,9 @@ namespace Anaglyph.Lasertag
 						if (!book.IsOpened)
 						{
 							book.ChangeState(true);
-							animHandler.PlayBookOpenTimeLine();
+							var director = animHandler.PlayBookOpenTimeLine();
 
-							DisplayUI(book);
+							DisplayUI(director, book, animHandler);
 						}
 						else
 						{
@@ -102,9 +103,12 @@ namespace Anaglyph.Lasertag
 			}
 		}
 
-		private async UniTaskVoid DisplayUI(BookState book)
+		private async UniTaskVoid DisplayUI(PlayableDirector director, BookState book, BookInteraction animHandler)
 		{
-			await UniTask.Delay(TimeSpan.FromSeconds(2f));
+			while (director.state == PlayState.Playing)
+			{
+				await UniTask.Yield();
+			}
 			
 			if (book.UI == null)
 			{
@@ -125,24 +129,32 @@ namespace Anaglyph.Lasertag
 					{
 						return;
 					}
-							
-					SystemManager.Inst.SystemUI.GetComponentInChildren<UIControllerPresenter>().EnvSwitch();
 
-					if (SystemManager.Inst.SystemUI.activeSelf)
+					SystemManager.Inst.CurrentReadingBook = book.gameObject;
+					book.UI.SetActive(false);
+					
+					animHandler.StartBookInteractionSequence(() =>
 					{
-						SystemManager.Inst.SystemUI.GetComponent<MenuPositioner>().ToggleVisible();
-					}
-
-					SystemManager.Inst.CurrentSceneName = book.gameObject.name;
-					SceneManager.LoadSceneAsync(book.gameObject.name, LoadSceneMode.Additive);
-
-					var navPagesParent = ui.GetComponentInChildren<NavPagesParent>(true);
-					var summaryPage = navPagesParent.GetComponentInChildren<NavPage>(true);
+						animHandler.IsAnimating = false;
+						SystemManager.Inst.SystemUI.GetComponentInChildren<UIControllerPresenter>(true).EnvSwitch();
+					
+						if (SystemManager.Inst.SystemUI.activeSelf)
+						{
+							SystemManager.Inst.SystemUI.GetComponent<MenuPositioner>().ToggleVisible();
+						}
+					
+						SystemManager.Inst.CurrentSceneName = book.gameObject.name;
+						var asyncOp = SceneManager.LoadSceneAsync(book.gameObject.name, LoadSceneMode.Additive);
+						FindEndingCutscene(asyncOp);
+					
+						var navPagesParent = ui.GetComponentInChildren<NavPagesParent>(true);
+						var summaryPage = navPagesParent.GetComponentInChildren<NavPage>(true);
 							
-					navPagesParent.GoToPage(summaryPage);
-							
-					SystemManager.Inst.MRScene.SetActive(false);
-					PassthroughManager.SetPassthrough(false);
+						navPagesParent.GoToPage(summaryPage);
+						
+						SystemManager.Inst.MRScene.SetActive(false);
+						PassthroughManager.SetPassthrough(false);
+					});
 				});
 						
 				book.SetUI(ui);
@@ -151,6 +163,18 @@ namespace Anaglyph.Lasertag
 			{
 				book.UI.SetActive(true);
 			}
+		}
+
+		private async UniTaskVoid FindEndingCutscene(AsyncOperation asyncOp)
+		{
+			while (!asyncOp.isDone)
+			{
+				await UniTask.Yield();
+			}
+			
+			SystemManager.Inst.CurrentEndingCutscene = FindAnyObjectByType<PlayableDirector>();
+			SystemManager.Inst.FadeUI.SetCamera();
+			SystemManager.Inst.FadeUI.ResetFadeEffect();
 		}
 	}
 }
