@@ -16,6 +16,8 @@ namespace Anaglyph.Lasertag
 {
 	public class Modifier : MonoBehaviour
 	{
+		[SerializeField] private AudioClip[] tutorialLines;
+		
 		[SerializeField] private Transform cursor;
 		[SerializeField] private LineRenderer lineRenderer;
 		[SerializeField] private GameObject bookUI;
@@ -174,7 +176,25 @@ namespace Anaglyph.Lasertag
 			
 			SystemManager.Inst.CurrentEndingCutscene = FindAnyObjectByType<PlayableDirector>();
 			SystemManager.Inst.FadeUI.SetCamera();
-			SystemManager.Inst.FadeUI.ResetFadeEffect();
+			SystemManager.Inst.FadeUI.ResetFadeEffect(DocentProcess);
+		}
+		
+		private void DocentProcess()
+		{
+			if ((SystemManager.Inst.TutorialState & 4) == 1)
+			{
+				return;
+			}
+        
+			SystemManager.Inst.TutorialState |= 4;
+			SystemManager.Inst.SummonDocent();
+
+			var queue = SystemManager.Inst.Docent.GetComponent<StaticQuoteQueue>();
+
+			foreach (var line in tutorialLines)
+			{
+				queue.EnqueueAudio(line);
+			}
 		}
 	}
 }

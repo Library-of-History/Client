@@ -9,6 +9,10 @@ using Cysharp.Threading.Tasks;
 public class TTSStreamManager : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
+    
+    private Animator animator;
+    private static readonly int isThinkingHash = Animator.StringToHash("IsThinking");
+    private static readonly int isTalkingHash = Animator.StringToHash("IsTalking");
 
     private string apiUrl = "/voice-interaction";
     private Queue<string> audioUrlQueue = new Queue<string>();
@@ -21,6 +25,7 @@ public class TTSStreamManager : MonoBehaviour
         SystemManager.Inst.AudioManagerInst.OnDocentVolumeChanged += VolumeChange;
         
         apiUrl = SystemManager.ApiUrl + apiUrl;
+        animator = SystemManager.Inst.Docent.GetComponent<Animator>();
     }
 
     private void VolumeChange(float value)
@@ -31,6 +36,9 @@ public class TTSStreamManager : MonoBehaviour
     // 외부에서 호출: 사용자의 질의 전달 시작
     public async UniTask StartTTSStream(string filename)
     {
+        animator.SetBool(isThinkingHash, true);
+        animator.SetBool(isTalkingHash, false);
+        
         string filepath = Path.Combine(Application.persistentDataPath, filename);
         byte[] wavData = File.ReadAllBytes(filepath);
         
@@ -72,6 +80,8 @@ public class TTSStreamManager : MonoBehaviour
     private async UniTask PlayQueue()
     {
         isPlaying = true;
+        animator.SetBool(isThinkingHash, false);
+        animator.SetBool(isTalkingHash, true);
 
         while (true)
         {
@@ -80,7 +90,9 @@ public class TTSStreamManager : MonoBehaviour
             lock (audioUrlQueue)
             {
                 if (audioUrlQueue.Count > 0)
+                {
                     url = audioUrlQueue.Dequeue();
+                }
             }
 
             if (string.IsNullOrEmpty(url))
@@ -113,13 +125,18 @@ public class TTSStreamManager : MonoBehaviour
 
     private async UniTaskVoid CheckIfDonePlaying()
     {
-        while (audioSource.isPlaying)
+        while (audioSource.isPlaying || audioUrlQueue.Count > 0)
         {
             await UniTask.Yield();
         }
         
+        await UniTask.Delay(TimeSpan.FromSeconds(10));
+        
         audioSource.clip = null;
         SystemManager.Inst.IsDocentProcessing = false;
+        animator.SetBool(isThinkingHash, false);
+        animator.SetBool(isTalkingHash, false);
+
         SystemManager.Inst.DeleteDocent();
     }
 }

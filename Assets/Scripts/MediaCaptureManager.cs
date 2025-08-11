@@ -3,6 +3,7 @@ using System.Collections;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Anaglyph.Menu;
 
 public class MediaCaptureManager : MonoBehaviour
 {
@@ -66,10 +67,26 @@ public class MediaCaptureManager : MonoBehaviour
 
         count++;
         Destroy(screenImage);
+        OnAndOffScreenShotUI();
     }
 
     private void ChangeFlag()
     {
         delayForNextCapture = false;
+        OnAndOffScreenShotUI();
+    }
+    
+    private void OnAndOffScreenShotUI()
+    {
+        var canvas = SystemManager.Inst.ScreenShotUI.GetComponentInChildren<Canvas>(true);
+        var menuPositioner = SystemManager.Inst.ScreenShotUI.GetComponent<MenuPositioner>();
+
+        if (!canvas.enabled)
+        {
+            canvas.enabled = true;
+            menuPositioner.ToggleVisible();
+        }
+            
+        menuPositioner.ToggleVisible();
     }
 }

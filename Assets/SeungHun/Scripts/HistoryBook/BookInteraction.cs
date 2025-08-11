@@ -59,7 +59,6 @@ public class BookInteraction : MonoBehaviour
     private void Start()
     {
         InitializeComponents();
-        StoreOriginalPosition();
         SetupInteractionEvents();
         InitializeLights();
 
@@ -161,6 +160,7 @@ public class BookInteraction : MonoBehaviour
         IsAnimating = true;
         animationSequence = DOTween.Sequence();
         callBack = action;
+        StoreOriginalPosition();
         StoreOriginalRotation();
         
         Vector3 targetWorldPosition = vrCamera.TransformPoint(targetLocalPosition);

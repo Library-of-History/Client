@@ -5,5 +5,6 @@ public enum UIControllerCollection
     Log,
     Setting,
     BackToMR,
+    Logout,
     Quit
 }

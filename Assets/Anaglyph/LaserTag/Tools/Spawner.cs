@@ -10,6 +10,8 @@ namespace Anaglyph.Lasertag
 {
 	public class Spawner : MonoBehaviour
 	{
+		[SerializeField] private AudioClip tutorialLine;
+		
 		[SerializeField] private float rotateSpeed;
 		[SerializeField] private float moveSpeed;
 
@@ -127,11 +129,25 @@ namespace Anaglyph.Lasertag
 				
 				obj.transform.SetParent(SystemManager.Inst.MRScene.transform);
 				
+				DocentProcess();
+				
 				gameObject.SetActive(false);
 			}
 		}
 
-		
+		private void DocentProcess()
+		{
+			if ((SystemManager.Inst.TutorialState & 2) == 1)
+			{
+				return;
+			}
+        
+			SystemManager.Inst.TutorialState |= 2;
+			SystemManager.Inst.SummonDocent();
+
+			var queue = SystemManager.Inst.Docent.GetComponent<StaticQuoteQueue>();
+			queue.EnqueueAudio(tutorialLine);
+		}
 
 		private static GameObject InstantiateObjectAsPreview(GameObject obj)
 		{

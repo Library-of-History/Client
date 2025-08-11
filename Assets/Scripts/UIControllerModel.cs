@@ -6,12 +6,12 @@ public class UIControllerModel
 
     private static readonly UIControllerCollection[] mrEnums =
         { UIControllerCollection.Progress, UIControllerCollection.Tool, UIControllerCollection.Log,
-            UIControllerCollection.Setting, UIControllerCollection.Quit };
+            UIControllerCollection.Setting, UIControllerCollection.Logout, UIControllerCollection.Quit };
     private static readonly UIControllerCollection[] vrEnums =
         { UIControllerCollection.Log, UIControllerCollection.Setting, UIControllerCollection.BackToMR,
             UIControllerCollection.Quit };
 
-    public UIControllerModel(UIEnvironment environment, UIControllerCollection current)
+    public UIControllerModel(UIEnvironment environment)
     {
         UpdateEnumArray(environment);
     }

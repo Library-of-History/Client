@@ -6,17 +6,21 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Anaglyph.Menu;
 
 public class LoginManager : MonoBehaviour
 {
-    // public TextMeshProUGUI Id;
-    // public TextMeshProUGUI Password;
+    [SerializeField] private NavPagesParent navPagesParent;
     
-    public string Id;
-    public string Password;
+    [SerializeField] private TMP_InputField id;
+    [SerializeField] private TMP_InputField password;
+
+    [SerializeField] private NavPage initialPage;
+    [SerializeField] private NavPage successPage;
+    [SerializeField] private NavPage failedPage;
     
     // 전송할 데이터 구조 정의
-    [System.Serializable]
+    [Serializable]
     public class PostData
     {
         // public bool success;
@@ -24,26 +28,19 @@ public class LoginManager : MonoBehaviour
         public string password;
     }
     
-    [System.Serializable]
+    [Serializable]
     public class TokenResponse
     {
         public string access_token;
         public string token_type;
-    }
-
-    private void Start()
-    {
-        OnLogin();
     }
     
     public void OnRegister()
     {
         PostData data = new PostData
         {
-            // user_id = Id.text,
-            // password = Password.text
-            user_id = Id,
-            password = Password
+            user_id = id.text,
+            password = password.text
         };
 
         StartCoroutine(PostRegisterData("http://221.163.19.142:58002/users/register", data));
@@ -53,13 +50,21 @@ public class LoginManager : MonoBehaviour
     {
         PostData data = new PostData
         {
-            // user_id = Id.text,
-            // password = Password.text
-            user_id = Id,
-            password = Password
+            user_id = id.text,
+            password = password.text
         };
 
         StartCoroutine(PostLoginData("http://221.163.19.142:58002/login/token", data));
+    }
+    
+    public void InitPage()
+    {
+        navPagesParent.GoToPage(initialPage);
+    }
+
+    private void PageSwitch(NavPage goToPage)
+    {
+        navPagesParent.GoToPage(goToPage);
     }
     
     IEnumerator PostRegisterData(string url, PostData data)
@@ -84,13 +89,13 @@ public class LoginManager : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("요청 성공: " + request.downloadHandler.text);
-            
-            var jsonText = request.downloadHandler.text;
-            // PostData postData = JsonUtility.FromJson<PostData>(jsonText);
+            GetComponent<ResetInputField>().OnClick();
+            PageSwitch(successPage);
         }
         else
         {
             Debug.LogError("요청 실패: " + request.error);
+            PageSwitch(failedPage);
         }
     }
 
@@ -124,6 +129,7 @@ public class LoginManager : MonoBehaviour
 
                     // 예: SystemManager.Inst.Token 저장
                     SystemManager.Inst.Token = token;
+                    PageSwitch(successPage);
 
                     // 필요 시 토큰 타입을 함께 저장하거나 Authorization 헤더 생성 시 활용 가능
                     // 예: "Bearer " + token
@@ -141,6 +147,7 @@ public class LoginManager : MonoBehaviour
         else
         {
             Debug.LogError($"HTTP Error: {request.responseCode}, {request.error}");
+            PageSwitch(failedPage);
         }
     }
 }

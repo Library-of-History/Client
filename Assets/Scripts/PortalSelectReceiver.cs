@@ -9,7 +9,7 @@ public class PortalSelectReceiver : MonoBehaviour
     {
         if (SystemManager.Inst.MRSelectedObject == null)
         {
-            var canvas = SystemManager.Inst.PortalSelectUI.GetComponentInChildren<Canvas>();
+            var canvas = SystemManager.Inst.PortalSelectUI.GetComponentInChildren<Canvas>(true);
             var menuPositioner = SystemManager.Inst.PortalSelectUI.GetComponent<MenuPositioner>();
 
             if (!canvas.enabled)

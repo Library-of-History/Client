@@ -10,13 +10,19 @@ public class UIControllerPresenter : MonoBehaviour
     
     private void Awake()
     {
-        model = new UIControllerModel(UIEnvironment.MR, UIControllerCollection.Progress);
+        model = new UIControllerModel(UIEnvironment.MR);
         view.Init();
     }
 
     private void OnEnable()
     {
         view.SetActiveButton(model.EnumArray);
+        view.SetActiveCurrentUI();
+    }
+
+    public void SetInitState()
+    {
+        view.SetCurrentSelectedButton(UIControllerCollection.Progress);
         view.SetActiveCurrentUI();
     }
 

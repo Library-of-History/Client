@@ -28,11 +28,6 @@ public class VRInputManager : MonoBehaviour
       if (Instance == null)
       {
          Instance = this;
-         DontDestroyOnLoad(gameObject);
-      }
-      else
-      {
-         Destroy(gameObject);
       }
    }
 

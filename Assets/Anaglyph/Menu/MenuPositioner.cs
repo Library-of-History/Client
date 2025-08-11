@@ -40,6 +40,21 @@ namespace Anaglyph.Menu
 			yield return new WaitForEndOfFrame();
 			yield return new WaitForEndOfFrame();
 			SetPose();
+			
+			if (gameObject.name == "SystemUI")
+			{
+				SystemManager.Inst.DeActiveGamePlayMode();
+			}
+		}
+		
+		public void EnableMenuAction()
+		{
+			showMenuAction.Enable();
+		}
+
+		public void DisableMenuAction()
+		{
+			showMenuAction.Disable();
 		}
 
 		public void ToggleVisible()

@@ -1,11 +1,13 @@
 using System;
 using Anaglyph.Menu;
 using Anaglyph.XRTemplate;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class SummonPortal : MonoBehaviour
 {
     [SerializeField] private GameObject portal;
+    [SerializeField] private AudioClip tutorialLine;
     
     private Camera mainCamera;
     private Transform camTransform => mainCamera.transform;
@@ -34,5 +36,21 @@ public class SummonPortal : MonoBehaviour
         
         SystemManager.Inst.Portal = Instantiate(portal, position, rotation * Quaternion.Euler(-110f, 0f, 180f));
         GetComponentInParent<MenuPositioner>().ToggleVisible();
+        
+        DocentProcess();
+    }
+
+    private void DocentProcess()
+    {
+        if ((SystemManager.Inst.TutorialState & 1) == 1)
+        {
+            return;
+        }
+        
+        SystemManager.Inst.TutorialState |= 1;
+        SystemManager.Inst.SummonDocent();
+
+        var queue = SystemManager.Inst.Docent.GetComponent<StaticQuoteQueue>();
+        queue.EnqueueAudio(tutorialLine);
     }
 }
